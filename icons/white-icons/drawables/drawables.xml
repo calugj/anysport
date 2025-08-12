@@ -1,0 +1,58 @@
+<drawables>
+    <bitmap id="LauncherIcon" filename="launcher_icon.png" />
+    <bitmap id="AS" filename="AS.png">    <palette disableTransparency="false">   <color>FFFFFF</color>   </palette>     </bitmap>
+
+
+    <bitmap id="Datafields" filename="MainMenu_Datafields.png">    <palette disableTransparency="false">   <color>FFFFFF</color>   </palette>     </bitmap>
+    <bitmap id="GPS" filename="MainMenu_GPS.png">    <palette disableTransparency="false">   <color>FFFFFF</color>   </palette>     </bitmap>
+    <bitmap id="Color" filename="Color.png">    <palette disableTransparency="false">   <color>FFFFFF</color>   </palette>     </bitmap>
+    <bitmap id="Fill" filename="Fill.png">    <palette disableTransparency="false">   <color>FFFFFF</color>   </palette>     </bitmap>
+    <bitmap id="Lap" filename="Lap.png">    <palette disableTransparency="false">   <color>FFFFFF</color>   </palette>     </bitmap>
+    <bitmap id="Unit" filename="Unit.png">    <palette disableTransparency="false">   <color>FFFFFF</color>   </palette>     </bitmap>
+    <bitmap id="Donations" filename="Donations.png">    <palette disableTransparency="false">   <color>FFFFFF</color>   </palette>     </bitmap>
+    <bitmap id="About" filename="About.png">    <palette disableTransparency="false">   <color>FFFFFF</color>   </palette>     </bitmap>
+    <bitmap id="Dev" filename="Dev.png">    <palette disableTransparency="false">   <color>FFFFFF</color>   </palette>     </bitmap>
+    <bitmap id="Git" filename="Git.png">    <palette disableTransparency="false">   <color>FFFFFF</color>   </palette>     </bitmap>
+    <bitmap id="Settings" filename="Settings.png">    <palette disableTransparency="false">   <color>FFFFFF</color>   </palette>     </bitmap>
+    <bitmap id="ExtraSettings" filename="ExtraSettings.png">    <palette disableTransparency="false">   <color>FFFFFF</color>   </palette>     </bitmap>
+    <bitmap id="Up" filename="Up.png">    <palette disableTransparency="false">   <color>FFFFFF</color>   </palette>     </bitmap>
+    <bitmap id="Down" filename="Down.png">    <palette disableTransparency="false">   <color>FFFFFF</color>   </palette>     </bitmap>
+    <bitmap id="Licenses" filename="Licenses.png">    <palette disableTransparency="false">   <color>FFFFFF</color>   </palette>     </bitmap>
+    <bitmap id="Check" filename="Check.png">    <palette disableTransparency="false">   <color>00FF00</color>   </palette>     </bitmap>
+    <bitmap id="Cross" filename="Cross.png">    <palette disableTransparency="false">   <color>FF0000</color>   </palette>     </bitmap>
+
+
+    <bitmap id="Play" filename="Play.png">    <palette disableTransparency="false">   <color>FFFFFF</color>   </palette>     </bitmap>
+    <bitmap id="Delete" filename="Delete.png">    <palette disableTransparency="false">   <color>FFFFFF</color>   </palette>     </bitmap>
+    <bitmap id="Save" filename="Save.png">    <palette disableTransparency="false">   <color>FFFFFF</color>   </palette>     </bitmap>
+
+
+
+
+
+    
+    <!-- Classes -->
+
+    <bitmap id="Running" filename="classes/Running.png">    <palette disableTransparency="false">   <color>FFFFFF</color>   </palette>     </bitmap>
+    <bitmap id="Cycling" filename="classes/Cycling.png">    <palette disableTransparency="false">   <color>FFFFFF</color>   </palette>     </bitmap>
+    <bitmap id="Fitness" filename="classes/Fitness.png">    <palette disableTransparency="false">   <color>FFFFFF</color>   </palette>     </bitmap>
+    <bitmap id="Swimming" filename="classes/Swimming.png">    <palette disableTransparency="false">   <color>FFFFFF</color>   </palette>     </bitmap>
+    <bitmap id="Field" filename="classes/Field.png">    <palette disableTransparency="false">   <color>FFFFFF</color>   </palette>     </bitmap>
+    <bitmap id="Training" filename="classes/Training.png">    <palette disableTransparency="false">   <color>FFFFFF</color>   </palette>     </bitmap>
+    <bitmap id="Walking" filename="classes/Walking.png">    <palette disableTransparency="false">   <color>FFFFFF</color>   </palette>     </bitmap>
+    <bitmap id="Winter" filename="classes/Winter.png">    <palette disableTransparency="false">   <color>FFFFFF</color>   </palette>     </bitmap>
+    <bitmap id="Water" filename="classes/Water.png">    <palette disableTransparency="false">   <color>FFFFFF</color>   </palette>     </bitmap>
+    <bitmap id="Flying" filename="classes/Flying.png">    <palette disableTransparency="false">   <color>FFFFFF</color>   </palette>     </bitmap>
+    <bitmap id="Motorsports" filename="classes/Motorsports.png">    <palette disableTransparency="false">   <color>FFFFFF</color>   </palette>     </bitmap>
+    <bitmap id="Climbing" filename="classes/Climbing.png">    <palette disableTransparency="false">   <color>FFFFFF</color>   </palette>     </bitmap>
+    <bitmap id="Diving" filename="classes/Diving.png">    <palette disableTransparency="false">   <color>FFFFFF</color>   </palette>     </bitmap>
+    <bitmap id="Other" filename="classes/Other.png">    <palette disableTransparency="false">   <color>FFFFFF</color>   </palette>     </bitmap>
+    <bitmap id="Custom" filename="classes/Custom.png">    <palette disableTransparency="false">   <color>FFFFFF</color>   </palette>     </bitmap>
+
+    
+
+
+
+
+
+</drawables>

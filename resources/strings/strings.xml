@@ -1,0 +1,333 @@
+<strings>
+    <string id="AppName">Any Sport ULTRA</string>
+    <string id="AppNameFull">Any Sport ULTRA</string>
+    <string id="Version">1.0.0</string>
+
+
+
+    <string id="Pause">Pause</string>
+    <string id="Save">Save</string>
+    <string id="Continue">Continue</string>
+    <string id="Delete">Delete</string>
+    <string id="Active">Active</string>
+    <string id="Inactive">Inactive</string>
+
+
+    <string id="PressStart">PRESS START</string>
+
+
+
+    <string id="ActivityType">Activity Type</string>
+        <string id="ActivityClassMenu_Title">Category</string>
+        <string id="Running">Running</string>
+        <string id="Cycling">Cycling</string>
+        <string id="Fitness">Fitness Equipment</string>
+        <string id="Swimming">Swimming</string>
+        <string id="Field">Field</string>
+        <string id="Training">Training</string>
+        <string id="Walking">Walking</string>
+        <string id="WinterSports">Winter Sports</string>
+        <string id="WaterSports">Water Sports</string>
+        <string id="Flying">Flying</string>
+        <string id="Motorsports">Motorsports</string>
+        <string id="Climbing">Climbing</string>
+        <string id="Diving">Diving</string>
+        <string id="Other">Other</string>
+        <string id="Custom">Custom</string>
+        <string id="Presets">Presets</string>
+
+    <string id="Datafields">Datafields</string>
+        <string id="Pages">Pages</string>
+        <string id="Page">Page</string>
+        <string id="Fields">Fields</string>
+        <string id="Field">Field</string>
+        <string id="EditPage">Edit page</string>
+        <string id="DeletePage">Delete</string>
+        <string id="AddPage">Add page</string>
+        <string id="EditFields">Edit fields</string>
+        <string id="EditFieldsNumber">Edit number</string>
+        <string id="EditPage">Edit page</string>
+    <string id="Positioning">Positioning</string>
+        <string id="SingleBand">L1 single-band</string>
+        <string id="MultiBand">L1 + L5 dual-band</string>
+    <string id="AccentColor">Accent color</string>
+    <string id="BackgroundColor">Background</string>
+    <string id="Theme">Theme</string>
+        <string id="Dark">Dark</string>
+        <string id="Light">Light</string>
+    <string id="Lap">Lap</string>
+        <string id="LapActive">Lap active</string>
+        <string id="LapScreen">Lap screen</string>
+        <string id="LapField">Lap screen field</string>
+        <string id="AutoLap">Auto lap</string>
+        <string id="AutoLapDistance">Auto lap distance</string>
+    <string id="Unit">Units</string>
+        <string id="SpeedUnits">Speed unit</string>
+        <string id="PaceUnits">Pace unit</string>
+        <string id="DistanceUnits">Dist. unit</string>
+        <string id="NauticalSpeed">Marine act. unit</string>
+        <string id="TemperatureUnits">Temp. unit</string>
+        <string id="Metric">Metric</string>
+        <string id="Imperial">Imperial</string>
+        <string id="Nautical">Nautical</string>
+    <string id="Extra">More Settings</string>
+        <string id="Onboard">Onboard sensor</string>
+    <string id="Donate">Donate</string>
+        <string id="DonateSub">Support the developer</string>
+    <string id="About">About</string>
+        <string id="About_substring">Any Sport ULTRA and more</string>
+    <string id="Dev">Debug</string>
+        <string id="Dev_substring">Versions and more</string>
+        <string id="Firmware">Firmware: </string>
+        <string id="Monkey">Monkey: </string>
+        <string id="App">App: </string>
+        <string id="Display">Graphics: </string>
+        <string id="Memory">RAM [kB]: </string>
+        <string id="Part">Part: </string>
+        <string id="UID">UID: </string>
+    <string id="Git">GitHub</string>
+        <string id="Git_substring">Source code</string>
+    <string id="Licenses">Licenses</string>
+    <string id="Licenses_substring">Open source resources</string>
+    <string id="Manual">Manual</string>
+
+    
+    <string id="Yes">Yes</string>
+    <string id="No">No</string>
+    <string id="Apply">Apply</string>
+    <string id="Name">Name</string>
+    <string id="Sport">Sport</string>
+    <string id="Subsport">Subsport</string>
+    <string id="Saved">Activity saved</string>
+    
+
+
+    
+
+
+
+
+
+
+
+
+
+    <string id="Run_Generic">Run</string>
+    <string id="Run_Treadmill">Treadmill</string>
+    <string id="Run_Street">Street Run</string>
+    <string id="Run_Trail">Trail Run</string>
+    <string id="Run_Track">Track Run</string>
+    <string id="Run_Ultra">Ultra Run</string>
+    <string id="Run_Indoor">Indoor Run</string>
+    <string id="Run_Obstacle">Obstacle Run</string>
+    <string id="Run_Virtual">Virtual Run</string>
+
+
+
+
+
+    <string id="Cycling_Generic">Bike</string>
+    <string id="Cycling_Spin">Spin Bike</string>
+    <string id="Cycling_Indoor">Indoor Bike</string>
+    <string id="Cycling_Road">Road Bike</string>
+    <string id="Cycling_Mountain">Mountain Bike</string>
+    <string id="Cycling_Downhill">Downhill Bike</string>
+    <string id="Cycling_Recumbent">Recumbent Bike</string>
+    <string id="Cycling_Cyclocross">Cyclocross</string>
+    <string id="Cycling_Hand">Hand Bike</string>
+    <string id="Cycling_Track">Track Bike</string>
+    <string id="Cycling_BMX">BMX</string>
+    <string id="Cycling_Gravel">Gravel Bike</string>
+    <string id="Cycling_eMTB">e-MTB</string>
+    <string id="Cycling_Commuting">Bike Commuting</string>
+    <string id="Cycling_Mixed">Mixed Surface Bike</string>
+    <string id="Cycling_Mixed">Mixed Surface Bike</string>
+    <string id="Cycling_eBiking">e-Bike</string>
+    <string id="Cycling_Virtual">Virtual Bike</string>
+
+
+
+
+    <string id="Fitness_Generic">Fitness Equipment</string>
+    <string id="Fitness_Rowing">Indoor Row</string>
+    <string id="Fitness_Elliptical">Elliptical</string>
+    <string id="Fitness_Stair">Stair Climb</string>
+    <string id="Fitness_Ski">Indoor Ski</string>
+    <string id="Fitness_JumpRope">Rope Jump</string>
+    <string id="Fitness_Onshore">Onshore Grinding</string>
+
+
+
+
+
+    <string id="Swimming_Generic">Swim</string>
+    <string id="Swimming_Lap">Lap Swim</string>
+    <string id="Swimming_Open">Open Water Swim</string>
+
+
+
+
+    <string id="Training_Generic">Training</string>
+    <string id="Training_Flexibility">Flexibility</string>
+    <string id="Training_Strength">Strength</string>
+    <string id="Training_Cardio">Cardio</string>
+    <string id="Training_Yoga">Yoga</string>
+    <string id="Training_Pilates">Pilates</string>
+    <string id="Training_HIIT">HIIT</string>
+    <string id="Training_AMRAP">AMRAP</string>
+    <string id="Training_EMOM">EMOM</string>
+    <string id="Training_TABATA">TABATA</string>
+
+
+
+
+
+
+
+    <string id="Field_Basketball">Basketball</string>
+    <string id="Field_Soccer">Soccer</string>
+    <string id="Field_Tennis">Tennis</string>
+    <string id="Field_AmericanFootball">American Football</string>
+    <string id="Field_Cricket">Cricket</string>
+    <string id="Field_Rugby">Rugby</string>
+    <string id="Field_Hockey">Hockey</string>
+    <string id="Field_Lacrosse">Lacrosse</string>
+    <string id="Field_Volleyball">Volleyball</string>
+    <string id="Field_Pickleball">Pickleball</string>
+    <string id="Field_Padel">Padel</string>
+    <string id="Field_Squash">Squash</string>
+    <string id="Field_Badminton">Badminton</string>
+    <string id="Field_Racquetball">Racquetball</string>
+    <string id="Field_TableTennis">Table Tennis</string>
+    <string id="Field_Baseball">Baseball</string>
+    <string id="Field_Softball">Softball</string>
+
+
+
+    <string id="Walking_Generic">Walk</string>
+    <string id="Walking_Casual">Casual Walk</string>
+    <string id="Walking_Speed">Speed Walk</string>
+    <string id="Walking_Indoor">Indoor Walk</string>
+    <string id="Walking_Mountaineering">Mountaineering</string>
+    <string id="Walking_Hiking">Hiking</string>
+
+
+
+
+    <string id="Winter_Generic">Winter Sports</string>
+    <string id="Winter_CrossCountryClassic">Classic Cross Country Ski</string>
+    <string id="Winter_CrossCountrySkate">Skate Cross Country</string>
+    <string id="Winter_AlpineSki">Alpine Ski</string>
+    <string id="Winter_Snowboard">Snowboard</string>
+    <string id="Winter_BackCountrySki">Backcountry Ski</string>
+    <string id="Winter_BackCountrySnowboard">Backcountry Snowboard</string>
+    <string id="Winter_IceSkate">Ice Skate</string>
+    <string id="Winter_Snowshoe">Snowshoe</string>
+
+
+
+
+
+
+    <string id="Water_Row">Row</string>
+    <string id="Water_Paddle">Paddle</string>
+    <string id="Water_Kayak">Kayak</string>
+    <string id="Water_Raft">Raft</string>
+    <string id="Water_Whitewater">Whitewater</string>
+    <string id="Water_Windsurf">Windsurf</string>
+    <string id="Water_Kitesurf">Kitesurf</string>
+    <string id="Water_Wakeboard">Wakeboard</string>
+    <string id="Water_Ski">Water Ski</string>
+    <string id="Water_SUP">SUP</string>
+    <string id="Water_Surf">Surf</string>
+    <string id="Water_Sail">Sail</string>
+    <string id="Water_Wakesurf">Wakesurf</string>
+    <string id="Water_Tube">Water Tubing</string>
+    <string id="Water_Snorkel">Snorkel</string>
+
+
+
+
+    <string id="Flying_Generic">Flying</string>
+    <string id="Flying_HangGlide">Hang Glide</string>
+    <string id="Flying_Skydive">Skydive</string>
+    <string id="Flying_Jumpmaster">Jumpmaster</string>
+    <string id="Flying_Drone">RC Drone</string>
+    <string id="Flying_Wingsuit">Wingsuit</string>
+    <string id="Flying_Canopy">Canopy</string>
+    <string id="Flying_Paraglide">Paraglide</string>
+    <string id="Flying_Paramotor">Paramotor</string>
+    <string id="Flying_Pressurized">Pressurized</string>
+
+
+
+    <string id="Climbing_Generic">Climbing</string>
+    <string id="Climbing_Floor">Floor Climbing</string>
+    <string id="Climbing_Indoor">Indoor Climbing</string>
+    <string id="Climbing_Bouldering">Bouldering</string>
+
+
+
+
+
+    <string id="Other_Multisport">Multisport</string>
+    <string id="Other_Golf">Golf</string>
+    <string id="Other_Horseback">Horseback Riding</string>
+    <string id="Other_Hunt">Hunt</string>
+    <string id="Other_HuntDog">Hunt with Dog</string>
+    <string id="Other_Fish">Fish</string>
+    <string id="Other_InlineSkate">Inline Skate</string>
+    <string id="Other_Tactical">Tactical</string>
+    <string id="Other_Boxe">Boxe</string>
+    <string id="Other_MMA">MMA</string>
+    <string id="Other_Dance">Dance</string>
+    <string id="Other_DiscGolf">Disc Golf</string>
+    <string id="Other_Meditation">Meditation</string>
+    <string id="Other_Breathing">Breathing</string>
+    <string id="Other_Offshore">Offshore Grinding</string>
+    <string id="Other_eSport">eSport</string>
+    <string id="Other_Shooting">Shooting</string>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    <string id="Diving_Generic">Dive</string>
+    <string id="Diving_Single">Single Gas Dive</string>
+    <string id="Diving_Multi">Multi Gas Dive</string>
+    <string id="Diving_Gauge">Gauge Dive</string>
+    <string id="Diving_Apnea">Apnea Dive</string>
+    <string id="Diving_Hunt">Apnea Hunt</string>
+
+
+
+
+
+
+
+
+
+    <string id="Motorsport_Motorcycling">Motorcycle</string>
+    <string id="Motorsport_Boating">Boat</string>
+    <string id="Motorsport_Driving">Drive</string>
+    <string id="Motorsport_Snowmobiling">Snowmobile</string>
+    <string id="Motorsport_ATV">ATV</string>
+    <string id="Motorsport_Motocross">Motocross</string>
+    <string id="Motorsport_Race">Race</string>
+
+
+
+    <string id="SatellitesOff">Positioning OFF</string>
+
+
+</strings>
