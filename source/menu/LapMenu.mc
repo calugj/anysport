@@ -6,23 +6,23 @@ import Toybox.Application;
 public class LapMenu extends MenuBaseClass {
 
     public function initialize() {
-        var title = WatchUi.loadResource(Rez.Strings.Lap);
+        var title = Strings.getString("Lap");
         var itemHeight = (System.getDeviceSettings().screenHeight)*0.25;
         MenuBaseClass.initialize(title, itemHeight.toNumber(), {:theme => null, :dividerType => null});
 
         var lapActivated = Properties.getValue("LapActivated");
         var autoLapActivated = Properties.getValue("AutoLapActivated");
         var lapScreen = Properties.getValue("LapScreen");
-        addItem(new CustomSwitchMenuItem(:lapActive, WatchUi.loadResource(Rez.Strings.LapActive), null, lapActivated));
+        addItem(new CustomSwitchMenuItem(:lapActive, Strings.getString("LapActive"), null, lapActivated));
         if(lapActivated) {
-            addItem(new CustomSwitchMenuItem(:lapScreen, WatchUi.loadResource(Rez.Strings.LapScreen), null, lapScreen));
+            addItem(new CustomSwitchMenuItem(:lapScreen, Strings.getString("LapScreen"), null, lapScreen));
             if(lapScreen) {
                 var lapField = Properties.getValue("LapScreenField");
                 var subString = (SportData.getInstance().getMetric(lapField) as Array<String>)[1];
-                addItem(new CustomLabelSublabelMenuItem(:lapField, WatchUi.loadResource(Rez.Strings.LapField), subString));
+                addItem(new CustomLabelSublabelMenuItem(:lapField, Strings.getString("LapField"), subString));
             }
             
-            addItem(new CustomSwitchMenuItem(:autoLapActive, WatchUi.loadResource(Rez.Strings.AutoLap), null, autoLapActivated));
+            addItem(new CustomSwitchMenuItem(:autoLapActive, Strings.getString("AutoLap"), null, autoLapActivated));
             if(autoLapActivated) {
                 var autoLapValue = Properties.getValue("AutoLapValue").format("%.1f").toString();
                 var unit = Properties.getValue("DistanceUnits");
@@ -38,7 +38,7 @@ public class LapMenu extends MenuBaseClass {
                     autoLapValue += " NM";
                 }
                 
-                addItem(new CustomLabelSublabelMenuItem(:autoLapValue, WatchUi.loadResource(Rez.Strings.AutoLapDistance), autoLapValue));
+                addItem(new CustomLabelSublabelMenuItem(:autoLapValue, Strings.getString("AutoLapDistance"), autoLapValue));
             }
         }
     }

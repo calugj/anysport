@@ -8,50 +8,50 @@ import Toybox.SensorHistory;
 public class FieldSettingMenu extends MenuBaseClass {
 
     public function initialize() {
-        var title = WatchUi.loadResource(Rez.Strings.Field);
+        var title = Strings.getString("Field");
         var itemHeight = (System.getDeviceSettings().screenHeight)*0.15;
         MenuBaseClass.initialize(title, itemHeight.toNumber(), {:theme => null, :dividerType => null});
 
-        addItem(new CustomLabelMenuItem(0 , Strings.getInstance().getString("Timer")));
-        addItem(new CustomLabelMenuItem(1 , Strings.getInstance().getString("LapTimer")));
-        addItem(new CustomLabelMenuItem(2 , Strings.getInstance().getString("LastLapTimer")));
-        addItem(new CustomLabelMenuItem(3 , Strings.getInstance().getString("AverageLap")));
-        addItem(new CustomLabelMenuItem(4 , Strings.getInstance().getString("ElapsedTime")));
-        addItem(new CustomLabelMenuItem(5 , Strings.getInstance().getString("Distance")));
-        addItem(new CustomLabelMenuItem(6 , Strings.getInstance().getString("LapDistance")));
-        addItem(new CustomLabelMenuItem(7 , Strings.getInstance().getString("LastLapDistance")));
-        addItem(new CustomLabelMenuItem(8 , Strings.getInstance().getString("Pace")));
-        addItem(new CustomLabelMenuItem(9 , Strings.getInstance().getString("AveragePace")));
-        addItem(new CustomLabelMenuItem(10 , Strings.getInstance().getString("AverageLapPace")));
-        addItem(new CustomLabelMenuItem(11 , Strings.getInstance().getString("LastLapPace")));
-        addItem(new CustomLabelMenuItem(12 , Strings.getInstance().getString("MaxPace")));
-        addItem(new CustomLabelMenuItem(13 , Strings.getInstance().getString("Speed")));
-        addItem(new CustomLabelMenuItem(14 , Strings.getInstance().getString("AverageSpeed")));
-        addItem(new CustomLabelMenuItem(15 , Strings.getInstance().getString("AverageLapSpeed")));
-        addItem(new CustomLabelMenuItem(16 , Strings.getInstance().getString("LastLapSpeed")));
-        addItem(new CustomLabelMenuItem(17 , Strings.getInstance().getString("MaxSpeed")));
-        addItem(new CustomLabelMenuItem(18 , Strings.getInstance().getString("HeartRate")));
-        addItem(new CustomLabelMenuItem(31 , Strings.getInstance().getString("HeartRateColor")));
-        addItem(new CustomLabelMenuItem(19 , Strings.getInstance().getString("AverageHeartRate")));
-        addItem(new CustomLabelMenuItem(20 , Strings.getInstance().getString("MaxHeartRate")));
+        addItem(new CustomLabelMenuItem(0 , Strings.getString("Timer")));
+        addItem(new CustomLabelMenuItem(1 , Strings.getString("LapTimer")));
+        addItem(new CustomLabelMenuItem(2 , Strings.getString("LastLapTimer")));
+        addItem(new CustomLabelMenuItem(3 , Strings.getString("AverageLap")));
+        addItem(new CustomLabelMenuItem(4 , Strings.getString("ElapsedTime")));
+        addItem(new CustomLabelMenuItem(5 , Strings.getString("Distance")));
+        addItem(new CustomLabelMenuItem(6 , Strings.getString("LapDistance")));
+        addItem(new CustomLabelMenuItem(7 , Strings.getString("LastLapDistance")));
+        addItem(new CustomLabelMenuItem(8 , Strings.getString("Pace")));
+        addItem(new CustomLabelMenuItem(9 , Strings.getString("AveragePace")));
+        addItem(new CustomLabelMenuItem(10 , Strings.getString("AverageLapPace")));
+        addItem(new CustomLabelMenuItem(11 , Strings.getString("LastLapPace")));
+        addItem(new CustomLabelMenuItem(12 , Strings.getString("MaxPace")));
+        addItem(new CustomLabelMenuItem(13 , Strings.getString("Speed")));
+        addItem(new CustomLabelMenuItem(14 , Strings.getString("AverageSpeed")));
+        addItem(new CustomLabelMenuItem(15 , Strings.getString("AverageLapSpeed")));
+        addItem(new CustomLabelMenuItem(16 , Strings.getString("LastLapSpeed")));
+        addItem(new CustomLabelMenuItem(17 , Strings.getString("MaxSpeed")));
+        addItem(new CustomLabelMenuItem(18 , Strings.getString("HeartRate")));
+        addItem(new CustomLabelMenuItem(31 , Strings.getString("HeartRateColor")));
+        addItem(new CustomLabelMenuItem(19 , Strings.getString("AverageHeartRate")));
+        addItem(new CustomLabelMenuItem(20 , Strings.getString("MaxHeartRate")));
         if(SensorHistory has :getTemperatureHistory) {
-            addItem(new CustomLabelMenuItem(21 , Strings.getInstance().getString("Temperature")));
+            addItem(new CustomLabelMenuItem(21 , Strings.getString("Temperature")));
         }
-        addItem(new CustomLabelMenuItem(22 , Strings.getInstance().getString("Altitude")));
-        addItem(new CustomLabelMenuItem(23 , Strings.getInstance().getString("TotalAscent")));
-        addItem(new CustomLabelMenuItem(24 , Strings.getInstance().getString("TotalDescent")));
-        addItem(new CustomLabelMenuItem(25 , Strings.getInstance().getString("Compass")));
-        addItem(new CustomLabelMenuItem(26 , Strings.getInstance().getString("Cadence")));
-        addItem(new CustomLabelMenuItem(27 , Strings.getInstance().getString("Calories")));
-        addItem(new CustomLabelMenuItem(28 , Strings.getInstance().getString("Battery")));
-        addItem(new CustomLabelMenuItem(29 , Strings.getInstance().getString("LapCount")));
-        addItem(new CustomLabelMenuItem(30 , Strings.getInstance().getString("TimeOfDay")));
-        addItem(new CustomLabelMenuItem(32 , Strings.getInstance().getString("Power")));
+        addItem(new CustomLabelMenuItem(22 , Strings.getString("Altitude")));
+        addItem(new CustomLabelMenuItem(23 , Strings.getString("TotalAscent")));
+        addItem(new CustomLabelMenuItem(24 , Strings.getString("TotalDescent")));
+        addItem(new CustomLabelMenuItem(25 , Strings.getString("Compass")));
+        addItem(new CustomLabelMenuItem(26 , Strings.getString("Cadence")));
+        addItem(new CustomLabelMenuItem(27 , Strings.getString("Calories")));
+        addItem(new CustomLabelMenuItem(28 , Strings.getString("Battery")));
+        addItem(new CustomLabelMenuItem(29 , Strings.getString("LapCount")));
+        addItem(new CustomLabelMenuItem(30 , Strings.getString("TimeOfDay")));
+        addItem(new CustomLabelMenuItem(32 , Strings.getString("Power")));
         if(Activity.Info has :rawAmbientPressure) {
-            addItem(new CustomLabelMenuItem(33 , Strings.getInstance().getString("RawPressure")));
+            addItem(new CustomLabelMenuItem(33 , Strings.getString("RawPressure")));
         }
         if(Activity.Info has :meanSeaLevelPressure) {
-            addItem(new CustomLabelMenuItem(34 , Strings.getInstance().getString("SeaPressure")));
+            addItem(new CustomLabelMenuItem(34 , Strings.getString("SeaPressure")));
         }
 
         

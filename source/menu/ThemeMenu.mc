@@ -8,12 +8,12 @@ import Toybox.Communications;
 public class ThemeMenu extends MenuBaseClass {
 
     public function initialize() {
-        var title = WatchUi.loadResource(Rez.Strings.Theme);
+        var title = Strings.getString("Theme");
         var itemHeight = (System.getDeviceSettings().screenHeight)*0.25;
         MenuBaseClass.initialize(title, itemHeight.toNumber(), {:theme => null, :dividerType => null});
 
-        addItem(new CustomIconMenuItem(:backgroundColor, WatchUi.loadResource(Rez.Strings.BackgroundColor), "HEX " + Properties.getValue("BackgroundColor").format("%06X"), WatchUi.loadResource($.Rez.Drawables.Fill)));
-        addItem(new CustomIconMenuItem(:accentColor, WatchUi.loadResource(Rez.Strings.AccentColor), "HEX " + Properties.getValue("AccentColor").format("%06X"), WatchUi.loadResource($.Rez.Drawables.Color)));
+        addItem(new CustomIconMenuItem(:backgroundColor, Strings.getString("BackgroundColor"), "HEX " + Properties.getValue("BackgroundColor").format("%06X"), WatchUi.loadResource($.Rez.Drawables.Fill)));
+        addItem(new CustomIconMenuItem(:accentColor, Strings.getString("AccentColor"), "HEX " + Properties.getValue("AccentColor").format("%06X"), WatchUi.loadResource($.Rez.Drawables.Color)));
     }
 }
 

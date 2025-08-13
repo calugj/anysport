@@ -7,22 +7,22 @@ import Toybox.Communications;
 public class MainMenu extends MenuBaseClass {
 
     public function initialize() {
-        var title = WatchUi.loadResource(Rez.Strings.AppName);
+        var title = Strings.getString("AppName");
         var itemHeight = (System.getDeviceSettings().screenHeight)*0.25;
         MenuBaseClass.initialize(title, itemHeight.toNumber(), {:theme => null, :dividerType => null});
 
         var pages = Properties.getValue("Pages");
         var datafields_substring = pages.toString();
         if(pages == 1) {
-            datafields_substring = datafields_substring + " " + WatchUi.loadResource(Rez.Strings.Page);
+            datafields_substring = datafields_substring + " " + Strings.getString("Page");
         } else {
-            datafields_substring = datafields_substring + " " + WatchUi.loadResource(Rez.Strings.Pages);
+            datafields_substring = datafields_substring + " " + Strings.getString("Pages");
         }
             
         var positioning_substring = "";
         switch(Properties.getValue("Satellites")) {
             case 0:
-                positioning_substring = WatchUi.loadResource(Rez.Strings.SatellitesOff);
+                positioning_substring = Strings.getString("SatellitesOff");
                 break;
             case 1:
                 positioning_substring = "GPS";
@@ -49,28 +49,28 @@ public class MainMenu extends MenuBaseClass {
 
         var lap_substring = "";
         if(Properties.getValue("LapActivated")) {
-            lap_substring = WatchUi.loadResource(Rez.Strings.Active);
+            lap_substring = Strings.getString("Active");
         } else {
-            lap_substring = WatchUi.loadResource(Rez.Strings.Inactive);
+            lap_substring = Strings.getString("Inactive");
         }
 
         var theme_substring;
         if(Properties.getValue("BackgroundColor") == Graphics.COLOR_WHITE) {
-            theme_substring = WatchUi.loadResource($.Rez.Strings.Light);
+            theme_substring = Strings.getString("Light");
         } else {
-            theme_substring = WatchUi.loadResource($.Rez.Strings.Dark);
+            theme_substring = Strings.getString("Dark");
         }
         theme_substring += ", HEX " + Properties.getValue("AccentColor").format("%06X");
 
-        addItem(new CustomIconMenuItem(:class, WatchUi.loadResource(Rez.Strings.ActivityType), Properties.getValue("Name"), WatchUi.loadResource($.Rez.Drawables.Running)));
-        addItem(new CustomIconMenuItem(:datafields, WatchUi.loadResource(Rez.Strings.Datafields), datafields_substring, WatchUi.loadResource($.Rez.Drawables.Datafields)));
-        addItem(new CustomIconMenuItem(:positioning, WatchUi.loadResource(Rez.Strings.Positioning), positioning_substring, WatchUi.loadResource($.Rez.Drawables.GPS)));
-        addItem(new CustomIconMenuItem(:theme, WatchUi.loadResource(Rez.Strings.Theme), theme_substring, WatchUi.loadResource($.Rez.Drawables.Color)));
-        addItem(new CustomIconMenuItem(:lap, WatchUi.loadResource(Rez.Strings.Lap), lap_substring, WatchUi.loadResource($.Rez.Drawables.Lap)));
-        addItem(new CustomIconMenuItem(:unit, WatchUi.loadResource(Rez.Strings.Unit), null, WatchUi.loadResource($.Rez.Drawables.Unit)));
-        addItem(new CustomIconMenuItem(:extra, WatchUi.loadResource(Rez.Strings.Extra), null, WatchUi.loadResource($.Rez.Drawables.Other)));
-        addItem(new CustomIconMenuItem(:donations, WatchUi.loadResource(Rez.Strings.Donate), WatchUi.loadResource(Rez.Strings.DonateSub), WatchUi.loadResource($.Rez.Drawables.Donations)));
-        addItem(new CustomIconMenuItem(:reference, WatchUi.loadResource(Rez.Strings.Manual), null, WatchUi.loadResource($.Rez.Drawables.Licenses)));
+        addItem(new CustomIconMenuItem(:class, Strings.getString("ActivityType"), Properties.getValue("Name"), WatchUi.loadResource($.Rez.Drawables.Running)));
+        addItem(new CustomIconMenuItem(:datafields, Strings.getString("Datafields"), datafields_substring, WatchUi.loadResource($.Rez.Drawables.Datafields)));
+        addItem(new CustomIconMenuItem(:positioning, Strings.getString("Positioning"), positioning_substring, WatchUi.loadResource($.Rez.Drawables.GPS)));
+        addItem(new CustomIconMenuItem(:theme, Strings.getString("Theme"), theme_substring, WatchUi.loadResource($.Rez.Drawables.Color)));
+        addItem(new CustomIconMenuItem(:lap, Strings.getString("Lap"), lap_substring, WatchUi.loadResource($.Rez.Drawables.Lap)));
+        addItem(new CustomIconMenuItem(:unit, Strings.getString("Unit"), null, WatchUi.loadResource($.Rez.Drawables.Unit)));
+        addItem(new CustomIconMenuItem(:extra, Strings.getString("Extra"), null, WatchUi.loadResource($.Rez.Drawables.Other)));
+        addItem(new CustomIconMenuItem(:donations, Strings.getString("Donate"), Strings.getString("DonateSub"), WatchUi.loadResource($.Rez.Drawables.Donations)));
+        addItem(new CustomIconMenuItem(:reference, Strings.getString("Manual"), null, WatchUi.loadResource($.Rez.Drawables.Licenses)));
     }
 
     public function onShow() {

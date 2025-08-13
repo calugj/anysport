@@ -269,112 +269,112 @@ public class SportData {
         
         switch(request) {
             case 0: // timer
-                return [formatTime(info.timerTime), Strings.getInstance().getString("Timer")] as Array<String>;
+                return [formatTime(info.timerTime), Strings.getString("Timer")] as Array<String>;
             case 1: // lap timer
-                return [formatTime(lapTime), Strings.getInstance().getString("LapTimer")] as Array<String>;
+                return [formatTime(lapTime), Strings.getString("LapTimer")] as Array<String>;
             case 2: // last lap
-                return [formatTime(lastLapTime), Strings.getInstance().getString("LastLapTimer")] as Array<String>;
+                return [formatTime(lastLapTime), Strings.getString("LastLapTimer")] as Array<String>;
             case 3: // avg lap time
-                return [formatTime(avgLapTime), Strings.getInstance().getString("AverageLap")] as Array<String>;
+                return [formatTime(avgLapTime), Strings.getString("AverageLap")] as Array<String>;
             case 4: // elapsed time
                 if(info.startTime == null) {
-                    return ["00:00", Strings.getInstance().getString("ElapsedTime")] as Array<String>;
+                    return ["00:00", Strings.getString("ElapsedTime")] as Array<String>;
                 }
-                return [formatTime(Time.now().subtract(info.startTime).value() * 1000), Strings.getInstance().getString("ElapsedTime")] as Array<String>;
+                return [formatTime(Time.now().subtract(info.startTime).value() * 1000), Strings.getString("ElapsedTime")] as Array<String>;
             case 5: // distance
-                return [formatDistance(info.elapsedDistance), Strings.getInstance().getString("Distance")] as Array<String>;
+                return [formatDistance(info.elapsedDistance), Strings.getString("Distance")] as Array<String>;
             case 6: // lap distance
-                return [formatDistance(lapDistance), Strings.getInstance().getString("LapDistance")] as Array<String>;
+                return [formatDistance(lapDistance), Strings.getString("LapDistance")] as Array<String>;
             case 7: // last lap distance
-                return [formatDistance(lastLapDistance), Strings.getInstance().getString("LastLapDistance")] as Array<String>;
+                return [formatDistance(lastLapDistance), Strings.getString("LastLapDistance")] as Array<String>;
             case 8: // pace
-                return [formatPace(info.currentSpeed), Strings.getInstance().getString("Pace")] as Array<String>;
+                return [formatPace(info.currentSpeed), Strings.getString("Pace")] as Array<String>;
             case 9: // average pace
                 if(info.timerTime == null || info.elapsedDistance == null) {
-                    return ["--:--", Strings.getInstance().getString("AveragePace")] as Array<String>;
+                    return ["--:--", Strings.getString("AveragePace")] as Array<String>;
                 }
-                return [formatPace(1000.0 * info.elapsedDistance / info.timerTime), Strings.getInstance().getString("AveragePace")] as Array<String>;
+                return [formatPace(1000.0 * info.elapsedDistance / info.timerTime), Strings.getString("AveragePace")] as Array<String>;
             case 10: // average lap pace
                 if(lapTime <= 0) {
-                    return ["--:--", Strings.getInstance().getString("AverageLapPace")] as Array<String>;
+                    return ["--:--", Strings.getString("AverageLapPace")] as Array<String>;
                 }
-                return [formatPace( 1000.0 * lapDistance.toFloat() / lapTime.toFloat() ), Strings.getInstance().getString("AverageLapPace")] as Array<String>;
+                return [formatPace( 1000.0 * lapDistance.toFloat() / lapTime.toFloat() ), Strings.getString("AverageLapPace")] as Array<String>;
             case 11: // last lap pace
                 if(lastLapTime <= 0) {
-                    return ["--:--", Strings.getInstance().getString("LastLapPace")] as Array<String>;
+                    return ["--:--", Strings.getString("LastLapPace")] as Array<String>;
                 }
-                return [formatPace( 1000.0 * lastLapDistance / lastLapTime ), Strings.getInstance().getString("LastLapPace")] as Array<String>;
+                return [formatPace( 1000.0 * lastLapDistance / lastLapTime ), Strings.getString("LastLapPace")] as Array<String>;
             case 12: // max pace
-                return [formatPace(info.maxSpeed), Strings.getInstance().getString("MaxPace")] as Array<String>;
+                return [formatPace(info.maxSpeed), Strings.getString("MaxPace")] as Array<String>;
             case 13: // speed
-                return [formatSpeed(info.currentSpeed), Strings.getInstance().getString("Speed")] as Array<String>;
+                return [formatSpeed(info.currentSpeed), Strings.getString("Speed")] as Array<String>;
             case 14: // average speed
                 if(info.timerTime == null || info.elapsedDistance == null) {
-                    return ["0.0", Strings.getInstance().getString("AverageSpeed")] as Array<String>;
+                    return ["0.0", Strings.getString("AverageSpeed")] as Array<String>;
                 }
-                return [formatSpeed(1000.0 * info.elapsedDistance / info.timerTime), Strings.getInstance().getString("AverageSpeed")] as Array<String>;
+                return [formatSpeed(1000.0 * info.elapsedDistance / info.timerTime), Strings.getString("AverageSpeed")] as Array<String>;
             case 15: // average lap speed
                 if(lapTime <= 0) {
-                    return ["0.0", Strings.getInstance().getString("AverageLapSpeed")] as Array<String>;
+                    return ["0.0", Strings.getString("AverageLapSpeed")] as Array<String>;
                 }
-                return [formatSpeed( 1000.0 * lapDistance.toFloat() / lapTime.toFloat() ), Strings.getInstance().getString("AverageLapSpeed")] as Array<String>;
+                return [formatSpeed( 1000.0 * lapDistance.toFloat() / lapTime.toFloat() ), Strings.getString("AverageLapSpeed")] as Array<String>;
             case 16: // last lap speed
                 if(lastLapTime <= 0) {
-                    return ["--:--", Strings.getInstance().getString("LastLapSpeed")] as Array<String>;
+                    return ["--:--", Strings.getString("LastLapSpeed")] as Array<String>;
                 }
-                return [formatSpeed( (1000.0 * lastLapDistance / lastLapTime) ), Strings.getInstance().getString("LastLapSpeed")] as Array<String>;
+                return [formatSpeed( (1000.0 * lastLapDistance / lastLapTime) ), Strings.getString("LastLapSpeed")] as Array<String>;
             case 17: // max speed
-                return [formatSpeed(info.maxSpeed), Strings.getInstance().getString("MaxSpeed")] as Array<String>;
+                return [formatSpeed(info.maxSpeed), Strings.getString("MaxSpeed")] as Array<String>;
             case 18: // heart rate
-                return [formatValue(info.currentHeartRate, "%.1d"), Strings.getInstance().getString("HeartRate")] as Array<String>;
+                return [formatValue(info.currentHeartRate, "%.1d"), Strings.getString("HeartRate")] as Array<String>;
             case 31: // heart rate graphical
-                return [formatValue(info.currentHeartRate, "%.1d"), Strings.getInstance().getString("HeartRateColor")] as Array<String>;
+                return [formatValue(info.currentHeartRate, "%.1d"), Strings.getString("HeartRateColor")] as Array<String>;
             case 19: // average heart rate
-                return [formatValue(info.averageHeartRate, "%.1d"), Strings.getInstance().getString("AverageHeartRate")] as Array<String>;
+                return [formatValue(info.averageHeartRate, "%.1d"), Strings.getString("AverageHeartRate")] as Array<String>;
             case 20: // max heart rate
-                return [formatValue(info.maxHeartRate, "%.1d"), Strings.getInstance().getString("MaxHeartRate")] as Array<String>;
+                return [formatValue(info.maxHeartRate, "%.1d"), Strings.getString("MaxHeartRate")] as Array<String>;
             case 21: // temperature
                 var sensorSample = SensorHistory.getTemperatureHistory({:period => 1}).next();
                 var value = null;
                 if(sensorSample != null) {
                     value = sensorSample.data;
                 }
-                return [formatValue(value, "%.1f"), Strings.getInstance().getString("Temperature")] as Array<String>;
+                return [formatValue(value, "%.1f"), Strings.getString("Temperature")] as Array<String>;
             case 22: // altitude
-                return [formatDistance(info.altitude), Strings.getInstance().getString("Altitude")] as Array<String>;
+                return [formatDistance(info.altitude), Strings.getString("Altitude")] as Array<String>;
             case 23: // total ascent
-                return [formatDistance(info.totalAscent), Strings.getInstance().getString("TotalAscent")] as Array<String>;
+                return [formatDistance(info.totalAscent), Strings.getString("TotalAscent")] as Array<String>;
             case 24: // total descent
-                return [formatDistance(info.totalDescent), Strings.getInstance().getString("TotalDescent")] as Array<String>;
+                return [formatDistance(info.totalDescent), Strings.getString("TotalDescent")] as Array<String>;
             case 25: // compass
                 if(sensor.heading != null) {
-                    return [formatValue(sensor.heading*180f/Math.PI, "%.1d"), Strings.getInstance().getString("Compass")] as Array<String>;
+                    return [formatValue(sensor.heading*180f/Math.PI, "%.1d"), Strings.getString("Compass")] as Array<String>;
                 }
-                return [formatValue(null, "%.1f"), Strings.getInstance().getString("Compass")] as Array<String>;
+                return [formatValue(null, "%.1f"), Strings.getString("Compass")] as Array<String>;
             case 26: // cadence
-                return [formatValue(sensor.cadence, "%.1d"), Strings.getInstance().getString("Cadence")] as Array<String>;
+                return [formatValue(sensor.cadence, "%.1d"), Strings.getString("Cadence")] as Array<String>;
             case 27: // calories
-                return [formatValue(info.calories, "%.1d"), Strings.getInstance().getString("Calories")] as Array<String>;
+                return [formatValue(info.calories, "%.1d"), Strings.getString("Calories")] as Array<String>;
             case 28: // battery
-                return [formatValue(System.getSystemStats().battery, "%.1f"), Strings.getInstance().getString("Battery")] as Array<String>;
+                return [formatValue(System.getSystemStats().battery, "%.1f"), Strings.getString("Battery")] as Array<String>;
             case 29: // lapCount
-                return [formatValue(lapCount, "%.1d"), Strings.getInstance().getString("LapCount")] as Array<String>;
+                return [formatValue(lapCount, "%.1d"), Strings.getString("LapCount")] as Array<String>;
             case 30: // time of day
                 var time = System.getClockTime();
                 var seconds = time.hour*3600 + time.min * 60 + time.sec;
-                return [formatTime(seconds*1000), Strings.getInstance().getString("TimeOfDay")] as Array<String>;
+                return [formatTime(seconds*1000), Strings.getString("TimeOfDay")] as Array<String>;
             case 32: // power
-                return [formatValue(info.currentPower, "%.1d"), Strings.getInstance().getString("Power")] as Array<String>;
+                return [formatValue(info.currentPower, "%.1d"), Strings.getString("Power")] as Array<String>;
             case 33: // raw pressure
                 if(info.rawAmbientPressure != null) {
-                    return [formatValue(info.rawAmbientPressure/100f, "%.1f"), Strings.getInstance().getString("SeaPressure")] as Array<String>;
+                    return [formatValue(info.rawAmbientPressure/100f, "%.1f"), Strings.getString("SeaPressure")] as Array<String>;
                 }
-                return [formatValue(null, "%.1d"), Strings.getInstance().getString("SeaPressure")] as Array<String>;
+                return [formatValue(null, "%.1d"), Strings.getString("SeaPressure")] as Array<String>;
             case 34: // sea pressure
                 if(info.meanSeaLevelPressure != null) {
-                    return [formatValue(info.meanSeaLevelPressure/100f, "%.1f"), Strings.getInstance().getString("SeaPressure")] as Array<String>;
+                    return [formatValue(info.meanSeaLevelPressure/100f, "%.1f"), Strings.getString("SeaPressure")] as Array<String>;
                 }
-                return [formatValue(null, "%.1d"), Strings.getInstance().getString("SeaPressure")] as Array<String>;
+                return [formatValue(null, "%.1d"), Strings.getString("SeaPressure")] as Array<String>;
         }
 
         return ["--", "null"];

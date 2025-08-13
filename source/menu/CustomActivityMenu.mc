@@ -8,7 +8,7 @@ import Toybox.Communications;
 public class CustomActivityMenu extends MenuBaseClass {
 
     public function initialize() {
-        var title = WatchUi.loadResource(Rez.Strings.Custom);
+        var title = Strings.getString("Custom");
         var itemHeight = (System.getDeviceSettings().screenHeight)*0.25;
         MenuBaseClass.initialize(title, itemHeight.toNumber(), {:theme => null, :dividerType => null});
 
@@ -18,17 +18,17 @@ public class CustomActivityMenu extends MenuBaseClass {
         var sport = Properties.getValue("CustomSport");
         var subSport = Properties.getValue("CustomSubsport");
 
-        addItem(new CustomIconMenuItem(:apply, WatchUi.loadResource(Rez.Strings.Apply), null, WatchUi.loadResource($.Rez.Drawables.Check)));
-        addItem(new CustomIconMenuItem(:name, WatchUi.loadResource(Rez.Strings.Name), name, WatchUi.loadResource($.Rez.Drawables.Custom)));
-        addItem(new CustomIconMenuItem(:sport, WatchUi.loadResource(Rez.Strings.Sport), sport, WatchUi.loadResource($.Rez.Drawables.Custom)));
-        addItem(new CustomIconMenuItem(:subSport, WatchUi.loadResource(Rez.Strings.Subsport), subSport, WatchUi.loadResource($.Rez.Drawables.Custom)));
-        addItem(new CustomIconMenuItem(:reference, WatchUi.loadResource(Rez.Strings.Manual), null, WatchUi.loadResource($.Rez.Drawables.Licenses)));
+        addItem(new CustomIconMenuItem(:apply, Strings.getString("Apply"), null, WatchUi.loadResource($.Rez.Drawables.Check)));
+        addItem(new CustomIconMenuItem(:name, Strings.getString("Name"), name, WatchUi.loadResource($.Rez.Drawables.Custom)));
+        addItem(new CustomIconMenuItem(:sport, Strings.getString("Sport"), sport, WatchUi.loadResource($.Rez.Drawables.Custom)));
+        addItem(new CustomIconMenuItem(:subSport, Strings.getString("Subsport"), subSport, WatchUi.loadResource($.Rez.Drawables.Custom)));
+        addItem(new CustomIconMenuItem(:reference, Strings.getString("Manual"), null, WatchUi.loadResource($.Rez.Drawables.Licenses)));
     }
 
     public function onShow() as Void {
         var name = Properties.getValue("CustomName");
         updateItem(
-            new CustomIconMenuItem(:name, WatchUi.loadResource(Rez.Strings.Name), name, WatchUi.loadResource($.Rez.Drawables.Custom)),
+            new CustomIconMenuItem(:name, Strings.getString("Name"), name, WatchUi.loadResource($.Rez.Drawables.Custom)),
             findItemById(:name)
         );
     }

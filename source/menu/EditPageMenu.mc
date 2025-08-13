@@ -6,22 +6,22 @@ import Toybox.Application;
 public class EditPageMenu extends MenuBaseClass {
 
     public function initialize(pageNumber) {
-        var title = WatchUi.loadResource(Rez.Strings.EditPage).toString() + " " + pageNumber.toString();
+        var title = Strings.getString("EditPage").toString() + " " + pageNumber.toString();
         var itemHeight = (System.getDeviceSettings().screenHeight)*0.25;
         MenuBaseClass.initialize(title, itemHeight.toNumber(), {:theme => null, :dividerType => null});
 
         var fieldsNumber = Properties.getValue("FieldsPage" + pageNumber.toString());
         var editNumber_substring;
         if(fieldsNumber <= 1) {
-            editNumber_substring = fieldsNumber.toString() + " " + WatchUi.loadResource(Rez.Strings.Field);
+            editNumber_substring = fieldsNumber.toString() + " " + Strings.getString("Field");
         } else {
-            editNumber_substring = fieldsNumber.toString() + " " + WatchUi.loadResource(Rez.Strings.Fields);
+            editNumber_substring = fieldsNumber.toString() + " " + Strings.getString("Fields");
         }
 
-        addItem(new CustomIconMenuItem(:editNumber, WatchUi.loadResource(Rez.Strings.EditFieldsNumber), editNumber_substring, WatchUi.loadResource($.Rez.Drawables.Custom)));
-        addItem(new CustomIconMenuItem(:editFields, WatchUi.loadResource(Rez.Strings.EditFields), null, WatchUi.loadResource($.Rez.Drawables.Custom)));
+        addItem(new CustomIconMenuItem(:editNumber, Strings.getString("EditFieldsNumber"), editNumber_substring, WatchUi.loadResource($.Rez.Drawables.Custom)));
+        addItem(new CustomIconMenuItem(:editFields, Strings.getString("EditFields"), null, WatchUi.loadResource($.Rez.Drawables.Custom)));
         if(Properties.getValue("Pages") > 1) {
-            addItem(new CustomIconMenuItem(:delete, WatchUi.loadResource(Rez.Strings.DeletePage), null, WatchUi.loadResource($.Rez.Drawables.Delete))); 
+            addItem(new CustomIconMenuItem(:delete, Strings.getString("DeletePage"), null, WatchUi.loadResource($.Rez.Drawables.Delete))); 
         }
     }
 }

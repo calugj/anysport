@@ -100,7 +100,7 @@ public class TopBanner {
 
             if(Properties.getValue("Satellites") == 0) {
                 dc.setColor(foregroundColor, Graphics.COLOR_TRANSPARENT);
-                dc.drawText(width/2, y + bannerHeight*0.65, Graphics.FONT_XTINY, WatchUi.loadResource(Rez.Strings.PressStart), Graphics.TEXT_JUSTIFY_CENTER | Graphics.TEXT_JUSTIFY_VCENTER);
+                dc.drawText(width/2, y + bannerHeight*0.65, Graphics.FONT_XTINY, Strings.getString("PressStart"), Graphics.TEXT_JUSTIFY_CENTER | Graphics.TEXT_JUSTIFY_VCENTER);
             } else {
                 if(accuracy <= Position.QUALITY_LAST_KNOWN) {
                     sliderCounter = 0;
@@ -135,7 +135,7 @@ public class TopBanner {
                         }
 
                         dc.setColor(foregroundColor, Graphics.COLOR_TRANSPARENT);
-                        dc.drawText(width/2, y + bannerHeight*0.65, Graphics.FONT_XTINY, WatchUi.loadResource(Rez.Strings.PressStart), Graphics.TEXT_JUSTIFY_CENTER | Graphics.TEXT_JUSTIFY_VCENTER);
+                        dc.drawText(width/2, y + bannerHeight*0.65, Graphics.FONT_XTINY, Strings.getString("PressStart"), Graphics.TEXT_JUSTIFY_CENTER | Graphics.TEXT_JUSTIFY_VCENTER);
 
                         dc.setColor(green, Graphics.COLOR_TRANSPARENT);
                     }

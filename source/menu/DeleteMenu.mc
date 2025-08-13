@@ -7,14 +7,14 @@ import Toybox.Application;
 public class DeleteMenu extends MenuBaseClass {
 
     public function initialize() {
-        var title = WatchUi.loadResource(Rez.Strings.Delete);
+        var title = Strings.getString("Delete");
         var itemHeight = (System.getDeviceSettings().screenHeight)*0.25;
         MenuBaseClass.initialize(title, itemHeight.toNumber(), {:theme => null, :dividerType => null});
 
         RefreshRate.getInstance().setRefreshRate(RefreshRate.REFRESH_HIGH);
 
-        addItem(new CustomIconMenuItem(:yes, WatchUi.loadResource(Rez.Strings.Yes), null, WatchUi.loadResource($.Rez.Drawables.Check)));
-        addItem(new CustomIconMenuItem(:no, WatchUi.loadResource(Rez.Strings.No), null, WatchUi.loadResource($.Rez.Drawables.Cross)));
+        addItem(new CustomIconMenuItem(:yes, Strings.getString("Yes"), null, WatchUi.loadResource($.Rez.Drawables.Check)));
+        addItem(new CustomIconMenuItem(:no, Strings.getString("No"), null, WatchUi.loadResource($.Rez.Drawables.Cross)));
     }
 }
 

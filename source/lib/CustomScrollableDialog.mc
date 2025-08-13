@@ -124,7 +124,7 @@ public class CustomScrollableDialogDelegate extends WatchUi.InputDelegate {
         string = mString;
         readAll = mReadAll;
         if(readAll) {
-            string = Strings.getInstance().getString("ReadAll") + string;
+            string = Strings.getString("ReadAll") + string;
         }
         position = 1;
         MAX = StringUtils.count(string, "\n");

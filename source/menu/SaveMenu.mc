@@ -18,9 +18,9 @@ public class SaveMenu extends MenuBaseClass {
         counter = 0;
         offset = 0;
 
-        addItem(new CustomIconMenuItem(:save, WatchUi.loadResource(Rez.Strings.Save), null, WatchUi.loadResource($.Rez.Drawables.Save)));
-        addItem(new CustomIconMenuItem(:continue, WatchUi.loadResource(Rez.Strings.Continue), null, WatchUi.loadResource($.Rez.Drawables.Play)));
-        addItem(new CustomIconMenuItem(:delete, WatchUi.loadResource(Rez.Strings.Delete), null, WatchUi.loadResource($.Rez.Drawables.Delete)));
+        addItem(new CustomIconMenuItem(:save, Strings.getString("Save"), null, WatchUi.loadResource($.Rez.Drawables.Save)));
+        addItem(new CustomIconMenuItem(:continue, Strings.getString("Continue"), null, WatchUi.loadResource($.Rez.Drawables.Play)));
+        addItem(new CustomIconMenuItem(:delete, Strings.getString("Delete"), null, WatchUi.loadResource($.Rez.Drawables.Delete)));
     }
 
     public function drawTitle(dc as Dc) {

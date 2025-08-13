@@ -6,7 +6,7 @@ import Toybox.Application;
 public class ActivityClassMenu extends MenuBaseClass {
     
     public function initialize() {
-        var title = WatchUi.loadResource(Rez.Strings.ActivityType);
+        var title = Strings.getString("ActivityType");
         var itemHeight = (System.getDeviceSettings().screenHeight)*0.25;
         MenuBaseClass.initialize(title, itemHeight.toNumber(), {:theme => null, :dividerType => null});
 
@@ -15,21 +15,21 @@ public class ActivityClassMenu extends MenuBaseClass {
         var subSport = Properties.getValue("CustomSubsport");
         var custom = name + ", " + sport + ", " + subSport;
 
-        addItem(new CustomIconMenuItem(:running, WatchUi.loadResource(Rez.Strings.Running), "9 " + WatchUi.loadResource(Rez.Strings.Presets), WatchUi.loadResource($.Rez.Drawables.Running)));
-        addItem(new CustomIconMenuItem(:cycling, WatchUi.loadResource(Rez.Strings.Cycling), "17 " + WatchUi.loadResource(Rez.Strings.Presets), WatchUi.loadResource($.Rez.Drawables.Cycling)));
-        addItem(new CustomIconMenuItem(:fitness, WatchUi.loadResource(Rez.Strings.Fitness), "7 " + WatchUi.loadResource(Rez.Strings.Presets), WatchUi.loadResource($.Rez.Drawables.Fitness)));
-        addItem(new CustomIconMenuItem(:swimming, WatchUi.loadResource(Rez.Strings.Swimming), "3 " + WatchUi.loadResource(Rez.Strings.Presets), WatchUi.loadResource($.Rez.Drawables.Swimming)));
-        addItem(new CustomIconMenuItem(:field, WatchUi.loadResource(Rez.Strings.Field), "17 " + WatchUi.loadResource(Rez.Strings.Presets), WatchUi.loadResource($.Rez.Drawables.Field)));
-        addItem(new CustomIconMenuItem(:training, WatchUi.loadResource(Rez.Strings.Training), "10 " + WatchUi.loadResource(Rez.Strings.Presets), WatchUi.loadResource($.Rez.Drawables.Training)));
-        addItem(new CustomIconMenuItem(:walking, WatchUi.loadResource(Rez.Strings.Walking), "6 " + WatchUi.loadResource(Rez.Strings.Presets), WatchUi.loadResource($.Rez.Drawables.Walking)));
-        addItem(new CustomIconMenuItem(:winter, WatchUi.loadResource(Rez.Strings.WinterSports), "9 " + WatchUi.loadResource(Rez.Strings.Presets), WatchUi.loadResource($.Rez.Drawables.Winter)));
-        addItem(new CustomIconMenuItem(:water, WatchUi.loadResource(Rez.Strings.WaterSports), "15 " + WatchUi.loadResource(Rez.Strings.Presets), WatchUi.loadResource($.Rez.Drawables.Water)));
-        addItem(new CustomIconMenuItem(:flying, WatchUi.loadResource(Rez.Strings.Flying), "10 " + WatchUi.loadResource(Rez.Strings.Presets), WatchUi.loadResource($.Rez.Drawables.Flying)));
-        addItem(new CustomIconMenuItem(:motorsport, WatchUi.loadResource(Rez.Strings.Motorsports), "7 " + WatchUi.loadResource(Rez.Strings.Presets), WatchUi.loadResource($.Rez.Drawables.Motorsports)));
-        addItem(new CustomIconMenuItem(:climbing, WatchUi.loadResource(Rez.Strings.Climbing), "4 " + WatchUi.loadResource(Rez.Strings.Presets), WatchUi.loadResource($.Rez.Drawables.Climbing)));
-        addItem(new CustomIconMenuItem(:diving, WatchUi.loadResource(Rez.Strings.Diving), "6 " + WatchUi.loadResource(Rez.Strings.Presets), WatchUi.loadResource($.Rez.Drawables.Diving)));
-        addItem(new CustomIconMenuItem(:other, WatchUi.loadResource(Rez.Strings.Other), "17 " + WatchUi.loadResource(Rez.Strings.Presets), WatchUi.loadResource($.Rez.Drawables.Other)));
-        addItem(new CustomIconMenuItem(:custom, WatchUi.loadResource(Rez.Strings.Custom), custom, WatchUi.loadResource($.Rez.Drawables.Custom)));
+        addItem(new CustomIconMenuItem(:running, Strings.getString("Running"), "9 " + Strings.getString("Presets"), WatchUi.loadResource($.Rez.Drawables.Running)));
+        addItem(new CustomIconMenuItem(:cycling, Strings.getString("Cycling"), "17 " + Strings.getString("Presets"), WatchUi.loadResource($.Rez.Drawables.Cycling)));
+        addItem(new CustomIconMenuItem(:fitness, Strings.getString("Fitness"), "7 " + Strings.getString("Presets"), WatchUi.loadResource($.Rez.Drawables.Fitness)));
+        addItem(new CustomIconMenuItem(:swimming, Strings.getString("Swimming"), "3 " + Strings.getString("Presets"), WatchUi.loadResource($.Rez.Drawables.Swimming)));
+        addItem(new CustomIconMenuItem(:field, Strings.getString("Field"), "17 " + Strings.getString("Presets"), WatchUi.loadResource($.Rez.Drawables.Field)));
+        addItem(new CustomIconMenuItem(:training, Strings.getString("Training"), "10 " + Strings.getString("Presets"), WatchUi.loadResource($.Rez.Drawables.Training)));
+        addItem(new CustomIconMenuItem(:walking, Strings.getString("Walking"), "6 " + Strings.getString("Presets"), WatchUi.loadResource($.Rez.Drawables.Walking)));
+        addItem(new CustomIconMenuItem(:winter, Strings.getString("WinterSports"), "9 " + Strings.getString("Presets"), WatchUi.loadResource($.Rez.Drawables.Winter)));
+        addItem(new CustomIconMenuItem(:water, Strings.getString("WaterSports"), "15 " + Strings.getString("Presets"), WatchUi.loadResource($.Rez.Drawables.Water)));
+        addItem(new CustomIconMenuItem(:flying, Strings.getString("Flying"), "10 " + Strings.getString("Presets"), WatchUi.loadResource($.Rez.Drawables.Flying)));
+        addItem(new CustomIconMenuItem(:motorsport, Strings.getString("Motorsports"), "7 " + Strings.getString("Presets"), WatchUi.loadResource($.Rez.Drawables.Motorsports)));
+        addItem(new CustomIconMenuItem(:climbing, Strings.getString("Climbing"), "4 " + Strings.getString("Presets"), WatchUi.loadResource($.Rez.Drawables.Climbing)));
+        addItem(new CustomIconMenuItem(:diving, Strings.getString("Diving"), "6 " + Strings.getString("Presets"), WatchUi.loadResource($.Rez.Drawables.Diving)));
+        addItem(new CustomIconMenuItem(:other, Strings.getString("Other"), "17 " + Strings.getString("Presets"), WatchUi.loadResource($.Rez.Drawables.Other)));
+        addItem(new CustomIconMenuItem(:custom, Strings.getString("Custom"), custom, WatchUi.loadResource($.Rez.Drawables.Custom)));
     }
 }
 
@@ -71,7 +71,7 @@ public class ActivityClassMenuDelegate extends Menu2InputDelegate {
                 break;
             case :flying:
                 var view = new CustomScrollableDialog();
-                var string = Strings.getInstance().getString("FlyingDialog");
+                var string = Strings.getString("FlyingDialog");
                 WatchUi.pushView(view, new FlyingDialogDelegate(view, string, true), WatchUi.SLIDE_LEFT);
                 break;
             case :motorsport:
@@ -82,7 +82,7 @@ public class ActivityClassMenuDelegate extends Menu2InputDelegate {
                 break;
             case :diving:
                 var view_1 = new CustomScrollableDialog();
-                var string_1 = Strings.getInstance().getString("DivingDialog");
+                var string_1 = Strings.getString("DivingDialog");
                 WatchUi.pushView(view_1, new DivingDialogDelegate(view_1, string_1, true), WatchUi.SLIDE_LEFT);
                 break;
             case :other:

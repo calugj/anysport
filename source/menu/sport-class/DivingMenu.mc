@@ -5,15 +5,15 @@ import Toybox.Lang;
 public class DivingMenu extends MenuBaseClass {
 
     public function initialize() {
-        var title = WatchUi.loadResource(Rez.Strings.Diving);
+        var title = Strings.getString("Diving");
         var itemHeight = (System.getDeviceSettings().screenHeight)*0.15;
         MenuBaseClass.initialize(title, itemHeight.toNumber(), {:theme => null, :dividerType => null});
 
-        addItem(new CustomLabelMenuItem("53.0," + WatchUi.loadResource(Rez.Strings.Diving_Generic), WatchUi.loadResource(Rez.Strings.Diving_Generic)));
-        addItem(new CustomLabelMenuItem("53.53," + WatchUi.loadResource(Rez.Strings.Diving_Single), WatchUi.loadResource(Rez.Strings.Diving_Single)));
-        addItem(new CustomLabelMenuItem("53.54," + WatchUi.loadResource(Rez.Strings.Diving_Multi), WatchUi.loadResource(Rez.Strings.Diving_Multi)));
-        addItem(new CustomLabelMenuItem("53.55," + WatchUi.loadResource(Rez.Strings.Diving_Gauge), WatchUi.loadResource(Rez.Strings.Diving_Gauge)));
-        addItem(new CustomLabelMenuItem("53.56," + WatchUi.loadResource(Rez.Strings.Diving_Apnea), WatchUi.loadResource(Rez.Strings.Diving_Apnea)));
-        addItem(new CustomLabelMenuItem("53.57," + WatchUi.loadResource(Rez.Strings.Diving_Hunt), WatchUi.loadResource(Rez.Strings.Diving_Hunt)));
+        addItem(new CustomLabelMenuItem("53.0," + Strings.getString("Diving_Generic"), Strings.getString("Diving_Generic")));
+        addItem(new CustomLabelMenuItem("53.53," + Strings.getString("Diving_Single"), Strings.getString("Diving_Single")));
+        addItem(new CustomLabelMenuItem("53.54," + Strings.getString("Diving_Multi"), Strings.getString("Diving_Multi")));
+        addItem(new CustomLabelMenuItem("53.55," + Strings.getString("Diving_Gauge"), Strings.getString("Diving_Gauge")));
+        addItem(new CustomLabelMenuItem("53.56," + Strings.getString("Diving_Apnea"), Strings.getString("Diving_Apnea")));
+        addItem(new CustomLabelMenuItem("53.57," + Strings.getString("Diving_Hunt"), Strings.getString("Diving_Hunt")));
     }
 }

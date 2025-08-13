@@ -50,7 +50,7 @@ public class SummaryView extends WatchUi.View {
         dc.setPenWidth(width/80);
         dc.drawArc(width/2, height/2, height/2*0.95, Graphics.ARC_COUNTER_CLOCKWISE, 23, 38);
 
-        dc.drawText(width/2, height*0.12, Graphics.FONT_GLANCE, WatchUi.loadResource(Rez.Strings.Saved), Graphics.TEXT_JUSTIFY_CENTER | Graphics.TEXT_JUSTIFY_VCENTER);
+        dc.drawText(width/2, height*0.12, Graphics.FONT_GLANCE, Strings.getString("Saved"), Graphics.TEXT_JUSTIFY_CENTER | Graphics.TEXT_JUSTIFY_VCENTER);
         dc.drawText(width/2, height*0.33, Graphics.FONT_TINY, timer[1], Graphics.TEXT_JUSTIFY_CENTER | Graphics.TEXT_JUSTIFY_VCENTER);
         dc.drawText(width/2, height*0.47, Graphics.FONT_NUMBER_MEDIUM, timer[0], Graphics.TEXT_JUSTIFY_CENTER | Graphics.TEXT_JUSTIFY_VCENTER);
         dc.drawText(width/2, height*0.66, Graphics.FONT_TINY, distance[1], Graphics.TEXT_JUSTIFY_CENTER | Graphics.TEXT_JUSTIFY_VCENTER);

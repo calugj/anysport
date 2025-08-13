@@ -11,10 +11,10 @@ public class MainMenuExtra extends MenuBaseClass {
         var itemHeight = (System.getDeviceSettings().screenHeight)*0.25;
         MenuBaseClass.initialize(title, itemHeight.toNumber(), {:theme => null, :dividerType => null});
 
-        addItem(new CustomIconMenuItem(:about, WatchUi.loadResource(Rez.Strings.About), WatchUi.loadResource(Rez.Strings.About_substring), WatchUi.loadResource($.Rez.Drawables.About)));
-        addItem(new CustomIconMenuItem(:dev, WatchUi.loadResource(Rez.Strings.Dev), WatchUi.loadResource(Rez.Strings.Dev_substring), WatchUi.loadResource($.Rez.Drawables.Dev)));
-        addItem(new CustomIconMenuItem(:git, WatchUi.loadResource(Rez.Strings.Git), WatchUi.loadResource(Rez.Strings.Git_substring), WatchUi.loadResource($.Rez.Drawables.Git)));
-        addItem(new CustomIconMenuItem(:licenses, WatchUi.loadResource(Rez.Strings.Licenses), WatchUi.loadResource(Rez.Strings.Licenses_substring), WatchUi.loadResource($.Rez.Drawables.Licenses)));
+        addItem(new CustomIconMenuItem(:about, Strings.getString("About"), Strings.getString("About_substring"), WatchUi.loadResource($.Rez.Drawables.About)));
+        addItem(new CustomIconMenuItem(:dev, Strings.getString("Dev"), Strings.getString("Dev_substring"), WatchUi.loadResource($.Rez.Drawables.Dev)));
+        addItem(new CustomIconMenuItem(:git, Strings.getString("Git"), Strings.getString("Git_substring"), WatchUi.loadResource($.Rez.Drawables.Git)));
+        addItem(new CustomIconMenuItem(:licenses, Strings.getString("Licenses"), Strings.getString("Licenses_substring"), WatchUi.loadResource($.Rez.Drawables.Licenses)));
     }
 
     public function drawTitle(dc as Dc) {
@@ -50,7 +50,7 @@ public class MainMenuExtraDelegate extends Menu2InputDelegate {
                 break;
             case :licenses:
                 var view = new CustomScrollableDialog();
-                var string = Strings.getInstance().getString("LicensesDialog");
+                var string = Strings.getString("LicensesDialog");
                 WatchUi.pushView(view, new LicensesDialogDelegate(view, string, false), WatchUi.SLIDE_BLINK);
                 break;
         }

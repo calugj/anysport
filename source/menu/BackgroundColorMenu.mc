@@ -6,12 +6,12 @@ import Toybox.Application;
 public class BackgroundColorMenu extends MenuBaseClass {
 
     public function initialize() {
-        var title = WatchUi.loadResource(Rez.Strings.BackgroundColor);
+        var title = Strings.getString("BackgroundColor");
         var itemHeight = (System.getDeviceSettings().screenHeight)*0.25;
         MenuBaseClass.initialize(title, itemHeight.toNumber(), {:theme => null, :dividerType => null});
 
-        addItem(new CustomColorMenuItem(Graphics.COLOR_WHITE, Strings.getInstance().getString("COLOR_WHITE"), "HEX " + Graphics.COLOR_WHITE.format("%06X"), Graphics.COLOR_WHITE));
-        addItem(new CustomColorMenuItem(Graphics.COLOR_BLACK, Strings.getInstance().getString("COLOR_BLACK"), "HEX " + Graphics.COLOR_BLACK.format("%06X"), Graphics.COLOR_BLACK));
+        addItem(new CustomColorMenuItem(Graphics.COLOR_WHITE, Strings.getString("COLOR_WHITE"), "HEX " + Graphics.COLOR_WHITE.format("%06X"), Graphics.COLOR_WHITE));
+        addItem(new CustomColorMenuItem(Graphics.COLOR_BLACK, Strings.getString("COLOR_BLACK"), "HEX " + Graphics.COLOR_BLACK.format("%06X"), Graphics.COLOR_BLACK));
 
         MenuUtils.setFocus(self, Properties.getValue("BackgroundColor"));
     }

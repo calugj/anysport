@@ -8,11 +8,12 @@ public class AnySportPRO extends Application.AppBase {
 
     public function initialize() {
         AppBase.initialize();
+        new Strings();
 
         if(Properties.getValue("FirstBoot")) {
             Properties.setValue("Sport", 1);
             Properties.setValue("SubSport", 0);
-            Properties.setValue("Name", WatchUi.loadResource(Rez.Strings.Run_Generic));
+            Properties.setValue("Name", Strings.getString("Run_Generic"));
 
             var deviceSettings = System.getDeviceSettings();
             Properties.setValue("SpeedUnits", deviceSettings.distanceUnits);

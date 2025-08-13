@@ -7,42 +7,42 @@ import Toybox.System;
 public class UnitMenu extends MenuBaseClass {
 
     public function initialize() {
-        var title = WatchUi.loadResource(Rez.Strings.Unit);
+        var title = Strings.getString("Unit");
         var itemHeight = (System.getDeviceSettings().screenHeight)*0.25;
         MenuBaseClass.initialize(title, itemHeight.toNumber(), {:theme => null, :dividerType => null});
 
-        var speed_substring = WatchUi.loadResource(Rez.Strings.Metric);
+        var speed_substring = Strings.getString("Metric");
         if(Properties.getValue("SpeedUnits") == System.UNIT_STATUTE) {
-            speed_substring = WatchUi.loadResource(Rez.Strings.Imperial);
+            speed_substring = Strings.getString("Imperial");
         }
         
-        var pace_substring = WatchUi.loadResource(Rez.Strings.Metric);
+        var pace_substring = Strings.getString("Metric");
         if(Properties.getValue("PaceUnits") == System.UNIT_STATUTE) {
-            pace_substring = WatchUi.loadResource(Rez.Strings.Imperial);
+            pace_substring = Strings.getString("Imperial");
         }
         
-        var distance_substring = WatchUi.loadResource(Rez.Strings.Metric);
+        var distance_substring = Strings.getString("Metric");
         if(Properties.getValue("DistanceUnits") == System.UNIT_STATUTE) {
-            distance_substring = WatchUi.loadResource(Rez.Strings.Imperial);
+            distance_substring = Strings.getString("Imperial");
         }
 
-        var nautical_substring = WatchUi.loadResource(Rez.Strings.Metric);
+        var nautical_substring = Strings.getString("Metric");
         if(Properties.getValue("NauticalSpeed") == System.UNIT_STATUTE) {
-            nautical_substring = WatchUi.loadResource(Rez.Strings.Imperial);
+            nautical_substring = Strings.getString("Imperial");
         } else if(Properties.getValue("NauticalSpeed") == /*UNIT_NAUTICAL*/ 2) {
-            nautical_substring = WatchUi.loadResource(Rez.Strings.Nautical);
+            nautical_substring = Strings.getString("Nautical");
         }
 
-        var temperature_substring = WatchUi.loadResource(Rez.Strings.Metric);
+        var temperature_substring = Strings.getString("Metric");
         if(Properties.getValue("TemperatureUnits") == System.UNIT_STATUTE) {
-            temperature_substring = WatchUi.loadResource(Rez.Strings.Imperial);
+            temperature_substring = Strings.getString("Imperial");
         }
 
-        addItem(new CustomLabelSublabelMenuItem("SpeedUnits", WatchUi.loadResource(Rez.Strings.SpeedUnits), speed_substring));
-        addItem(new CustomLabelSublabelMenuItem("PaceUnits", WatchUi.loadResource(Rez.Strings.PaceUnits), pace_substring));
-        addItem(new CustomLabelSublabelMenuItem("DistanceUnits", WatchUi.loadResource(Rez.Strings.DistanceUnits), distance_substring));
-        addItem(new CustomLabelSublabelMenuItem("NauticalSpeed", WatchUi.loadResource(Rez.Strings.NauticalSpeed), nautical_substring));
-        addItem(new CustomLabelSublabelMenuItem("TemperatureUnits", WatchUi.loadResource(Rez.Strings.TemperatureUnits), temperature_substring));
+        addItem(new CustomLabelSublabelMenuItem("SpeedUnits", Strings.getString("SpeedUnits"), speed_substring));
+        addItem(new CustomLabelSublabelMenuItem("PaceUnits", Strings.getString("PaceUnits"), pace_substring));
+        addItem(new CustomLabelSublabelMenuItem("DistanceUnits", Strings.getString("DistanceUnits"), distance_substring));
+        addItem(new CustomLabelSublabelMenuItem("NauticalSpeed", Strings.getString("NauticalSpeed"), nautical_substring));
+        addItem(new CustomLabelSublabelMenuItem("TemperatureUnits", Strings.getString("TemperatureUnits"), temperature_substring));
     }
 }
 

@@ -26,8 +26,8 @@ public class AboutView extends WatchUi.View {
 
         dc.setColor(Graphics.COLOR_WHITE, Graphics.COLOR_TRANSPARENT);
 
-        dc.drawText(width/2, height*0.48, Graphics.FONT_TINY, WatchUi.loadResource(Rez.Strings.AppNameFull), Graphics.TEXT_JUSTIFY_CENTER | Graphics.TEXT_JUSTIFY_VCENTER);
-        dc.drawText(width/2, height*0.58, Graphics.FONT_XTINY, WatchUi.loadResource(Rez.Strings.Version), Graphics.TEXT_JUSTIFY_CENTER | Graphics.TEXT_JUSTIFY_VCENTER);
+        dc.drawText(width/2, height*0.48, Graphics.FONT_TINY, Strings.getString("AppName"), Graphics.TEXT_JUSTIFY_CENTER | Graphics.TEXT_JUSTIFY_VCENTER);
+        dc.drawText(width/2, height*0.58, Graphics.FONT_XTINY, Strings.getString("Version"), Graphics.TEXT_JUSTIFY_CENTER | Graphics.TEXT_JUSTIFY_VCENTER);
 
         var text = "Built with <3 by\nLuca Boscolo Meneguolo";
         dc.drawText(width/2, height*0.75, Graphics.FONT_XTINY, text, Graphics.TEXT_JUSTIFY_CENTER | Graphics.TEXT_JUSTIFY_VCENTER);

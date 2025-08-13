@@ -6,11 +6,11 @@ import Toybox.Activity;
 public class ExtraMenu extends MenuBaseClass {
 
     public function initialize() {
-        var title = WatchUi.loadResource(Rez.Strings.Extra);
+        var title = Strings.getString("Extra");
         var itemHeight = (System.getDeviceSettings().screenHeight)*0.25;
         MenuBaseClass.initialize(title, itemHeight.toNumber(), {:theme => null, :dividerType => null});
 
-        addItem(new CustomSwitchMenuItem(:autoPause, Strings.getInstance().getString("Autopause"), null, Properties.getValue("Autopause")));
+        addItem(new CustomSwitchMenuItem(:autoPause, Strings.getString("Autopause"), null, Properties.getValue("Autopause")));
     }
 }
 

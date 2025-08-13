@@ -8,16 +8,15 @@ import Toybox.Communications;
 public class DonationsMenu extends MenuBaseClass {
 
     public function initialize() {
-        var title = WatchUi.loadResource(Rez.Strings.Donate);
+        var title = Strings.getString("Donate");
         var itemHeight = (System.getDeviceSettings().screenHeight)*0.25;
         MenuBaseClass.initialize(title, itemHeight.toNumber(), {:theme => null, :dividerType => null});
 
-        var strings = Strings.getInstance();
-        addItem(new CustomLabelSublabelMenuItem(:e2, strings.getString("2EUR"), strings.getString("2EURSub")));
-        addItem(new CustomLabelSublabelMenuItem(:e5, strings.getString("5EUR"), strings.getString("5EURSub")));
-        addItem(new CustomLabelSublabelMenuItem(:e10, strings.getString("10EUR"), strings.getString("10EURSub")));
-        addItem(new CustomLabelSublabelMenuItem(:custom, strings.getString("CustomEUR"), strings.getString("CustomEURSub")));
-        addItem(new CustomLabelSublabelMenuItem(:free, strings.getString("FreeEUR"), strings.getString("FreeEURSub")));
+        addItem(new CustomLabelSublabelMenuItem(:e2, Strings.getString("2EUR"), Strings.getString("2EURSub")));
+        addItem(new CustomLabelSublabelMenuItem(:e5, Strings.getString("5EUR"), Strings.getString("5EURSub")));
+        addItem(new CustomLabelSublabelMenuItem(:e10, Strings.getString("10EUR"), Strings.getString("10EURSub")));
+        addItem(new CustomLabelSublabelMenuItem(:custom, Strings.getString("CustomEUR"), Strings.getString("CustomEURSub")));
+        addItem(new CustomLabelSublabelMenuItem(:free, Strings.getString("FreeEUR"), Strings.getString("FreeEURSub")));
     }
 }
 
@@ -48,7 +47,7 @@ public class DonationsMenuDelegate extends Menu2InputDelegate {
         }
         WatchUi.popView(WatchUi.SLIDE_IMMEDIATE);
         var view = new CustomScrollableDialog();
-        var string = Strings.getInstance().getString("DonationDialog");
+        var string = Strings.getString("DonationDialog");
         WatchUi.pushView(view, new DonationsDialogDelegate(view, string, false), WatchUi.SLIDE_BLINK);
     }
 

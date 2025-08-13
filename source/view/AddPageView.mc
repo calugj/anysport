@@ -36,6 +36,6 @@ public class AddPageView extends WatchUi.View {
         dc.fillRectangle(width/2 - depth/2, height*0.45 - length/2, depth, length);
         
         dc.setColor(Graphics.COLOR_BLACK, Graphics.COLOR_TRANSPARENT);
-        dc.drawText(width/2, height*0.65, Graphics.FONT_TINY, WatchUi.loadResource(Rez.Strings.AddPage), Graphics.TEXT_JUSTIFY_CENTER | Graphics.TEXT_JUSTIFY_VCENTER);
+        dc.drawText(width/2, height*0.65, Graphics.FONT_TINY, Strings.getString("AddPage"), Graphics.TEXT_JUSTIFY_CENTER | Graphics.TEXT_JUSTIFY_VCENTER);
     }
 }
