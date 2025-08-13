@@ -14,6 +14,7 @@ public class AnySportPRO extends Application.AppBase {
             Properties.setValue("Sport", 1);
             Properties.setValue("SubSport", 0);
             Properties.setValue("Name", Strings.getString("Run_Generic"));
+            Properties.setValue("CustomName", Strings.getString("Generic"));
 
             var deviceSettings = System.getDeviceSettings();
             Properties.setValue("SpeedUnits", deviceSettings.distanceUnits);

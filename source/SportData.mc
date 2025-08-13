@@ -367,9 +367,9 @@ public class SportData {
                 return [formatValue(info.currentPower, "%.1d"), Strings.getString("Power")] as Array<String>;
             case 33: // raw pressure
                 if(info.rawAmbientPressure != null) {
-                    return [formatValue(info.rawAmbientPressure/100f, "%.1f"), Strings.getString("SeaPressure")] as Array<String>;
+                    return [formatValue(info.rawAmbientPressure/100f, "%.1f"), Strings.getString("RawPressure")] as Array<String>;
                 }
-                return [formatValue(null, "%.1d"), Strings.getString("SeaPressure")] as Array<String>;
+                return [formatValue(null, "%.1d"), Strings.getString("RawPressure")] as Array<String>;
             case 34: // sea pressure
                 if(info.meanSeaLevelPressure != null) {
                     return [formatValue(info.meanSeaLevelPressure/100f, "%.1f"), Strings.getString("SeaPressure")] as Array<String>;
