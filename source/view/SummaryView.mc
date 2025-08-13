@@ -24,7 +24,11 @@ public class SummaryView extends WatchUi.View {
         } else {
             FOREGROUND_COLOR = Graphics.COLOR_BLACK;
         }
+
         ACCENT_COLOR = Properties.getValue("AccentColor");
+        if(ACCENT_COLOR == FOREGROUND_COLOR) {
+            ACCENT_COLOR = Graphics.COLOR_TRANSPARENT;
+        }
     }
 
     public function onUpdate(dc) {
@@ -36,27 +40,20 @@ public class SummaryView extends WatchUi.View {
         var width = dc.getWidth();
         var height = dc.getHeight();
 
-        dc.setColor(ACCENT_COLOR, ACCENT_COLOR);
+        dc.setColor(BACKGROUND_COLOR, BACKGROUND_COLOR);
         dc.clear();
 
-        dc.setPenWidth(width*0.01);
-        dc.setColor(BACKGROUND_COLOR, BACKGROUND_COLOR);
-        dc.fillRoundedRectangle(width*0.24, height*0.115, width*0.52, height*0.09, width*0.05);
-        dc.fillRoundedRectangle(width*0.18, height*0.275, width*0.64, height*0.3, width*0.05);
-        dc.fillRoundedRectangle(width*0.18, height*0.605, width*0.64, height*0.3, width*0.05);
-        dc.setColor(FOREGROUND_COLOR, Graphics.COLOR_TRANSPARENT);
-        dc.drawRoundedRectangle(width*0.24, height*0.115, width*0.52, height*0.09, width*0.05);
-        dc.drawRoundedRectangle(width*0.18, height*0.275, width*0.64, height*0.3, width*0.05);
-        dc.drawRoundedRectangle(width*0.18, height*0.605, width*0.64, height*0.3, width*0.05);
+        dc.setColor(ACCENT_COLOR, Graphics.COLOR_TRANSPARENT);
+        dc.fillRectangle(0, 0, width, height*0.2);
 
         dc.setColor(FOREGROUND_COLOR, Graphics.COLOR_TRANSPARENT);
         dc.setPenWidth(width/80);
         dc.drawArc(width/2, height/2, height/2*0.95, Graphics.ARC_COUNTER_CLOCKWISE, 23, 38);
 
-        dc.drawText(width/2, height*0.15, Graphics.FONT_GLANCE, WatchUi.loadResource(Rez.Strings.Saved), Graphics.TEXT_JUSTIFY_CENTER | Graphics.TEXT_JUSTIFY_VCENTER);
+        dc.drawText(width/2, height*0.12, Graphics.FONT_GLANCE, WatchUi.loadResource(Rez.Strings.Saved), Graphics.TEXT_JUSTIFY_CENTER | Graphics.TEXT_JUSTIFY_VCENTER);
         dc.drawText(width/2, height*0.33, Graphics.FONT_TINY, timer[1], Graphics.TEXT_JUSTIFY_CENTER | Graphics.TEXT_JUSTIFY_VCENTER);
         dc.drawText(width/2, height*0.47, Graphics.FONT_NUMBER_MEDIUM, timer[0], Graphics.TEXT_JUSTIFY_CENTER | Graphics.TEXT_JUSTIFY_VCENTER);
         dc.drawText(width/2, height*0.66, Graphics.FONT_TINY, distance[1], Graphics.TEXT_JUSTIFY_CENTER | Graphics.TEXT_JUSTIFY_VCENTER);
-        dc.drawText(width/2, height*0.8, Graphics.FONT_NUMBER_MEDIUM, distance[0], Graphics.TEXT_JUSTIFY_CENTER | Graphics.TEXT_JUSTIFY_VCENTER);
+        dc.drawText(width/2, height*0.80, Graphics.FONT_NUMBER_MEDIUM, distance[0], Graphics.TEXT_JUSTIFY_CENTER | Graphics.TEXT_JUSTIFY_VCENTER);
     }
 }
