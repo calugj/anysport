@@ -9,10 +9,10 @@ supported by Garmin, even if not natively supported by your device.
 
 With this app, you'll unleash the true potential of your Garmin watch.
 
-For more info, visit the [manual](https://github.com/calugj/anysport/blob/main/doc/manual.md).
+For more info, visit the [manual](https://github.com/calugj/anysport/blob/main/doc/manual.md) and the [F.A.Q.](https://github.com/calugj/anysport/blob/main/doc/FAQ.md) section.
 
 # Screenshots
-<p align="left">
+<p align="center">
   <img src="image/screenshot_1.jpg" alt="Image 1" width="180">
   <img src="image/screenshot_2.jpg" alt="Image 2" width="180">
   <img src="image/screenshot_3.jpg" alt="Image 3" width="180">

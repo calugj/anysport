@@ -30,3 +30,10 @@ way the activity is displayed and catalogued in Garmin Connect.
 - Manual: open this manual page.
 
 You are encouraged to explore all the features that Any Sport ULTRA offers.
+
+# F.A.Q.
+If you find issues or crashes, please report the bug using the *Contact Developer* form on the CIQ Store. \
+Please don't post negative reviews to report bugs! \
+Uninstall and install again the app to force the settings to restore. 
+
+[Frequently Asked Questions](https://github.com/calugj/anysport/blob/main/doc/FAQ.md)
