@@ -14,7 +14,7 @@ public class AddPageViewDelegate extends WatchUi.BehaviorDelegate {
     }
 
     public function onSelect() {
-        var pages = Properties.getValue("Pages");
+        var pages = Properties.getValue("Pages") as Number;
         if(pages < PageSettingLoopFactory.MAX_PAGES) {
             Properties.setValue("Pages", pages + 1);
         }
@@ -30,7 +30,7 @@ public class AddPageViewDelegate extends WatchUi.BehaviorDelegate {
         var menu = new MainMenu();
         menu = MenuUtils.setFocus(menu, :datafields);
 
-        WatchUi.switchToView(menu, new MainMenuDelegate(), WatchUi.SLIDE_RIGHT);
+        WatchUi.switchToView(menu as MainMenu, new MainMenuDelegate(), WatchUi.SLIDE_RIGHT);
         WatchUi.requestUpdate();
         return true;
     }

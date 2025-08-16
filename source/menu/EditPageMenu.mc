@@ -5,12 +5,12 @@ import Toybox.Application;
 
 public class EditPageMenu extends MenuBaseClass {
 
-    public function initialize(pageNumber) {
+    public function initialize(pageNumber as Number) {
         var title = Strings.getString("EditPage").toString() + " " + pageNumber.toString();
         var itemHeight = (System.getDeviceSettings().screenHeight)*0.25;
         MenuBaseClass.initialize(title, itemHeight.toNumber(), {:theme => null, :dividerType => null});
 
-        var fieldsNumber = Properties.getValue("FieldsPage" + pageNumber.toString());
+        var fieldsNumber = Properties.getValue("FieldsPage" + pageNumber.toString()) as Number;
         var editNumber_substring;
         if(fieldsNumber <= 1) {
             editNumber_substring = fieldsNumber.toString() + " " + Strings.getString("Field");
@@ -18,10 +18,10 @@ public class EditPageMenu extends MenuBaseClass {
             editNumber_substring = fieldsNumber.toString() + " " + Strings.getString("Fields");
         }
 
-        addItem(new CustomIconMenuItem(:editNumber, Strings.getString("EditFieldsNumber"), editNumber_substring, WatchUi.loadResource($.Rez.Drawables.Custom)));
-        addItem(new CustomIconMenuItem(:editFields, Strings.getString("EditFields"), null, WatchUi.loadResource($.Rez.Drawables.Custom)));
-        if(Properties.getValue("Pages") > 1) {
-            addItem(new CustomIconMenuItem(:delete, Strings.getString("DeletePage"), null, WatchUi.loadResource($.Rez.Drawables.Delete))); 
+        addItem(new CustomIconMenuItem(:editNumber, Strings.getString("EditFieldsNumber"), editNumber_substring, WatchUi.loadResource($.Rez.Drawables.Custom) as BitmapResource));
+        addItem(new CustomIconMenuItem(:editFields, Strings.getString("EditFields"), null, WatchUi.loadResource($.Rez.Drawables.Custom) as BitmapResource));
+        if(Properties.getValue("Pages") as Number > 1) {
+            addItem(new CustomIconMenuItem(:delete, Strings.getString("DeletePage"), null, WatchUi.loadResource($.Rez.Drawables.Delete) as BitmapResource)); 
         }
     }
 }
@@ -29,7 +29,7 @@ public class EditPageMenu extends MenuBaseClass {
 
 public class EditPageMenuDelegate extends Menu2InputDelegate {
     
-    private var pageNumber;
+    private var pageNumber as Number;
 
     public function initialize(param_pageNumber as Number) {
         Menu2InputDelegate.initialize();
@@ -40,10 +40,10 @@ public class EditPageMenuDelegate extends Menu2InputDelegate {
     public function onSelect(item as MenuItem) as Void {
         var id = item.getId();
         
-        switch(id) {
+        switch(id as Object) {
            case :editNumber:
                 var view = new CustomNumberPicker();
-                WatchUi.pushView(view, new EditFieldsNumberPickerDelegate(view, Properties.getValue("FieldsPage" + pageNumber.toString()), 1, 6, pageNumber), WatchUi.SLIDE_LEFT);
+                WatchUi.pushView(view, new EditFieldsNumberPickerDelegate(view, Properties.getValue("FieldsPage" + pageNumber.toString()) as Number, 1, 6, pageNumber), WatchUi.SLIDE_LEFT);
                 break;
             case :editFields:
                 var view1 = new PageSettingView(pageNumber, true);
@@ -72,8 +72,8 @@ public class EditPageMenuDelegate extends Menu2InputDelegate {
         return false;
     }
 
-    private function deletePage()   {
-        var pages = Properties.getValue("Pages");
+    private function deletePage() as Void {
+        var pages = Properties.getValue("Pages") as Number;
         if(pages == 1) {
             return;
         }

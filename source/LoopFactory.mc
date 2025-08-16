@@ -10,7 +10,7 @@ public class MainLoopFactory extends ViewLoopFactory {
     }
     
     public function getSize() as Number {
-        return Properties.getValue("Pages");
+        return Properties.getValue("Pages") as Number;
     }
 
     public function getView(page as Number) {
@@ -29,7 +29,7 @@ public class PageSettingLoopFactory extends ViewLoopFactory {
     }
     
     public function getSize() as Number {
-        var pages = Properties.getValue("Pages");
+        var pages = Properties.getValue("Pages") as Number;
         if(pages == MAX_PAGES) {
             return MAX_PAGES;
         }
@@ -37,7 +37,7 @@ public class PageSettingLoopFactory extends ViewLoopFactory {
     }
 
     public function getView(page as Number) { 
-        if(page + 1 <= Properties.getValue("Pages")) {
+        if(page + 1 <= Properties.getValue("Pages") as Number) {
             var view = new PageSettingView(page + 1, false);
             return [ view, new PageSettingViewDelegate(view, page + 1) ];
         }

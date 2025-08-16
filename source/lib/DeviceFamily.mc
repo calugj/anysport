@@ -114,7 +114,7 @@ public class DeviceFamily {
     };
 
     // Fenix6 family
-    public static function f6() {
+    public static function f6() as Array<String> {
         return [
             "fenix6xp",
             "fenix6sp",
@@ -144,12 +144,11 @@ public class DeviceFamily {
             "marq-expedition-asia",
             "marq-golfer",
             "marq-golfer-asia",
-
         ];
     }
 
     // Fenix7 family
-    public static function f7() {
+    public static function f7() as Array<String> {
         return [
             "fenix7xpro",
             "fenix7Xpro-nwifi",
@@ -177,12 +176,11 @@ public class DeviceFamily {
             "epixpro47",
             "approachs70",
             "approachs70s",
-
         ];
     }
 
     // Fenix8 family
-    public static function f8() {
+    public static function f8() as Array<String> {
         return [
             "fenix8-51mm",
             "fenix8s-51mm",
@@ -190,14 +188,11 @@ public class DeviceFamily {
             "fenix8-43mm",
             "enduro3",
             "fenixE",
-            
-            
-
         ];
     }
 
     // Fr70 family
-    public static function fr70() {
+    public static function fr70() as Array<String> {
         return [
             "FR970",
             "forerunner965",
@@ -208,12 +203,11 @@ public class DeviceFamily {
             "fr165",
             "fr165m",
             "epixpro51",
-
         ];
     }
 
     // Vivo family
-    public static function vivo() {
+    public static function vivo() as Array<String> {
         return [
             "vva6",
             "vivoactive5",
@@ -228,15 +222,13 @@ public class DeviceFamily {
             "venu2plus-asia",
             "venusq2",
             "venusq2music",
-            
-
         ];
     }
 
 
 
 
-    public static function getFamily() {
+    public static function getFamily() as Number {
         var device = System.getDeviceSettings().partNumber;
 
         var array = f6() as Array<String>;

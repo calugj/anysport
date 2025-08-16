@@ -11,20 +11,20 @@ public class MainMenuExtra extends MenuBaseClass {
         var itemHeight = (System.getDeviceSettings().screenHeight)*0.25;
         MenuBaseClass.initialize(title, itemHeight.toNumber(), {:theme => null, :dividerType => null});
 
-        addItem(new CustomIconMenuItem(:about, Strings.getString("About"), Strings.getString("About_substring"), WatchUi.loadResource($.Rez.Drawables.About)));
-        addItem(new CustomIconMenuItem(:dev, Strings.getString("Dev"), Strings.getString("Dev_substring"), WatchUi.loadResource($.Rez.Drawables.Dev)));
-        addItem(new CustomIconMenuItem(:git, Strings.getString("Git"), Strings.getString("Git_substring"), WatchUi.loadResource($.Rez.Drawables.Git)));
-        addItem(new CustomIconMenuItem(:licenses, Strings.getString("Licenses"), Strings.getString("Licenses_substring"), WatchUi.loadResource($.Rez.Drawables.Licenses)));
+        addItem(new CustomIconMenuItem(:about, Strings.getString("About"), Strings.getString("About_substring"), WatchUi.loadResource($.Rez.Drawables.About) as BitmapResource));
+        addItem(new CustomIconMenuItem(:dev, Strings.getString("Dev"), Strings.getString("Dev_substring"), WatchUi.loadResource($.Rez.Drawables.Dev) as BitmapResource));
+        addItem(new CustomIconMenuItem(:git, Strings.getString("Git"), Strings.getString("Git_substring"), WatchUi.loadResource($.Rez.Drawables.Git) as BitmapResource));
+        addItem(new CustomIconMenuItem(:licenses, Strings.getString("Licenses"), Strings.getString("Licenses_substring"), WatchUi.loadResource($.Rez.Drawables.Licenses) as BitmapResource));
     }
 
-    public function drawTitle(dc as Dc) {
+    public function drawTitle(dc as Dc) as Void {
         dc.setAntiAlias(true);
 
         dc.setColor(Graphics.COLOR_BLACK, Graphics.COLOR_BLACK);
         dc.clear();
-        var bitmap = WatchUi.loadResource(Rez.Drawables.Up);
+        var bitmap = WatchUi.loadResource(Rez.Drawables.Up) as BitmapResource;
         dc.drawBitmap(dc.getWidth()*0.4 - bitmap.getWidth()/2, dc.getHeight()*0.5 - bitmap.getHeight()/2, bitmap);
-        bitmap = WatchUi.loadResource(Rez.Drawables.Settings);
+        bitmap = WatchUi.loadResource(Rez.Drawables.Settings) as BitmapResource;
         dc.drawBitmap(dc.getWidth()*0.6 - bitmap.getWidth()/2, dc.getHeight()*0.5 - bitmap.getHeight()/2, bitmap);
     }
 }
@@ -38,7 +38,7 @@ public class MainMenuExtraDelegate extends Menu2InputDelegate {
 
     public function onSelect(item as MenuItem) as Void {
 
-        switch(item.getId()) {
+        switch(item.getId() as Object) {
             case :about:
                 WatchUi.pushView(new AboutView(), new BehaviorDelegate(), WatchUi.SLIDE_LEFT);
                 break;

@@ -7,9 +7,9 @@ import Toybox.System;
 public class CustomScrollableDialog extends WatchUi.View {
 
     private var string as String;
-    private var position;
-    private var MAX;
-    private var readAll;
+    private var position as Number;
+    private var MAX as Number;
+    private var readAll as Boolean;
     
     public function initialize() {
         View.initialize();
@@ -93,11 +93,11 @@ public class CustomScrollableDialog extends WatchUi.View {
         readAll = mReadAll;
     }
 
-    public function setPosition(mPosition as Number) {
+    public function setPosition(mPosition as Number) as Void {
         position = mPosition;
     }
 
-    private function isBottom() {
+    private function isBottom() as Boolean {
         return position == MAX;
     }
 }
@@ -127,7 +127,7 @@ public class CustomScrollableDialogDelegate extends WatchUi.InputDelegate {
             string = Strings.getString("ReadAll") + string;
         }
         position = 1;
-        MAX = StringUtils.count(string, "\n");
+        MAX = StringUtils.count(string, "\n") as Number;
         view.setReadAll(readAll);
         view.setString(string, MAX);
     }
@@ -196,15 +196,16 @@ public class CustomScrollableDialogDelegate extends WatchUi.InputDelegate {
         return;
     }
 
-    private function onSimulatedConfirm() {
+    private function onSimulatedConfirm() as Boolean {
         if(!readAll) {
             onConfirm();
         } else if(isBottom()) {
             onConfirm();
         }
+        return true;
     }
 
-    private function isBottom() {
+    private function isBottom() as Boolean {
         return position == MAX;
     }
 

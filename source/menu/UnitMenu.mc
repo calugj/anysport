@@ -12,29 +12,29 @@ public class UnitMenu extends MenuBaseClass {
         MenuBaseClass.initialize(title, itemHeight.toNumber(), {:theme => null, :dividerType => null});
 
         var speed_substring = Strings.getString("Metric");
-        if(Properties.getValue("SpeedUnits") == System.UNIT_STATUTE) {
+        if(Properties.getValue("SpeedUnits") as Number == System.UNIT_STATUTE) {
             speed_substring = Strings.getString("Imperial");
         }
         
         var pace_substring = Strings.getString("Metric");
-        if(Properties.getValue("PaceUnits") == System.UNIT_STATUTE) {
+        if(Properties.getValue("PaceUnits") as Number == System.UNIT_STATUTE) {
             pace_substring = Strings.getString("Imperial");
         }
         
         var distance_substring = Strings.getString("Metric");
-        if(Properties.getValue("DistanceUnits") == System.UNIT_STATUTE) {
+        if(Properties.getValue("DistanceUnits") as Number == System.UNIT_STATUTE) {
             distance_substring = Strings.getString("Imperial");
         }
 
         var nautical_substring = Strings.getString("Metric");
-        if(Properties.getValue("NauticalSpeed") == System.UNIT_STATUTE) {
+        if(Properties.getValue("NauticalSpeed") as Number == System.UNIT_STATUTE) {
             nautical_substring = Strings.getString("Imperial");
-        } else if(Properties.getValue("NauticalSpeed") == /*UNIT_NAUTICAL*/ 2) {
+        } else if(Properties.getValue("NauticalSpeed") as Number == /*UNIT_NAUTICAL*/ 2) {
             nautical_substring = Strings.getString("Nautical");
         }
 
         var temperature_substring = Strings.getString("Metric");
-        if(Properties.getValue("TemperatureUnits") == System.UNIT_STATUTE) {
+        if(Properties.getValue("TemperatureUnits") as Number == System.UNIT_STATUTE) {
             temperature_substring = Strings.getString("Imperial");
         }
 
@@ -54,14 +54,14 @@ public class UnitMenuDelegate extends Menu2InputDelegate {
     }
 
     public function onSelect(item as MenuItem) as Void {
-        var id = item.getId();
+        var id = item.getId() as Number;
         
         var max = 1;
         if(id.equals("NauticalSpeed")) {
             max = 2;
         }
 
-        var value = Properties.getValue(id as String) + 1;
+        var value = Properties.getValue(id as String) as Number + 1;
         if(value > max) {
             value = 0;
         }

@@ -12,23 +12,23 @@ public class CustomActivityMenu extends MenuBaseClass {
         var itemHeight = (System.getDeviceSettings().screenHeight)*0.25;
         MenuBaseClass.initialize(title, itemHeight.toNumber(), {:theme => null, :dividerType => null});
 
-        RefreshRate.getInstance().setRefreshRate(RefreshRate.REFRESH_HIGH);
+        (RefreshRate.getInstance() as RefreshRate).setRefreshRate(RefreshRate.REFRESH_HIGH);
 
-        var name = Properties.getValue("CustomName");
-        var sport = Properties.getValue("CustomSport");
-        var subSport = Properties.getValue("CustomSubsport");
+        var name = Properties.getValue("CustomName") as String;
+        var sport = Properties.getValue("CustomSport") as String;
+        var subSport = Properties.getValue("CustomSubsport") as String;
 
-        addItem(new CustomIconMenuItem(:apply, Strings.getString("Apply"), null, WatchUi.loadResource($.Rez.Drawables.Check)));
-        addItem(new CustomIconMenuItem(:name, Strings.getString("Name"), name, WatchUi.loadResource($.Rez.Drawables.Custom)));
-        addItem(new CustomIconMenuItem(:sport, Strings.getString("Sport"), sport, WatchUi.loadResource($.Rez.Drawables.Custom)));
-        addItem(new CustomIconMenuItem(:subSport, Strings.getString("Subsport"), subSport, WatchUi.loadResource($.Rez.Drawables.Custom)));
-        addItem(new CustomIconMenuItem(:reference, Strings.getString("Manual"), null, WatchUi.loadResource($.Rez.Drawables.Licenses)));
+        addItem(new CustomIconMenuItem(:apply, Strings.getString("Apply"), null, WatchUi.loadResource($.Rez.Drawables.Check) as BitmapResource));
+        addItem(new CustomIconMenuItem(:name, Strings.getString("Name"), name, WatchUi.loadResource($.Rez.Drawables.Custom) as BitmapResource));
+        addItem(new CustomIconMenuItem(:sport, Strings.getString("Sport"), sport, WatchUi.loadResource($.Rez.Drawables.Custom) as BitmapResource));
+        addItem(new CustomIconMenuItem(:subSport, Strings.getString("Subsport"), subSport, WatchUi.loadResource($.Rez.Drawables.Custom) as BitmapResource));
+        addItem(new CustomIconMenuItem(:reference, Strings.getString("Manual"), null, WatchUi.loadResource($.Rez.Drawables.Licenses) as BitmapResource));
     }
 
     public function onShow() as Void {
-        var name = Properties.getValue("CustomName");
+        var name = Properties.getValue("CustomName") as String;
         updateItem(
-            new CustomIconMenuItem(:name, Strings.getString("Name"), name, WatchUi.loadResource($.Rez.Drawables.Custom)),
+            new CustomIconMenuItem(:name, Strings.getString("Name"), name, WatchUi.loadResource($.Rez.Drawables.Custom) as BitmapResource),
             findItemById(:name)
         );
     }
@@ -42,12 +42,12 @@ public class CustomActivityMenuDelegate extends Menu2InputDelegate {
     }
 
     public function onSelect(item as MenuItem) as Void {
-        var name = Properties.getValue("CustomName");
-        var sport = Properties.getValue("CustomSport");
-        var subSport = Properties.getValue("CustomSubsport");
+        var name = Properties.getValue("CustomName") as String;
+        var sport = Properties.getValue("CustomSport") as Number;
+        var subSport = Properties.getValue("CustomSubsport") as Number;
         var view;
 
-        switch(item.getId()) {
+        switch(item.getId() as Object) {
             case :apply:
                 Properties.setValue("Name", name);
                 Properties.setValue("Sport", sport);
@@ -57,7 +57,7 @@ public class CustomActivityMenuDelegate extends Menu2InputDelegate {
                 WatchUi.popView(WatchUi.SLIDE_RIGHT);
                 var menu = new MainMenu();
                 menu = MenuUtils.setFocus(menu, :class);
-                WatchUi.switchToView(menu, new MainMenuDelegate(), WatchUi.SLIDE_RIGHT);
+                WatchUi.switchToView(menu as MainMenu, new MainMenuDelegate(), WatchUi.SLIDE_RIGHT);
                 WatchUi.requestUpdate();
                 break;
             case :name:
@@ -81,7 +81,7 @@ public class CustomActivityMenuDelegate extends Menu2InputDelegate {
         WatchUi.popView(WatchUi.SLIDE_RIGHT);
         var menu = new ActivityClassMenu();
         menu = MenuUtils.setFocus(menu, :custom);
-        WatchUi.switchToView(menu, new ActivityClassMenuDelegate(), WatchUi.SLIDE_RIGHT);
+        WatchUi.switchToView(menu as ActivityClassMenu, new ActivityClassMenuDelegate(), WatchUi.SLIDE_RIGHT);
     }
 
     public function onWrap(key as WatchUi.Key) as Boolean {

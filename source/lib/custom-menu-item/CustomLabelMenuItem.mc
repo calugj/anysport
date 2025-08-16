@@ -6,12 +6,12 @@ public class CustomLabelMenuItem extends WatchUi.CustomMenuItem {
 
     private var label as String;
 
-    private var BACKGROUND_COLOR;
-    private var FOREGROUND_COLOR;
-    private var DEVICE_FAMILY;
-    private var FOCUSED;
+    private var BACKGROUND_COLOR as Number;
+    private var FOREGROUND_COLOR as Number;
+    private var DEVICE_FAMILY as Number;
+    private var FOCUSED as FontDefinition;
 
-    public function initialize(param_id, param_label as String) {
+    public function initialize(param_id as Object, param_label as String) {
         CustomMenuItem.initialize(param_id, {});
         label = param_label;
 

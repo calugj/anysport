@@ -2,13 +2,14 @@ import Toybox.Lang;
 import Toybox.WatchUi;
 import Toybox.Attention;
 import Toybox.Application;
+import Toybox.Timer;
 
 public class MainViewDelegate extends BehaviorDelegate {
     
-    private var view;
-    private var timer;
+    private var view as MainView;
+    private var timer as Timer.Timer?;
 
-    public function initialize(param_view, param_pageNumber) {
+    public function initialize(param_view as MainView, param_pageNumber as Number) {
         BehaviorDelegate.initialize();
 
         view = param_view;
@@ -25,8 +26,8 @@ public class MainViewDelegate extends BehaviorDelegate {
         return true;
     }
 
-    private function onSimulatedSelect() {
-        var sportData = SportData.getInstance();
+    private function onSimulatedSelect() as Boolean {
+        var sportData = SportData.getInstance() as SportData;
         
         if(timer != null) {
             timer.stop();
@@ -56,15 +57,15 @@ public class MainViewDelegate extends BehaviorDelegate {
     }
 
 
-    private function onSimulatedBack() {
-        var sportData = SportData.getInstance();
+    private function onSimulatedBack() as Boolean {
+        var sportData = SportData.getInstance() as SportData;
 
         if(timer != null) {
             timer.stop();
             timer = null;
         }
 
-        if(sportData.isRecording() && Properties.getValue("LapActivated")) {
+        if(sportData.isRecording() && Properties.getValue("LapActivated") as Boolean) {
             sportData.lap();
             view.ring.setStatus(3);
         } else if(!sportData.isRecording() && sportData.isRecordingStarted()) {
@@ -96,7 +97,7 @@ public class MainViewDelegate extends BehaviorDelegate {
     public function onSwipe(swipeEvent) as Boolean {
 
         if(swipeEvent.getDirection() == WatchUi.SWIPE_RIGHT) {
-            if(!SportData.getInstance().isRecordingStarted()) {
+            if(!(SportData.getInstance() as SportData).isRecordingStarted()) {
                 onSimulatedBack();
             }
             return true;

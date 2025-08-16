@@ -11,7 +11,7 @@ public class MainMenu extends MenuBaseClass {
         var itemHeight = (System.getDeviceSettings().screenHeight)*0.25;
         MenuBaseClass.initialize(title, itemHeight.toNumber(), {:theme => null, :dividerType => null});
 
-        var pages = Properties.getValue("Pages");
+        var pages = Properties.getValue("Pages") as Number;
         var datafields_substring = pages.toString();
         if(pages == 1) {
             datafields_substring = datafields_substring + " " + Strings.getString("Page");
@@ -20,7 +20,7 @@ public class MainMenu extends MenuBaseClass {
         }
             
         var positioning_substring = "";
-        switch(Properties.getValue("Satellites")) {
+        switch(Properties.getValue("Satellites") as Number) {
             case 0:
                 positioning_substring = Strings.getString("SatellitesOff");
                 break;
@@ -55,26 +55,26 @@ public class MainMenu extends MenuBaseClass {
         }
 
         var theme_substring;
-        if(Properties.getValue("BackgroundColor") == Graphics.COLOR_WHITE) {
+        if(Properties.getValue("BackgroundColor") as Number == Graphics.COLOR_WHITE) {
             theme_substring = Strings.getString("Light");
         } else {
             theme_substring = Strings.getString("Dark");
         }
-        theme_substring += ", HEX " + Properties.getValue("AccentColor").format("%06X");
+        theme_substring += ", HEX " + (Properties.getValue("AccentColor") as Number).format("%06X");
 
-        addItem(new CustomIconMenuItem(:class, Strings.getString("ActivityType"), Properties.getValue("Name"), WatchUi.loadResource($.Rez.Drawables.Running)));
-        addItem(new CustomIconMenuItem(:datafields, Strings.getString("Datafields"), datafields_substring, WatchUi.loadResource($.Rez.Drawables.Datafields)));
-        addItem(new CustomIconMenuItem(:positioning, Strings.getString("Positioning"), positioning_substring, WatchUi.loadResource($.Rez.Drawables.GPS)));
-        addItem(new CustomIconMenuItem(:theme, Strings.getString("Theme"), theme_substring, WatchUi.loadResource($.Rez.Drawables.Color)));
-        addItem(new CustomIconMenuItem(:lap, Strings.getString("Lap"), lap_substring, WatchUi.loadResource($.Rez.Drawables.Lap)));
-        addItem(new CustomIconMenuItem(:unit, Strings.getString("Unit"), null, WatchUi.loadResource($.Rez.Drawables.Unit)));
-        addItem(new CustomIconMenuItem(:extra, Strings.getString("Extra"), null, WatchUi.loadResource($.Rez.Drawables.Other)));
-        addItem(new CustomIconMenuItem(:donations, Strings.getString("Donate"), Strings.getString("DonateSub"), WatchUi.loadResource($.Rez.Drawables.Donations)));
-        addItem(new CustomIconMenuItem(:reference, Strings.getString("Manual"), null, WatchUi.loadResource($.Rez.Drawables.Licenses)));
+        addItem(new CustomIconMenuItem(:class, Strings.getString("ActivityType"), Properties.getValue("Name") as String, WatchUi.loadResource($.Rez.Drawables.Running) as BitmapResource));
+        addItem(new CustomIconMenuItem(:datafields, Strings.getString("Datafields"), datafields_substring, WatchUi.loadResource($.Rez.Drawables.Datafields) as BitmapResource));
+        addItem(new CustomIconMenuItem(:positioning, Strings.getString("Positioning"), positioning_substring, WatchUi.loadResource($.Rez.Drawables.GPS) as BitmapResource));
+        addItem(new CustomIconMenuItem(:theme, Strings.getString("Theme"), theme_substring, WatchUi.loadResource($.Rez.Drawables.Color) as BitmapResource));
+        addItem(new CustomIconMenuItem(:lap, Strings.getString("Lap"), lap_substring, WatchUi.loadResource($.Rez.Drawables.Lap) as BitmapResource));
+        addItem(new CustomIconMenuItem(:unit, Strings.getString("Unit"), null, WatchUi.loadResource($.Rez.Drawables.Unit) as BitmapResource));
+        addItem(new CustomIconMenuItem(:extra, Strings.getString("Extra"), null, WatchUi.loadResource($.Rez.Drawables.Other) as BitmapResource));
+        addItem(new CustomIconMenuItem(:donations, Strings.getString("Donate"), Strings.getString("DonateSub"), WatchUi.loadResource($.Rez.Drawables.Donations) as BitmapResource));
+        addItem(new CustomIconMenuItem(:reference, Strings.getString("Manual"), null, WatchUi.loadResource($.Rez.Drawables.Licenses) as BitmapResource));
     }
 
     public function onShow() {
-        RefreshRate.getInstance().setRefreshRate(RefreshRate.REFRESH_LOW);
+        (RefreshRate.getInstance() as RefreshRate).setRefreshRate(RefreshRate.REFRESH_LOW);
     }
 
     public function drawFooter(dc as Dc) as Void {
@@ -83,9 +83,9 @@ public class MainMenu extends MenuBaseClass {
         var height = System.getDeviceSettings().screenHeight*0.38;
         dc.setColor(Graphics.COLOR_BLACK, Graphics.COLOR_BLACK);
         dc.clear();
-        var bitmap = WatchUi.loadResource(Rez.Drawables.Down);
+        var bitmap = WatchUi.loadResource(Rez.Drawables.Down) as BitmapResource;
         dc.drawBitmap(dc.getWidth()*0.4 - bitmap.getWidth()/2, height*0.5 - bitmap.getHeight()/2, bitmap);
-        bitmap = WatchUi.loadResource(Rez.Drawables.ExtraSettings);
+        bitmap = WatchUi.loadResource(Rez.Drawables.ExtraSettings) as BitmapResource;
         dc.drawBitmap(dc.getWidth()*0.6 - bitmap.getWidth()/2, height*0.5 - bitmap.getHeight()/2, bitmap);
     }
 }
@@ -99,9 +99,9 @@ public class MainMenuDelegate extends Menu2InputDelegate {
 
     public function onSelect(item as MenuItem) as Void {
 
-        switch(item.getId()) {
+        switch(item.getId() as Object) {
             case :class:
-                if( SportData.getInstance().isRecordingStarted() ) {
+                if((SportData.getInstance() as SportData).isRecordingStarted() ) {
                     break;
                 }
                 WatchUi.pushView(new ActivityClassMenu(), new ActivityClassMenuDelegate(), WatchUi.SLIDE_LEFT);

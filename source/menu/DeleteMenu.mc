@@ -11,10 +11,10 @@ public class DeleteMenu extends MenuBaseClass {
         var itemHeight = (System.getDeviceSettings().screenHeight)*0.25;
         MenuBaseClass.initialize(title, itemHeight.toNumber(), {:theme => null, :dividerType => null});
 
-        RefreshRate.getInstance().setRefreshRate(RefreshRate.REFRESH_HIGH);
+        (RefreshRate.getInstance() as RefreshRate).setRefreshRate(RefreshRate.REFRESH_HIGH);
 
-        addItem(new CustomIconMenuItem(:yes, Strings.getString("Yes"), null, WatchUi.loadResource($.Rez.Drawables.Check)));
-        addItem(new CustomIconMenuItem(:no, Strings.getString("No"), null, WatchUi.loadResource($.Rez.Drawables.Cross)));
+        addItem(new CustomIconMenuItem(:yes, Strings.getString("Yes"), null, WatchUi.loadResource($.Rez.Drawables.Check) as BitmapResource));
+        addItem(new CustomIconMenuItem(:no, Strings.getString("No"), null, WatchUi.loadResource($.Rez.Drawables.Cross) as BitmapResource));
     }
 }
 
@@ -26,9 +26,9 @@ public class DeleteMenuDelegate extends Menu2InputDelegate {
     }
 
     public function onSelect(item as MenuItem) as Void {
-        switch(item.getId()) {
+        switch(item.getId() as Object) {
             case :yes:
-                SportData.getInstance().discard();
+                (SportData.getInstance() as SportData).discard();
                 WatchUi.popView(WatchUi.SLIDE_BLINK);
                 WatchUi.popView(WatchUi.SLIDE_BLINK);
                 break;

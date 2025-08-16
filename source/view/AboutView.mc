@@ -21,8 +21,8 @@ public class AboutView extends WatchUi.View {
         dc.setColor(Graphics.COLOR_DK_GREEN, Graphics.COLOR_DK_GREEN);
         dc.clear();
 
-        var bitmap = WatchUi.loadResource(Rez.Drawables.AS);
-        dc.drawBitmap(dc.getWidth()/2 - bitmap.getWidth()/2, dc.getHeight()*0.28 - bitmap.getHeight()/2, bitmap);
+        var bitmap = WatchUi.loadResource(Rez.Drawables.AS) as BitmapResource;
+        dc.drawBitmap(width/2 - bitmap.getWidth()/2, height*0.28 - bitmap.getHeight()/2, bitmap);
 
         dc.setColor(Graphics.COLOR_WHITE, Graphics.COLOR_TRANSPARENT);
 

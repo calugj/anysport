@@ -4,7 +4,7 @@ import Toybox.Application;
 
 public class Layout {
     
-    private var fields = 0;
+    private var fields as Number;
     
     public function initialize(param_fields as Number) {
         fields = param_fields;
@@ -13,8 +13,8 @@ public class Layout {
     public function draw(dc as Dc) as Void {
         var width = dc.getWidth();
         var height = dc.getHeight();
-        var backgroundColor = Properties.getValue("BackgroundColor");
-        var foregroundColor = Properties.getValue("AccentColor");
+        var backgroundColor = Properties.getValue("BackgroundColor") as Number;
+        var foregroundColor = Properties.getValue("AccentColor") as Number;
         
         dc.setColor(backgroundColor, backgroundColor);
         dc.clear();

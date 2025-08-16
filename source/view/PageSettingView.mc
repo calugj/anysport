@@ -5,22 +5,23 @@ import Toybox.Lang;
 
 public class PageSettingView extends WatchUi.View {
 
-    private var layout;
-    private var pageNumber;
+    private var layout as Layout;
+    private var pageNumber as Number;
     private var datafields as Array<Datafield> = new Array<Datafield> [6] ;
-    private var fieldsNumber;
-    private var counter;
-    private var position;
+    private var fieldsNumber as Number;
+    private var counter as Number;
+    private var position as Number;
     private var editFieldsMode as Boolean;
 
-    private var sportData;
+    private var sportData as SportData;
     
-    public function initialize(param_pageNumber, param_editFieldsMode as Boolean) {
+    public function initialize(param_pageNumber as Number, param_editFieldsMode as Boolean) {
         View.initialize();
         
-        sportData = SportData.getInstance();
+        sportData = SportData.getInstance() as SportData;
         pageNumber = param_pageNumber;
         editFieldsMode = param_editFieldsMode;
+        fieldsNumber = 1;
 
         position = 0;
         counter = 0;
@@ -28,12 +29,12 @@ public class PageSettingView extends WatchUi.View {
         layout = new Layout(1);
     }
 
-    public function setPosition(param_position) {
+    public function setPosition(param_position as Number) as Void {
         counter = 0;
         position = param_position;
     }
 
-    public function getPosition() {
+    public function getPosition() as Number {
         return position;
     }
 
@@ -42,7 +43,7 @@ public class PageSettingView extends WatchUi.View {
         var width = dc.getWidth();
         var height = dc.getHeight();
 
-        fieldsNumber = Properties.getValue("FieldsPage" + pageNumber.toString());
+        fieldsNumber = Properties.getValue("FieldsPage" + pageNumber.toString()) as Number;
         layout.initialize(fieldsNumber);
 
         var choice = [null];
@@ -71,7 +72,7 @@ public class PageSettingView extends WatchUi.View {
 
         for (var i = 0 ; i < fieldsNumber ; i += 1) {
             var request = "Field" + (i+1).toString() + "Page" + pageNumber.toString();
-            var index = Properties.getValue(request);
+            var index = Properties.getValue(request) as Number;
             if(index == 31) {
                 datafields[i] = new HeartRateDatafield(choice[i][0], choice[i][1], choice[i][2], choice[i][3], sportData.getMetric(index));
             }
@@ -92,7 +93,7 @@ public class PageSettingView extends WatchUi.View {
                 continue;
             }
             var request = "Field" + (i+1).toString() + "Page" + pageNumber.toString();
-            var index = Properties.getValue(request);
+            var index = Properties.getValue(request) as Number;
             datafields[i].updateValue(sportData.getMetric(index));
             datafields[i].draw(dc);
         }

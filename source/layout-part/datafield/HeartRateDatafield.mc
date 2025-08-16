@@ -8,14 +8,14 @@ public class HeartRateDatafield extends Datafield {
 
     private var zones as Array<Number>? = null;
     
-    public function initialize(param_x, param_y, param_width, param_height, param_value) {
+    public function initialize(param_x as Number, param_y as Number, param_width as Number, param_height as Number, param_value as Array<String>) {
         Datafield.initialize(param_x, param_y, param_width, param_height, param_value);
     }
 
-    public function doStuff() {
+    public function doStuff() as Void {
         Datafield.doStuff();
 
-        var sport = Properties.getValue("Sport");
+        var sport = Properties.getValue("Sport") as Number;
         var sportClass;
         switch(sport) {
             case 1:

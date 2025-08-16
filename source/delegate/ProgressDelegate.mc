@@ -5,7 +5,7 @@ import Toybox.Application;
 
 public class ProgressDelegate extends WatchUi.BehaviorDelegate {
     
-    var timer;
+    var timer as Timer.Timer?;
 
     function initialize() {
         BehaviorDelegate.initialize();
@@ -15,7 +15,7 @@ public class ProgressDelegate extends WatchUi.BehaviorDelegate {
     }
 
     public function timerCallback() as Void {
-        var saved = Properties.getValue("Saved") + 1;
+        var saved = Properties.getValue("Saved") as Number + 1;
         Properties.setValue("Saved", saved);
         if(saved == 5 || saved == 10 || saved == 15) {
             WatchUi.switchToView(new DonationsMenu(), new DonationsMenuDelegate(), WatchUi.SLIDE_LEFT);

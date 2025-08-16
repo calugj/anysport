@@ -7,13 +7,12 @@ import Toybox.System;
 */
 public class Strings {
 
-    private static var dictionary;
-    private static var VERSION = "1.1.1";
-    private static var APPNAME = "Any Sport ULTRA";
+    private static var dictionary as Dictionary = {};
+    private static var VERSION as String = "1.1.1";
+    private static var APPNAME as String = "Any Sport ULTRA";
 
     public function initialize() {
         var lang = System.getDeviceSettings().systemLanguage;
-        
         switch(lang) {
             case System.LANGUAGE_ENG:
                 get_ENG();

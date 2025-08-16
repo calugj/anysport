@@ -5,28 +5,28 @@ import Toybox.Application;
 
 public class FieldSettingViewDelegate extends WatchUi.BehaviorDelegate {
     
-    private var view;
-    private var pageNumber;
-    private var position;
-    private var FIELDS;
+    private var view as PageSettingView;
+    private var pageNumber as Number;
+    private var position as Number;
+    private var FIELDS as Number;
 
-    public function initialize(param_view, param_pageNumber, param_position) {
+    public function initialize(param_view as PageSettingView, param_pageNumber as Number, param_position as Number) {
         BehaviorDelegate.initialize();
 
         view = param_view;
         pageNumber = param_pageNumber;
         position = param_position;
-        FIELDS = Properties.getValue("FieldsPage" + pageNumber.toString());
+        FIELDS = Properties.getValue("FieldsPage" + pageNumber.toString()) as Number;
     }
 
     public function onMenu() as Boolean {
         return true;
     }
 
-    public function onSimulatedSelect() {
+    public function onSimulatedSelect() as Boolean {
         var menu = new FieldSettingMenu();
-        menu = MenuUtils.setFocus(menu, Properties.getValue("Field" + (position + 1).toString() + "Page" + pageNumber));
-        WatchUi.pushView(menu, new FieldSettingMenuDelegate(pageNumber, position + 1), WatchUi.SLIDE_LEFT);
+        menu = MenuUtils.setFocus(menu as FieldSettingMenu, Properties.getValue("Field" + (position + 1).toString() + "Page" + pageNumber) as Number);
+        WatchUi.pushView(menu as FieldSettingMenu, new FieldSettingMenuDelegate(pageNumber, position + 1), WatchUi.SLIDE_LEFT);
         return true;
     }
 

@@ -12,31 +12,31 @@ import Toybox.SensorHistory;
 
 public class SportData {
 
-    private static var instance;
+    private static var instance as SportData?;
 
-    private static var timer;
+    private static var timer as Timer.Timer?;
     
-    public var sport;
+    public var sport as Number;
 
-    private var info;
-    private var sensor;
+    private var info as Activity.Info?;
+    private var sensor as Sensor.Info?;
 
-    private var session;
-    private var isStarted ;
-    private var lapTimestamp;
-    private var lastLapTime;
-    private var lapDistanceStamp;
-    private var lastLapDistance;
-    private var avgLapTime;
-    private var lapCount;
-    private var lapTime;
-    private var lapDistance;
+    private var session as ActivityRecording.Session?;
+    private var isStarted as Boolean;
+    private var lapTimestamp as Number;
+    private var lastLapTime as Number;
+    private var lapDistanceStamp as Float;
+    private var lastLapDistance as Float;
+    private var avgLapTime as Number;
+    private var lapCount as Number;
+    private var lapTime as Number;
+    private var lapDistance as Float;
 
-    public var setRing;
-    private var autoPausedByAutopause;
+    public var setRing as Number;
+    private var autoPausedByAutopause as Boolean;
 
 
-    public static function getInstance() as SportData {
+    public static function getInstance() as SportData? {
         if(instance == null) {
             instance = new SportData();
         }
@@ -51,12 +51,14 @@ public class SportData {
 
         lapTimestamp = 0;
         lastLapTime = 0;
-        lapDistanceStamp = 0;
-        lastLapDistance = 0;
+        lapDistanceStamp = 0.0;
+        lastLapDistance = 0.0;
         lapTime = 0;
-        lapDistance = 0;
+        lapDistance = 0.0;
         avgLapTime = 0;
         lapCount = 0;
+
+        sport = 0;
 
         if(SportData.timer == null) {
             SportData.timer = new Timer.Timer();
@@ -82,31 +84,33 @@ public class SportData {
         sensor = Sensor.getInfo();
 
         if(info != null && info.timerTime != null) {
-            lapTime = info.timerTime - lapTimestamp;
+            var timerTime = info.timerTime as Number;
+            lapTime = timerTime - lapTimestamp;
         }
         if(info != null && info.elapsedDistance != null) {
-            lapDistance = info.elapsedDistance - lapDistanceStamp;
+            var elapsedDistance = info.elapsedDistance as Float;
+            lapDistance = elapsedDistance - lapDistanceStamp;
         }
 
         // Autopause
-        if(Properties.getValue("Autopause") && isStarted && info != null && info.currentSpeed != null) {
-            var speed = info.currentSpeed;
-            if(isRecording() && speed == 0) {
+        if(Properties.getValue("Autopause") as Boolean && isStarted && info != null && info.currentSpeed != null) {
+            var currentSpeed = info.currentSpeed as Float;
+            if(isRecording() && currentSpeed == 0) {
                 stop();
                 setRing = 1;
                 autoPausedByAutopause = true;
-            } else if (!isRecording() && autoPausedByAutopause && speed > 0) {
+            } else if (!isRecording() && autoPausedByAutopause && currentSpeed > 0) {
                 start();
                 setRing = 2;
             }            
         }
 
         // AutoLap: check if the lap distance exceeds the autolap value
-        if(Properties.getValue("AutoLapActivated") && isStarted  && Properties.getValue("LapActivated")) {
-            var autoLapValue = Properties.getValue("AutoLapValue");
-            var unit = Properties.getValue("DistanceUnits");
+        if(Properties.getValue("AutoLapActivated") as Boolean && isStarted  && Properties.getValue("LapActivated") as Boolean) {
+            var autoLapValue = Properties.getValue("AutoLapValue") as Float;
+            var unit = Properties.getValue("DistanceUnits") as Number;
             if(isNauticalActivity()) {
-                unit = Properties.getValue("NauticalUnits");
+                unit = Properties.getValue("NauticalUnits") as Number;
             }
 
             if(unit == System.UNIT_METRIC) {
@@ -139,16 +143,16 @@ public class SportData {
 
 
     public function create() as Void {
-        var name = Properties.getValue("Name");
-        sport = Properties.getValue("Sport");
-        var subSport = Properties.getValue("SubSport");
+        var name = Properties.getValue("Name") as String;
+        sport = Properties.getValue("Sport") as Number;
+        var subSport = Properties.getValue("SubSport") as Number;
 
 
         if(!isStarted) {
             session = ActivityRecording.createSession({
-                 :name=>name,
-                 :sport=>sport,
-                 :subSport=>subSport
+                 :name=>name as String,
+                 :sport=>sport as Activity.Sport,
+                 :subSport=>subSport as Activity.SubSport,
            });
         }
     }
@@ -166,7 +170,9 @@ public class SportData {
                 Attention.playTone(Attention.TONE_START);
             }
             autoPausedByAutopause = false;
-            return session.start();
+            if(session != null) {
+                return session.start();
+            }
         }
         return false;
     }
@@ -182,7 +188,9 @@ public class SportData {
             if(Attention has :playTone && System.getDeviceSettings().tonesOn) {
                 Attention.playTone(Attention.TONE_STOP);
             }
-            return session.stop();
+            if(session != null) {
+                return session.stop();
+            }
         }
         return false;
     }
@@ -190,7 +198,11 @@ public class SportData {
 
     public function save() as Boolean {
         if(session != null && isStarted && !isRecording()) {
-            var retVal = session.save();
+            var retVal = false;
+            if(session != null) {
+                retVal = session.save();
+            }
+            
             initialize();
             return retVal;
         }
@@ -199,18 +211,19 @@ public class SportData {
 
 
     public function lap() as Boolean {
-        var isLapActive = Properties.getValue("LapActivated");
-        if(isLapActive && session != null && isStarted && isRecording()) {
+        if(Properties.getValue("LapActivated") as Boolean && session != null && isStarted && isRecording()) {
             if(info != null) {
                 if(info.timerTime != null) {
-                    lastLapTime = info.timerTime - lapTimestamp;
-                    lapTimestamp = info.timerTime;
+                    var timerTime = info.timerTime as Number;
+                    lastLapTime = timerTime - lapTimestamp;
+                    lapTimestamp = timerTime;
                     avgLapTime = (avgLapTime*lapCount + lastLapTime) / (lapCount + 1);
                 }
                 
                 if(info.elapsedDistance != null) {
-                    lastLapDistance = info.elapsedDistance - lapDistanceStamp;
-                    lapDistanceStamp = info.elapsedDistance;
+                    var elapsedDistance = info.elapsedDistance as Float;
+                    lastLapDistance = elapsedDistance - lapDistanceStamp;
+                    lapDistanceStamp = elapsedDistance;
                 }
             }
             lapCount += 1;
@@ -220,7 +233,9 @@ public class SportData {
             if(Attention has :playTone && System.getDeviceSettings().tonesOn) {
                 Attention.playTone(Attention.TONE_LAP);
             }
-            return session.addLap();
+            if(session != null) {
+                return session.addLap();
+            }
         }
         return false;
     }
@@ -238,7 +253,10 @@ public class SportData {
             if(Attention has :playTone && System.getDeviceSettings().tonesOn) {
                 Attention.playTone(Attention.TONE_RESET);
             }
-            var retVal = session.discard();
+            var retVal = false;
+            if(session != null) {
+                retVal = session.discard();
+            }
             initialize();
             return retVal;
         }
@@ -246,7 +264,7 @@ public class SportData {
     }
 
 
-    public function setSensors() {
+    public function setSensors() as Void {
         Sensor.setEnabledSensors([
             Sensor.SENSOR_BIKESPEED,
             Sensor.SENSOR_BIKECADENCE,
@@ -264,12 +282,14 @@ public class SportData {
         if(
             info == null ||
             [25, 26].indexOf(request) != -1 && sensor == null   // If requires Sensor, and value is null
-        ) { return ["0", "null"];}
+        ) {
+            return ["0", "null"];
+        }
 
         
         switch(request) {
             case 0: // timer
-                return [formatTime(info.timerTime), Strings.getString("Timer")] as Array<String>;
+                return [formatTime(info.timerTime as Number?), Strings.getString("Timer")] as Array<String>;
             case 1: // lap timer
                 return [formatTime(lapTime), Strings.getString("LapTimer")] as Array<String>;
             case 2: // last lap
@@ -282,99 +302,102 @@ public class SportData {
                 }
                 return [formatTime(Time.now().subtract(info.startTime).value() * 1000), Strings.getString("ElapsedTime")] as Array<String>;
             case 5: // distance
-                return [formatDistance(info.elapsedDistance), Strings.getString("Distance")] as Array<String>;
+                return [formatDistance(info.elapsedDistance as Float?), Strings.getString("Distance")] as Array<String>;
             case 6: // lap distance
                 return [formatDistance(lapDistance), Strings.getString("LapDistance")] as Array<String>;
             case 7: // last lap distance
                 return [formatDistance(lastLapDistance), Strings.getString("LastLapDistance")] as Array<String>;
             case 8: // pace
-                return [formatPace(info.currentSpeed), Strings.getString("Pace")] as Array<String>;
+                return [formatPace(info.currentSpeed as Float?), Strings.getString("Pace")] as Array<String>;
             case 9: // average pace
                 if(info.timerTime == null || info.elapsedDistance == null) {
                     return ["--:--", Strings.getString("AveragePace")] as Array<String>;
                 }
-                return [formatPace(1000.0 * info.elapsedDistance / info.timerTime), Strings.getString("AveragePace")] as Array<String>;
+                return [formatPace(1000f*info.elapsedDistance/info.timerTime), Strings.getString("AveragePace")] as Array<String>;
             case 10: // average lap pace
                 if(lapTime <= 0) {
                     return ["--:--", Strings.getString("AverageLapPace")] as Array<String>;
                 }
-                return [formatPace( 1000.0 * lapDistance.toFloat() / lapTime.toFloat() ), Strings.getString("AverageLapPace")] as Array<String>;
+                return [formatPace( 1000f*lapDistance.toFloat()/lapTime.toFloat() ), Strings.getString("AverageLapPace")] as Array<String>;
             case 11: // last lap pace
                 if(lastLapTime <= 0) {
                     return ["--:--", Strings.getString("LastLapPace")] as Array<String>;
                 }
-                return [formatPace( 1000.0 * lastLapDistance / lastLapTime ), Strings.getString("LastLapPace")] as Array<String>;
+                return [formatPace( 1000f*lastLapDistance/lastLapTime ), Strings.getString("LastLapPace")] as Array<String>;
             case 12: // max pace
-                return [formatPace(info.maxSpeed), Strings.getString("MaxPace")] as Array<String>;
+                return [formatPace(info.maxSpeed as Float?), Strings.getString("MaxPace")] as Array<String>;
             case 13: // speed
-                return [formatSpeed(info.currentSpeed), Strings.getString("Speed")] as Array<String>;
+                return [formatSpeed(info.currentSpeed as Float?), Strings.getString("Speed")] as Array<String>;
             case 14: // average speed
                 if(info.timerTime == null || info.elapsedDistance == null) {
                     return ["0.0", Strings.getString("AverageSpeed")] as Array<String>;
                 }
-                return [formatSpeed(1000.0 * info.elapsedDistance / info.timerTime), Strings.getString("AverageSpeed")] as Array<String>;
+                return [formatSpeed(1000f*info.elapsedDistance/info.timerTime), Strings.getString("AverageSpeed")] as Array<String>;
             case 15: // average lap speed
                 if(lapTime <= 0) {
                     return ["0.0", Strings.getString("AverageLapSpeed")] as Array<String>;
                 }
-                return [formatSpeed( 1000.0 * lapDistance.toFloat() / lapTime.toFloat() ), Strings.getString("AverageLapSpeed")] as Array<String>;
+                return [formatSpeed( 1000f*lapDistance.toFloat()/lapTime.toFloat() ), Strings.getString("AverageLapSpeed")] as Array<String>;
             case 16: // last lap speed
                 if(lastLapTime <= 0) {
                     return ["--:--", Strings.getString("LastLapSpeed")] as Array<String>;
                 }
-                return [formatSpeed( (1000.0 * lastLapDistance / lastLapTime) ), Strings.getString("LastLapSpeed")] as Array<String>;
+                return [formatSpeed( (1000f*lastLapDistance/lastLapTime) ), Strings.getString("LastLapSpeed")] as Array<String>;
             case 17: // max speed
-                return [formatSpeed(info.maxSpeed), Strings.getString("MaxSpeed")] as Array<String>;
+                return [formatSpeed(info.maxSpeed as Float?), Strings.getString("MaxSpeed")] as Array<String>;
             case 18: // heart rate
-                return [formatValue(info.currentHeartRate, "%.1d"), Strings.getString("HeartRate")] as Array<String>;
+                return [formatValue(info.currentHeartRate as Number?, "%.1d"), Strings.getString("HeartRate")] as Array<String>;
             case 31: // heart rate graphical
-                return [formatValue(info.currentHeartRate, "%.1d"), Strings.getString("HeartRateColor")] as Array<String>;
+                return [formatValue(info.currentHeartRate as Number?, "%.1d"), Strings.getString("HeartRateColor")] as Array<String>;
             case 19: // average heart rate
-                return [formatValue(info.averageHeartRate, "%.1d"), Strings.getString("AverageHeartRate")] as Array<String>;
+                return [formatValue(info.averageHeartRate as Number?, "%.1d"), Strings.getString("AverageHeartRate")] as Array<String>;
             case 20: // max heart rate
-                return [formatValue(info.maxHeartRate, "%.1d"), Strings.getString("MaxHeartRate")] as Array<String>;
+                return [formatValue(info.maxHeartRate as Number?, "%.1d"), Strings.getString("MaxHeartRate")] as Array<String>;
             case 21: // temperature
                 var sensorSample = SensorHistory.getTemperatureHistory({:period => 1}).next();
                 var value = null;
                 if(sensorSample != null) {
-                    value = sensorSample.data;
+                    value = sensorSample.data as Float?;
                 }
                 return [formatValue(value, "%.1f"), Strings.getString("Temperature")] as Array<String>;
             case 22: // altitude
-                return [formatDistance(info.altitude), Strings.getString("Altitude")] as Array<String>;
+                return [formatDistance(info.altitude as Float?), Strings.getString("Altitude")] as Array<String>;
             case 23: // total ascent
-                return [formatDistance(info.totalAscent), Strings.getString("TotalAscent")] as Array<String>;
+                return [formatDistance(info.totalAscent as Number?), Strings.getString("TotalAscent")] as Array<String>;
             case 24: // total descent
-                return [formatDistance(info.totalDescent), Strings.getString("TotalDescent")] as Array<String>;
+                return [formatDistance(info.totalDescent as Number?), Strings.getString("TotalDescent")] as Array<String>;
             case 25: // compass
+                var heading = null;
                 if(sensor.heading != null) {
-                    return [formatValue(sensor.heading*180f/Math.PI, "%.1d"), Strings.getString("Compass")] as Array<String>;
+                    heading = sensor.heading*180f/Math.PI as Float;
                 }
-                return [formatValue(null, "%.1f"), Strings.getString("Compass")] as Array<String>;
+                return [formatValue(heading, "%.1f"), Strings.getString("Compass")] as Array<String>;
             case 26: // cadence
-                return [formatValue(sensor.cadence, "%.1d"), Strings.getString("Cadence")] as Array<String>;
+                return [formatValue(sensor.cadence as Number?, "%.1d"), Strings.getString("Cadence")] as Array<String>;
             case 27: // calories
-                return [formatValue(info.calories, "%.1d"), Strings.getString("Calories")] as Array<String>;
+                return [formatValue(info.calories as Number?, "%.1d"), Strings.getString("Calories")] as Array<String>;
             case 28: // battery
                 return [formatValue(System.getSystemStats().battery, "%.1f"), Strings.getString("Battery")] as Array<String>;
             case 29: // lapCount
-                return [formatValue(lapCount, "%.1d"), Strings.getString("LapCount")] as Array<String>;
+                return [formatValue(lapCount as Float, "%.1d"), Strings.getString("LapCount")] as Array<String>;
             case 30: // time of day
                 var time = System.getClockTime();
                 var seconds = time.hour*3600 + time.min * 60 + time.sec;
                 return [formatTime(seconds*1000), Strings.getString("TimeOfDay")] as Array<String>;
             case 32: // power
-                return [formatValue(info.currentPower, "%.1d"), Strings.getString("Power")] as Array<String>;
+                return [formatValue(info.currentPower as Number?, "%.1d"), Strings.getString("Power")] as Array<String>;
             case 33: // raw pressure
+                var rawPressure = null;
                 if(info.rawAmbientPressure != null) {
-                    return [formatValue(info.rawAmbientPressure/100f, "%.1f"), Strings.getString("RawPressure")] as Array<String>;
+                    rawPressure = info.rawAmbientPressure/100f as Float;
                 }
-                return [formatValue(null, "%.1d"), Strings.getString("RawPressure")] as Array<String>;
+                return [formatValue(rawPressure, "%.1d"), Strings.getString("RawPressure")] as Array<String>;
             case 34: // sea pressure
+                var seaPressure = null;
                 if(info.meanSeaLevelPressure != null) {
-                    return [formatValue(info.meanSeaLevelPressure/100f, "%.1f"), Strings.getString("SeaPressure")] as Array<String>;
+                    seaPressure = info.meanSeaLevelPressure/100f as Float;
                 }
-                return [formatValue(null, "%.1d"), Strings.getString("SeaPressure")] as Array<String>;
+                return [formatValue(seaPressure, "%.1d"), Strings.getString("SeaPressure")] as Array<String>;
         }
 
         return ["--", "null"];
@@ -388,7 +411,7 @@ public class SportData {
     // Format functions     |
     //                      V
 
-    private function formatTime(param_time as Number or Null) as String {
+    private function formatTime(param_time as Number?) as String {
         if(param_time == null || param_time == 0) {
             return "00:00";
         }
@@ -411,7 +434,7 @@ public class SportData {
     }
 
 
-    private function formatDistance(param_distance as Float or Null) as String {
+    private function formatDistance(param_distance as Float?) as String {
         if(param_distance == null || param_distance <= 0) {
     		return "0";
     	}
@@ -439,7 +462,7 @@ public class SportData {
     }
 
 
-    private function formatPace(param_speed as Float or Null) as String {
+    private function formatPace(param_speed as Float?) as String {
         if(param_speed == null || param_speed < 0.5) {
     		return "--:--";
     	}
@@ -461,7 +484,7 @@ public class SportData {
     }
 
 
-    private function formatSpeed(param_speed as Float or Null) as String {
+    private function formatSpeed(param_speed as Float?) as String {
         if(param_speed == null || param_speed <= 0) {
     		return "0.0";
     	}
@@ -481,7 +504,7 @@ public class SportData {
     }
 
 
-    private function formatTemperature(param_temperature as Float or Null) as String {
+    private function formatTemperature(param_temperature as Float?) as String {
         if(param_temperature == null || param_temperature <= 0) {
     		return "--";
     	}
@@ -496,7 +519,7 @@ public class SportData {
     }
 
 
-    private function formatValue(param_value as Float or Null, param_format as String) as String {
+    private function formatValue(param_value as Float?, param_format as String) as String {
         if(param_value == null) {
     		return "--";
     	}

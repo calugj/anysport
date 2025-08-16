@@ -5,24 +5,24 @@ import Toybox.Lang;
 
 public class MainView extends WatchUi.View {
 
-    private var sportData;
+    private var sportData as SportData;
 
-    private var layout;
-    private var pageNumber;
+    private var layout as Layout;
+    private var pageNumber as Number;
     private var datafields as Array<Datafield> = new Array<Datafield> [6] ;
-    private var fieldsNumber;
-    public var ring;
-    public var showGreenRing;
-    public var topBanner;
+    private var fieldsNumber as Number;
+    public var ring as Ring;
+    public var showGreenRing as Boolean;
+    public var topBanner as TopBanner;
 
-    public function initialize(param_pageNumber) {
+    public function initialize(param_pageNumber as Number) {
         View.initialize();
 
-        sportData = SportData.getInstance();
+        sportData = SportData.getInstance() as SportData;
         pageNumber = param_pageNumber;
         
         layout = new Layout(1);
-        
+        fieldsNumber = 1;
         ring = new Ring();
         showGreenRing = false;
         topBanner = new TopBanner();
@@ -33,7 +33,7 @@ public class MainView extends WatchUi.View {
         var width = dc.getWidth();
         var height = dc.getHeight();
 
-        fieldsNumber = Properties.getValue("FieldsPage" + pageNumber.toString());
+        fieldsNumber = Properties.getValue("FieldsPage" + pageNumber.toString()) as Number;
         layout.initialize(fieldsNumber);
 
         var choice = [null];
@@ -62,7 +62,7 @@ public class MainView extends WatchUi.View {
 
         for (var i = 0 ; i < fieldsNumber ; i += 1) {
             var request = "Field" + (i+1).toString() + "Page" + pageNumber.toString();
-            var index = Properties.getValue(request);
+            var index = Properties.getValue(request) as Number;
             if(index == 31) {
                 datafields[i] = new HeartRateDatafield(choice[i][0], choice[i][1], choice[i][2], choice[i][3], sportData.getMetric(index));
             }
@@ -102,7 +102,7 @@ public class MainView extends WatchUi.View {
         View.onUpdate(dc);
         dc.setAntiAlias(true);
 
-        var refreshRate = RefreshRate.getInstance();
+        var refreshRate = RefreshRate.getInstance() as RefreshRate;
         if(
             refreshRate.getRefresh() == RefreshRate.REFRESH_LOW &&
             (TopBanner.bannerAnimation || Ring.ringAnimation)
@@ -120,7 +120,7 @@ public class MainView extends WatchUi.View {
 
         for(var i = 0 ; i < fieldsNumber ; i += 1) {
             var request = "Field" + (i+1).toString() + "Page" + pageNumber.toString();
-            var index = Properties.getValue(request);
+            var index = Properties.getValue(request) as Number;
             datafields[i].updateValue(sportData.getMetric(index));
             datafields[i].draw(dc);
         }

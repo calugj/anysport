@@ -6,21 +6,21 @@ import Toybox.Position;
 public class TopBanner {
     
     // 0 = hidden, 1 = lowering, 2 = showing, 3 = lifting
-    var status =  0;
-    var counter = 0;
+    var status as Number;
+    var counter as Number;
 
-    public static var bannerAnimation = false;
+    public static var bannerAnimation as Boolean;
     private static const FRAMES = 30;
     private static const FRAMES_ANIM = 6;
 
     private static const SLIDER_ANIM = 30;
-    private var sliderCounter = 0;
-    private var beep;
+    private var sliderCounter as Number;
+    private var beep as Boolean;
 
     public function initialize() {
         status = 0;
-
         counter = 0;
+        bannerAnimation = false;
         sliderCounter = 0;
         beep = false;
 
@@ -31,7 +31,7 @@ public class TopBanner {
     }
     
 
-    public function setStatus(param_status as Number) {
+    public function setStatus(param_status as Number) as Void {
         if(status == 0 && param_status == 3) {
             return;
         }
@@ -61,7 +61,7 @@ public class TopBanner {
         var width = dc.getWidth();
         var height = dc.getHeight();
 
-        var backgroundColor = Properties.getValue("BackgroundColor");
+        var backgroundColor = Properties.getValue("BackgroundColor") as Number;
         var foregroundColor;
         var red;
         var green;
@@ -98,7 +98,7 @@ public class TopBanner {
             dc.setPenWidth(width*0.02);
             
 
-            if(Properties.getValue("Satellites") == 0) {
+            if(Properties.getValue("Satellites") as Number == 0) {
                 dc.setColor(foregroundColor, Graphics.COLOR_TRANSPARENT);
                 dc.drawText(width/2, y + bannerHeight*0.65, Graphics.FONT_XTINY, Strings.getString("PressStart"), Graphics.TEXT_JUSTIFY_CENTER | Graphics.TEXT_JUSTIFY_VCENTER);
             } else {

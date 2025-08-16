@@ -34,8 +34,14 @@ public class DevView extends WatchUi.View {
         dc.drawText(x, y + 3*Graphics.getFontHeight(Graphics.FONT_XTINY), Graphics.FONT_XTINY, Strings.getString("Display") + dev.screenWidth.toString() + "×" + dev.screenHeight.toString() + " @20Hz", Graphics.TEXT_JUSTIFY_LEFT | Graphics.TEXT_JUSTIFY_VCENTER);
         dc.drawText(x, y + 4*Graphics.getFontHeight(Graphics.FONT_XTINY), Graphics.FONT_XTINY, Strings.getString("Part") + dev.partNumber, Graphics.TEXT_JUSTIFY_LEFT | Graphics.TEXT_JUSTIFY_VCENTER);
 
-        var uid1 = dev.uniqueIdentifier.substring(0, dev.uniqueIdentifier.length()/2);
-        var uid2 = dev.uniqueIdentifier.substring(dev.uniqueIdentifier.length()/2, dev.uniqueIdentifier.length());
+        var uid = dev.uniqueIdentifier;
+        var uid1 = "";
+        var uid2 = "";
+        if(uid != null) {
+            uid1 = uid.substring(0, uid.length()/2);
+            uid2 = uid.substring(uid.length()/2, uid.length());
+        }
+        
         dc.drawText(x, y + 5*Graphics.getFontHeight(Graphics.FONT_XTINY), Graphics.FONT_XTINY, Strings.getString("UID") + uid1, Graphics.TEXT_JUSTIFY_LEFT | Graphics.TEXT_JUSTIFY_VCENTER);
         dc.drawText(x, y + 6*Graphics.getFontHeight(Graphics.FONT_XTINY), Graphics.FONT_XTINY, "        " + uid2, Graphics.TEXT_JUSTIFY_LEFT | Graphics.TEXT_JUSTIFY_VCENTER);
         

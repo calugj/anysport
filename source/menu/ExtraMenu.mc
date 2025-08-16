@@ -10,7 +10,7 @@ public class ExtraMenu extends MenuBaseClass {
         var itemHeight = (System.getDeviceSettings().screenHeight)*0.25;
         MenuBaseClass.initialize(title, itemHeight.toNumber(), {:theme => null, :dividerType => null});
 
-        addItem(new CustomSwitchMenuItem(:autoPause, Strings.getString("Autopause"), null, Properties.getValue("Autopause")));
+        addItem(new CustomSwitchMenuItem(:autoPause, Strings.getString("Autopause"), null, Properties.getValue("Autopause") as Boolean));
     }
 }
 
@@ -22,12 +22,12 @@ public class ExtraMenuDelegate extends Menu2InputDelegate {
     }
 
     public function onSelect(item as MenuItem) as Void {
-        switch(item.getId()) {
+        switch(item.getId() as Object) {
             case :autoPause:
-                var flag = Properties.getValue("Autopause");
+                var flag = Properties.getValue("Autopause") as Boolean;
                 Properties.setValue("Autopause", !flag);
                 var menu = new ExtraMenu();
-                menu = MenuUtils.setFocus(menu, item.getId());
+                menu = MenuUtils.setFocus(menu as ExtraMenu, item.getId() as Object);
                 WatchUi.switchToView(menu, self, WatchUi.SLIDE_IMMEDIATE);
                 break;
         }

@@ -4,16 +4,16 @@ import Toybox.Application;
 import Toybox.Lang;
 
 public class Datafield {
-    protected var width = 0;
-    protected var x = 0;
-    protected var height = 0;
-    protected var y = 0;
-    protected var value as Array<String> = new Array<String> [2];
+    protected var width as Number;
+    protected var x as Number;
+    protected var height as Number;
+    protected var y as Number;
+    protected var value as Array<String>;
 
-    protected var foregroundColor = 0;
-    protected var backgroundColor = 0;
+    protected var foregroundColor as Number = 0;
+    protected var backgroundColor as Number  = 0;
 
-    public function initialize(param_x, param_y, param_width, param_height, param_value) {
+    public function initialize(param_x as Number, param_y as Number, param_width as Number, param_height as Number, param_value as Array<String>) {
         width = param_width;
         height = param_height;
         x = param_x;
@@ -23,8 +23,8 @@ public class Datafield {
         doStuff();
     }
 
-    public function doStuff() {
-        backgroundColor = Properties.getValue("BackgroundColor");
+    public function doStuff() as Void {
+        backgroundColor = Properties.getValue("BackgroundColor") as Number;
     }
 
     public function updateValue(param_value as Array<String>) as Void {
@@ -36,7 +36,7 @@ public class Datafield {
         }
     }
 
-    public function draw(dc as Dc) {
+    public function draw(dc as Dc) as Void {
         dc.setColor(foregroundColor, Graphics.COLOR_TRANSPARENT);
         dc.drawText(x + width/2, y + height*0.18, Graphics.FONT_XTINY, value[1], Graphics.TEXT_JUSTIFY_CENTER | Graphics.TEXT_JUSTIFY_VCENTER);
     }

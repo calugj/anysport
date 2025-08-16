@@ -1,9 +1,10 @@
 import Toybox.Graphics;
+import Toybox.Lang;
 import Toybox.WatchUi;
 
 public class SimpleDatafield extends Datafield {
 
-    public function initialize(param_x, param_y, param_width, param_height, param_value) {
+    public function initialize(param_x as Number, param_y as Number, param_width as Number, param_height as Number, param_value as Array<String>) {
         Datafield.initialize(param_x, param_y, param_width, param_height, param_value);
     }
     

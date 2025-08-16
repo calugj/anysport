@@ -5,15 +5,15 @@ import Toybox.Lang;
 public class CustomIconMenuItem extends WatchUi.CustomMenuItem {
 
     private var label as String;
-    private var sublabel as String;
+    private var sublabel as String?;
     private var icon as BitmapResource;
 
-    private var BACKGROUND_COLOR;
-    private var DEVICE_FAMILY;
-    private var FOREGROUND_COLOR;
-    private var FOCUSED;
+    private var BACKGROUND_COLOR as Number;
+    private var DEVICE_FAMILY as Number;
+    private var FOREGROUND_COLOR as Number;
+    private var FOCUSED as FontDefinition;
 
-    public function initialize(param_id, param_label as String, param_sublabel as String or Null, param_icon as BitmapResource) {
+    public function initialize(param_id as Object, param_label as String, param_sublabel as String?, param_icon as BitmapResource) {
         CustomMenuItem.initialize(param_id, {});
         sublabel = param_sublabel;
         label = param_label;

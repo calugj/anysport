@@ -28,7 +28,7 @@ public class DonationsMenuDelegate extends Menu2InputDelegate {
     }
 
     public function onSelect(item as MenuItem) as Void {
-        switch(item.getId()) {
+        switch(item.getId() as Object) {
             case :e2:
                 Communications.openWebPage("https://www.paypal.com/donate/?hosted_button_id=PH9A4UBNY2LS4", null ,null);
                 break;

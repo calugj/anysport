@@ -5,27 +5,30 @@ import Toybox.Lang;
 
 public class SummaryView extends WatchUi.View {
 
-    private var BACKGROUND_COLOR;
-    private var FOREGROUND_COLOR;
-    private var ACCENT_COLOR;
+    private var BACKGROUND_COLOR as Number;
+    private var FOREGROUND_COLOR as Number;
+    private var ACCENT_COLOR as Number;
     private var timer as Array<String>;
     private var distance as Array<String>;
     
-    public function initialize(mTimer, mDistance) {
+    public function initialize(mTimer as Array<String>, mDistance as Array<String>) {
         View.initialize();
         timer = mTimer;
         distance = mDistance;
+        BACKGROUND_COLOR = 0;
+        FOREGROUND_COLOR = 0;
+        ACCENT_COLOR = 0;
     }
 
     public function onLayout(dc as Dc) as Void {
-        BACKGROUND_COLOR = Properties.getValue("BackgroundColor");
+        BACKGROUND_COLOR = Properties.getValue("BackgroundColor") as Number;
         if(BACKGROUND_COLOR == Graphics.COLOR_BLACK) {
             FOREGROUND_COLOR = Graphics.COLOR_WHITE;
         } else {
             FOREGROUND_COLOR = Graphics.COLOR_BLACK;
         }
 
-        ACCENT_COLOR = Properties.getValue("AccentColor");
+        ACCENT_COLOR = Properties.getValue("AccentColor") as Number;
         if(ACCENT_COLOR == FOREGROUND_COLOR) {
             ACCENT_COLOR = Graphics.COLOR_TRANSPARENT;
         }

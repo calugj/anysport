@@ -4,7 +4,7 @@ import Toybox.Application;
 
 public class CustomSportNumberPickerDelegate extends CustomNumberPickerDelegate {
     
-    public function initialize(mView , mInitialValue as Numeric, mMIN_VAL as Numeric, mMAX_VAL as Numeric, mIncrement as Numeric) {
+    public function initialize(mView as CustomNumberPicker, mInitialValue as Numeric, mMIN_VAL as Numeric, mMAX_VAL as Numeric, mIncrement as Numeric) {
         CustomNumberPickerDelegate.initialize(mView , mInitialValue, mMIN_VAL, mMAX_VAL, mIncrement);
     }
 
@@ -14,13 +14,13 @@ public class CustomSportNumberPickerDelegate extends CustomNumberPickerDelegate 
 
         var menu = new CustomActivityMenu();
         menu = MenuUtils.setFocus(menu, :sport);
-        WatchUi.switchToView(menu, new CustomActivityMenuDelegate(), WatchUi.SLIDE_RIGHT);
+        WatchUi.switchToView(menu as CustomActivityMenu, new CustomActivityMenuDelegate(), WatchUi.SLIDE_RIGHT);
     }
 }
 
 public class CustomSubsportNumberPickerDelegate extends CustomNumberPickerDelegate {
     
-    public function initialize(mView , mInitialValue as Numeric, mMIN_VAL as Numeric, mMAX_VAL as Numeric, mIncrement as Numeric) {
+    public function initialize(mView as CustomNumberPicker, mInitialValue as Numeric, mMIN_VAL as Numeric, mMAX_VAL as Numeric, mIncrement as Numeric) {
         CustomNumberPickerDelegate.initialize(mView , mInitialValue, mMIN_VAL, mMAX_VAL, mIncrement);
     }
 
@@ -30,6 +30,6 @@ public class CustomSubsportNumberPickerDelegate extends CustomNumberPickerDelega
 
         var menu = new CustomActivityMenu();
         menu = MenuUtils.setFocus(menu, :subSport);
-        WatchUi.switchToView(menu, new CustomActivityMenuDelegate(), WatchUi.SLIDE_RIGHT);
+        WatchUi.switchToView(menu as CustomActivityMenu, new CustomActivityMenuDelegate(), WatchUi.SLIDE_RIGHT);
     }
 }

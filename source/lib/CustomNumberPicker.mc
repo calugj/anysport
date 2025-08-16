@@ -188,7 +188,7 @@ public class CustomNumberPickerDelegate extends WatchUi.InputDelegate {
         return;
     }
 
-    public function getValue() as Number {
+    public function getValue() as Numeric {
         return number;
     }
 

@@ -5,27 +5,31 @@ import Toybox.Application;
 public class Ring {
     
     // 0 = hidden, 1 = red, 2 = green, 3 = yellow
-    private var status =  0;
-    private var counter = 0;
+    private var status as Number;
+    private var counter as Number;
     private const FRAMES = 20;
-    private var anim = 0;
+    private var anim as Number;
 
-    public static var ringAnimation = false;
+    public static var ringAnimation as Boolean;
 
     private var lapValue as Array<Array<String>> = new Array<Array<String>> [2];
 
     public function initialize() {
         status = 0;
+        counter = 0;
+        anim = 0;
+        ringAnimation = false;
     }
 
-    public function setStatus(param_status as Number) {
+    public function setStatus(param_status as Number) as Void {
         status = param_status;
         counter = 0;
-        if(status == 3 && Properties.getValue("LapScreen")) {
+        if(status == 3 && Properties.getValue("LapScreen") as Boolean) {
             counter = -20;
-            var field = Properties.getValue("LapScreenField");
-            lapValue[0] = SportData.getInstance().getMetric(2);
-            lapValue[1] = SportData.getInstance().getMetric(field);
+            var field = Properties.getValue("LapScreenField") as Number;
+            var sportData = SportData.getInstance() as SportData;
+            lapValue[0] = sportData.getMetric(2);
+            lapValue[1] = sportData.getMetric(field);
         }
         anim = 0;
         

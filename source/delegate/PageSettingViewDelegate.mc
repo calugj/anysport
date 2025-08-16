@@ -5,9 +5,9 @@ import Toybox.Application;
 
 public class PageSettingViewDelegate extends WatchUi.BehaviorDelegate {
     
-    private var pageNumber;
+    private var pageNumber as Number;
 
-    public function initialize(param_view, param_pageNumber) {
+    public function initialize(param_view as PageSettingView, param_pageNumber as Number) {
         BehaviorDelegate.initialize();
 
         pageNumber = param_pageNumber;
@@ -28,7 +28,7 @@ public class PageSettingViewDelegate extends WatchUi.BehaviorDelegate {
         var menu = new MainMenu();
         menu = MenuUtils.setFocus(menu, :datafields);
 
-        WatchUi.switchToView(menu, new MainMenuDelegate(), WatchUi.SLIDE_RIGHT);
+        WatchUi.switchToView(menu as MainMenu, new MainMenuDelegate(), WatchUi.SLIDE_RIGHT);
         WatchUi.requestUpdate();
 
         return true;

@@ -26,7 +26,7 @@ public class AddPageView extends WatchUi.View {
         var length = width*0.25;
         var depth = width*0.03;
 
-        var color = Properties.getValue("AccentColor");
+        var color = Properties.getValue("AccentColor") as Number;
         if(color == Graphics.COLOR_WHITE || color == Graphics.COLOR_TRANSPARENT) {
             color = Graphics.COLOR_BLACK;
         }

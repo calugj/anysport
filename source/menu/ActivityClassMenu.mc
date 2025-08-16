@@ -15,21 +15,21 @@ public class ActivityClassMenu extends MenuBaseClass {
         var subSport = Properties.getValue("CustomSubsport");
         var custom = name + ", " + sport + ", " + subSport;
 
-        addItem(new CustomIconMenuItem(:running, Strings.getString("Running"), "9 " + Strings.getString("Presets"), WatchUi.loadResource($.Rez.Drawables.Running)));
-        addItem(new CustomIconMenuItem(:cycling, Strings.getString("Cycling"), "17 " + Strings.getString("Presets"), WatchUi.loadResource($.Rez.Drawables.Cycling)));
-        addItem(new CustomIconMenuItem(:fitness, Strings.getString("Fitness"), "7 " + Strings.getString("Presets"), WatchUi.loadResource($.Rez.Drawables.Fitness)));
-        addItem(new CustomIconMenuItem(:swimming, Strings.getString("Swimming"), "3 " + Strings.getString("Presets"), WatchUi.loadResource($.Rez.Drawables.Swimming)));
-        addItem(new CustomIconMenuItem(:field, Strings.getString("Field"), "17 " + Strings.getString("Presets"), WatchUi.loadResource($.Rez.Drawables.Field)));
-        addItem(new CustomIconMenuItem(:training, Strings.getString("Training"), "10 " + Strings.getString("Presets"), WatchUi.loadResource($.Rez.Drawables.Training)));
-        addItem(new CustomIconMenuItem(:walking, Strings.getString("Walking"), "6 " + Strings.getString("Presets"), WatchUi.loadResource($.Rez.Drawables.Walking)));
-        addItem(new CustomIconMenuItem(:winter, Strings.getString("WinterSports"), "9 " + Strings.getString("Presets"), WatchUi.loadResource($.Rez.Drawables.Winter)));
-        addItem(new CustomIconMenuItem(:water, Strings.getString("WaterSports"), "15 " + Strings.getString("Presets"), WatchUi.loadResource($.Rez.Drawables.Water)));
-        addItem(new CustomIconMenuItem(:flying, Strings.getString("Flying"), "10 " + Strings.getString("Presets"), WatchUi.loadResource($.Rez.Drawables.Flying)));
-        addItem(new CustomIconMenuItem(:motorsport, Strings.getString("Motorsports"), "7 " + Strings.getString("Presets"), WatchUi.loadResource($.Rez.Drawables.Motorsports)));
-        addItem(new CustomIconMenuItem(:climbing, Strings.getString("Climbing"), "4 " + Strings.getString("Presets"), WatchUi.loadResource($.Rez.Drawables.Climbing)));
-        addItem(new CustomIconMenuItem(:diving, Strings.getString("Diving"), "6 " + Strings.getString("Presets"), WatchUi.loadResource($.Rez.Drawables.Diving)));
-        addItem(new CustomIconMenuItem(:other, Strings.getString("Other"), "17 " + Strings.getString("Presets"), WatchUi.loadResource($.Rez.Drawables.Other)));
-        addItem(new CustomIconMenuItem(:custom, Strings.getString("Custom"), custom, WatchUi.loadResource($.Rez.Drawables.Custom)));
+        addItem(new CustomIconMenuItem(:running, Strings.getString("Running"), "9 " + Strings.getString("Presets"), WatchUi.loadResource($.Rez.Drawables.Running) as BitmapResource));
+        addItem(new CustomIconMenuItem(:cycling, Strings.getString("Cycling"), "17 " + Strings.getString("Presets"), WatchUi.loadResource($.Rez.Drawables.Cycling) as BitmapResource));
+        addItem(new CustomIconMenuItem(:fitness, Strings.getString("Fitness"), "7 " + Strings.getString("Presets"), WatchUi.loadResource($.Rez.Drawables.Fitness) as BitmapResource));
+        addItem(new CustomIconMenuItem(:swimming, Strings.getString("Swimming"), "3 " + Strings.getString("Presets"), WatchUi.loadResource($.Rez.Drawables.Swimming) as BitmapResource));
+        addItem(new CustomIconMenuItem(:field, Strings.getString("Field"), "17 " + Strings.getString("Presets"), WatchUi.loadResource($.Rez.Drawables.Field) as BitmapResource));
+        addItem(new CustomIconMenuItem(:training, Strings.getString("Training"), "10 " + Strings.getString("Presets"), WatchUi.loadResource($.Rez.Drawables.Training) as BitmapResource));
+        addItem(new CustomIconMenuItem(:walking, Strings.getString("Walking"), "6 " + Strings.getString("Presets"), WatchUi.loadResource($.Rez.Drawables.Walking) as BitmapResource));
+        addItem(new CustomIconMenuItem(:winter, Strings.getString("WinterSports"), "9 " + Strings.getString("Presets"), WatchUi.loadResource($.Rez.Drawables.Winter) as BitmapResource));
+        addItem(new CustomIconMenuItem(:water, Strings.getString("WaterSports"), "15 " + Strings.getString("Presets"), WatchUi.loadResource($.Rez.Drawables.Water) as BitmapResource));
+        addItem(new CustomIconMenuItem(:flying, Strings.getString("Flying"), "10 " + Strings.getString("Presets"), WatchUi.loadResource($.Rez.Drawables.Flying) as BitmapResource));
+        addItem(new CustomIconMenuItem(:motorsport, Strings.getString("Motorsports"), "7 " + Strings.getString("Presets"), WatchUi.loadResource($.Rez.Drawables.Motorsports) as BitmapResource));
+        addItem(new CustomIconMenuItem(:climbing, Strings.getString("Climbing"), "4 " + Strings.getString("Presets"), WatchUi.loadResource($.Rez.Drawables.Climbing) as BitmapResource));
+        addItem(new CustomIconMenuItem(:diving, Strings.getString("Diving"), "6 " + Strings.getString("Presets"), WatchUi.loadResource($.Rez.Drawables.Diving) as BitmapResource));
+        addItem(new CustomIconMenuItem(:other, Strings.getString("Other"), "17 " + Strings.getString("Presets"), WatchUi.loadResource($.Rez.Drawables.Other) as BitmapResource));
+        addItem(new CustomIconMenuItem(:custom, Strings.getString("Custom"), custom, WatchUi.loadResource($.Rez.Drawables.Custom) as BitmapResource));
     }
 }
 
@@ -41,7 +41,7 @@ public class ActivityClassMenuDelegate extends Menu2InputDelegate {
     }
 
     public function onSelect(item as MenuItem) as Void {
-        switch(item.getId()) {
+        switch(item.getId() as Object) {
             case :running:
                 WatchUi.pushView(new RunningMenu(), new SetSportMenuDelegate(), WatchUi.SLIDE_LEFT);
                 break;
@@ -114,23 +114,23 @@ public class SetSportMenuDelegate extends Menu2InputDelegate {
     public function onSelect(item as MenuItem) as Void {
         var id = item.getId() as String;
 
-        var index_dot = id.find(".");
-        var index_comma = id.find(",");
+        var index_dot = id.find(".") as Number;
+        var index_comma = id.find(",") as Number;
 
-        Properties.setValue("Sport", id.substring(0, index_dot).toNumber());
-        Properties.setValue("SubSport", id.substring(index_dot + 1, index_comma).toNumber());
+        Properties.setValue("Sport", (id.substring(0, index_dot) as String ).toNumber());
+        Properties.setValue("SubSport", (id.substring(index_dot + 1, index_comma) as String ).toNumber());
         Properties.setValue("Name", id.substring(index_comma + 1, id.length()));
 
-        var sportData = SportData.getInstance();
+        var sportData = SportData.getInstance() as SportData;
         if(!sportData.isRecordingStarted()) {
-            SportData.getInstance().create();
+            sportData.create();
         }
 
         onBack();
         onBack();
         var menu = new MainMenu();
         menu = MenuUtils.setFocus(menu, :class);
-        WatchUi.switchToView(menu, new MainMenuDelegate(), WatchUi.SLIDE_RIGHT);
+        WatchUi.switchToView(menu as MainMenu, new MainMenuDelegate(), WatchUi.SLIDE_RIGHT);
         WatchUi.requestUpdate();
     }
 

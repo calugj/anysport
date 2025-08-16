@@ -61,8 +61,8 @@ public class FieldSettingMenu extends MenuBaseClass {
 
 public class FieldSettingMenuDelegate extends Menu2InputDelegate {
     
-    var page;
-    var field;
+    var page as Number;
+    var field as Number;
     
     public function initialize(param_page as Number, param_field as Number) {
         Menu2InputDelegate.initialize();
@@ -73,7 +73,7 @@ public class FieldSettingMenuDelegate extends Menu2InputDelegate {
     public function onSelect(item as MenuItem) as Void {
         var id = item.getId();
         
-        Properties.setValue("Field" + field.toString() + "Page" + page.toString(), id);
+        Properties.setValue("Field" + field.toString() + "Page" + page.toString(), id as Number);
         onBack();
 
         WatchUi.requestUpdate();
@@ -100,7 +100,7 @@ public class LapFieldSettingMenuDelegate extends Menu2InputDelegate {
     }
 
     public function onSelect(item as MenuItem) as Void {
-        Properties.setValue("LapScreenField", item.getId());
+        Properties.setValue("LapScreenField", item.getId() as Number);
         onBack();
     }
 

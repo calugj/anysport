@@ -4,13 +4,13 @@ import Toybox.Lang;
 
 public class MenuBaseClass extends CustomMenu {
     
-    protected var ITEM_HEIGHT = 70;
-    protected var DEVICE_FAMILY;
-    protected var FOREGROUND_COLOR;
-    protected var BACKGROUND_COLOR;
-    protected var TITLE = "";
+    protected var ITEM_HEIGHT as Number;
+    protected var DEVICE_FAMILY as Number;
+    protected var FOREGROUND_COLOR as Number;
+    protected var BACKGROUND_COLOR as Number;
+    protected var TITLE as String;
 
-    public function initialize(title as String, itemHeight as Number, options as Dictionary) {
+    public function initialize(title as String, itemHeight as Number, options as Dictionary?) {
         DEVICE_FAMILY = DeviceFamily.getFamily();
         switch(DEVICE_FAMILY) {
             case DeviceFamily.F6:
@@ -42,7 +42,7 @@ public class MenuBaseClass extends CustomMenu {
         ITEM_HEIGHT = itemHeight;
         TITLE = title;
 
-        CustomMenu.initialize(ITEM_HEIGHT, BACKGROUND_COLOR, options);
+        CustomMenu.initialize(ITEM_HEIGHT, BACKGROUND_COLOR, options as Dictionary?);
     }
 
     public function drawTitle(dc as Dc) {

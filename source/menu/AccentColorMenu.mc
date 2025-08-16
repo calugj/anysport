@@ -28,7 +28,7 @@ public class AccentColorMenu extends MenuBaseClass {
         addItem(new CustomColorMenuItem(Graphics.COLOR_PINK, Strings.getString("COLOR_PINK"), "HEX " + Graphics.COLOR_PINK.format("%06X"), Graphics.COLOR_PINK));
         addItem(new CustomColorMenuItem(Graphics.COLOR_TRANSPARENT, Strings.getString("COLOR_TRANSPARENT"), "HEX " + Graphics.COLOR_TRANSPARENT.format("%06X"), Graphics.COLOR_TRANSPARENT));
         
-        MenuUtils.setFocus(self, Properties.getValue("AccentColor"));
+        MenuUtils.setFocus(self, Properties.getValue("AccentColor") as Number);
     }
 }
 
@@ -40,13 +40,13 @@ public class AccentColorMenuDelegate extends Menu2InputDelegate {
     }
 
     public function onSelect(item as MenuItem) as Void {
-        Properties.setValue("AccentColor", item.getId());
+        Properties.setValue("AccentColor", item.getId() as Number);
 
         var menu = new ThemeMenu();
         menu = MenuUtils.setFocus(menu, :accentColor);
 
         onBack();
-        WatchUi.switchToView(menu, new ThemeMenuDelegate(), WatchUi.SLIDE_RIGHT);
+        WatchUi.switchToView(menu as ThemeMenu, new ThemeMenuDelegate(), WatchUi.SLIDE_RIGHT);
         WatchUi.requestUpdate();
     }
 

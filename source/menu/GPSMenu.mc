@@ -35,7 +35,7 @@ public class GPSMenu extends MenuBaseClass {
             addItem(new CustomLabelSublabelMenuItem(Position.CONFIGURATION_SAT_IQ, "SatIQ", null));
         }
 
-        MenuUtils.setFocus(self, Properties.getValue("Satellites"));
+        MenuUtils.setFocus(self, Properties.getValue("Satellites") as Number);
     }
 }
 
@@ -47,7 +47,7 @@ public class GPSMenuDelegate extends Menu2InputDelegate {
     }
 
     public function onSelect(item as MenuItem) as Void {
-        var mode = item.getId();
+        var mode = item.getId() as Number;
         Properties.setValue("Satellites", mode);
 
         if(mode == 0) {

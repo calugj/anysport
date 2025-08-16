@@ -14,19 +14,19 @@ public class SaveMenu extends MenuBaseClass {
         var itemHeight = (System.getDeviceSettings().screenHeight)*0.25;
         MenuBaseClass.initialize(title, itemHeight.toNumber(), {:theme => null, :dividerType => null});
 
-        RefreshRate.getInstance().setRefreshRate(RefreshRate.REFRESH_HIGH);
+        (RefreshRate.getInstance() as RefreshRate).setRefreshRate(RefreshRate.REFRESH_HIGH);
         counter = 0;
         offset = 0;
 
-        addItem(new CustomIconMenuItem(:save, Strings.getString("Save"), null, WatchUi.loadResource($.Rez.Drawables.Save)));
-        addItem(new CustomIconMenuItem(:continue, Strings.getString("Continue"), null, WatchUi.loadResource($.Rez.Drawables.Play)));
-        addItem(new CustomIconMenuItem(:delete, Strings.getString("Delete"), null, WatchUi.loadResource($.Rez.Drawables.Delete)));
+        addItem(new CustomIconMenuItem(:save, Strings.getString("Save"), null, WatchUi.loadResource($.Rez.Drawables.Save) as BitmapResource));
+        addItem(new CustomIconMenuItem(:continue, Strings.getString("Continue"), null, WatchUi.loadResource($.Rez.Drawables.Play) as BitmapResource));
+        addItem(new CustomIconMenuItem(:delete, Strings.getString("Delete"), null, WatchUi.loadResource($.Rez.Drawables.Delete) as BitmapResource));
     }
 
     public function drawTitle(dc as Dc) {
         dc.setAntiAlias(true);
 
-        var sportData = SportData.getInstance();
+        var sportData = SportData.getInstance() as SportData;
         var timer = (sportData.getMetric(0) as Array<String>)[0];
         var distance = (sportData.getMetric(5) as Array<String>)[0];
 
@@ -62,7 +62,7 @@ public class SaveMenuDelegate extends Menu2InputDelegate {
     public function onSelect(item as MenuItem) as Void {
         var sportData = SportData.getInstance() as SportData;
 
-        switch(item.getId()) {
+        switch(item.getId() as Object) {
             case :save:
                 var timer = sportData.getMetric(0);
                 var distance = sportData.getMetric(5);
