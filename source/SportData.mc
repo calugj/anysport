@@ -361,7 +361,7 @@ public class SportData {
                 }
                 return [formatValue(value, "%.1f"), Strings.getString("Temperature")] as Array<String>;
             case 22: // altitude
-                return [formatDistance(info.altitude as Float?), Strings.getString("Altitude")] as Array<String>;
+                return [formatValue(info.altitude as Float?, "%.1d"), Strings.getString("Altitude")] as Array<String>;
             case 23: // total ascent
                 return [formatDistance(info.totalAscent as Number?), Strings.getString("TotalAscent")] as Array<String>;
             case 24: // total descent
