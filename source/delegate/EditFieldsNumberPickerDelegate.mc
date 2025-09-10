@@ -14,9 +14,5 @@ public class EditFieldsNumberPickerDelegate extends CustomNumberPickerDelegate {
     public function onConfirm() {
         Properties.setValue("FieldsPage" + pageNumber.toString(), getValue());
         WatchUi.popView(WatchUi.SLIDE_RIGHT);
-        var menu = new EditPageMenu(pageNumber);
-        MenuUtils.setFocus(menu, :editNumber);
-        WatchUi.switchToView(menu, new EditPageMenuDelegate(pageNumber), WatchUi.SLIDE_RIGHT);
-        WatchUi.requestUpdate();
     }
 }

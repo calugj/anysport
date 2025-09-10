@@ -128,10 +128,6 @@ public class SetSportMenuDelegate extends Menu2InputDelegate {
 
         onBack();
         onBack();
-        var menu = new MainMenu();
-        menu = MenuUtils.setFocus(menu, :class);
-        WatchUi.switchToView(menu as MainMenu, new MainMenuDelegate(), WatchUi.SLIDE_RIGHT);
-        WatchUi.requestUpdate();
     }
 
     public function onBack() as Void {

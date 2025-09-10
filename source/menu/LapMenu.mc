@@ -13,16 +13,46 @@ public class LapMenu extends MenuBaseClass {
         var lapActivated = Properties.getValue("LapActivated") as Boolean;
         var autoLapActivated = Properties.getValue("AutoLapActivated") as Boolean;
         var lapScreen = Properties.getValue("LapScreen") as Boolean;
-        addItem(new CustomSwitchMenuItem(:lapActive, Strings.getString("LapActive"), null, lapActivated));
+
+        addItem(new CustomSwitchMenuItem(:lapActive, "", null, true));
         if(lapActivated) {
-            addItem(new CustomSwitchMenuItem(:lapScreen, Strings.getString("LapScreen"), null, lapScreen));
+            addItem(new CustomSwitchMenuItem(:lapScreen, "", null, true));
+            if(lapScreen) {
+                addItem(new CustomLabelSublabelMenuItem(:lapField, "", null));
+            }
+            addItem(new CustomSwitchMenuItem(:autoLapActive, "", null, true));
+            if(autoLapActivated) {
+                addItem(new CustomLabelSublabelMenuItem(:autoLapValue, "", null));
+            }
+        }
+    }
+
+    public function onShow() {
+        var lapActivated = Properties.getValue("LapActivated") as Boolean;
+        var autoLapActivated = Properties.getValue("AutoLapActivated") as Boolean;
+        var lapScreen = Properties.getValue("LapScreen") as Boolean;
+        updateItem(
+            new CustomSwitchMenuItem(:lapActive, Strings.getString("LapActive"), null, lapActivated),
+            findItemById(:lapActive)
+        );
+        if(lapActivated) {
+            updateItem(
+                new CustomSwitchMenuItem(:lapScreen, Strings.getString("LapScreen"), null, lapScreen),
+                findItemById(:lapScreen)
+            );
             if(lapScreen) {
                 var lapField = Properties.getValue("LapScreenField") as Number;
                 var subString = ((SportData.getInstance() as SportData).getMetric(lapField) as Array<String>)[1];
-                addItem(new CustomLabelSublabelMenuItem(:lapField, Strings.getString("LapField"), subString));
+                updateItem(
+                    new CustomLabelSublabelMenuItem(:lapField, Strings.getString("LapField"), subString),
+                    findItemById(:lapField)
+                );
             }
             
-            addItem(new CustomSwitchMenuItem(:autoLapActive, Strings.getString("AutoLap"), null, autoLapActivated));
+            updateItem(
+                new CustomSwitchMenuItem(:autoLapActive, Strings.getString("AutoLap"), null, autoLapActivated),
+                findItemById(:autoLapActive)
+            );
             if(autoLapActivated) {
                 var autoLapValue = (Properties.getValue("AutoLapValue") as Numeric).format("%.1f").toString();
                 var unit = Properties.getValue("DistanceUnits") as Number;
@@ -38,7 +68,10 @@ public class LapMenu extends MenuBaseClass {
                     autoLapValue += " NM";
                 }
                 
-                addItem(new CustomLabelSublabelMenuItem(:autoLapValue, Strings.getString("AutoLapDistance"), autoLapValue));
+                updateItem(
+                    new CustomLabelSublabelMenuItem(:autoLapValue, Strings.getString("AutoLapDistance"), autoLapValue),
+                    findItemById(:autoLapValue)
+                );
             }
         }
     }
@@ -101,11 +134,6 @@ public class LapMenuDelegate extends Menu2InputDelegate {
 
     public function onBack() as Void {
         WatchUi.popView(WatchUi.SLIDE_RIGHT);
-        var menu = new MainMenu();
-        menu = MenuUtils.setFocus(menu, :lap);
-
-        WatchUi.switchToView(menu, new MainMenuDelegate(), WatchUi.SLIDE_RIGHT);
-        WatchUi.requestUpdate();
     }
 
     public function onWrap(key as WatchUi.Key) as Boolean {

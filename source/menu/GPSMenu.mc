@@ -11,31 +11,66 @@ public class GPSMenu extends MenuBaseClass {
         var itemHeight = (System.getDeviceSettings().screenHeight)*0.25;
         MenuBaseClass.initialize(title, itemHeight.toNumber(), {:theme => null, :dividerType => null});
 
-        addItem(new CustomLabelSublabelMenuItem(0, Strings.getString("SatellitesOff"), null));
+        addItem(new CustomLabelSublabelMenuItem(0, "", null));
 
         if(Toybox.Position has :CONFIGURATION_GPS && Position.hasConfigurationSupport(Position.CONFIGURATION_GPS)) {
-            addItem(new CustomLabelSublabelMenuItem(Position.CONFIGURATION_GPS, "GPS", Strings.getString("SingleBand")));
+            addItem(new CustomLabelSublabelMenuItem(Position.CONFIGURATION_GPS, "", null));
         }
         if(Toybox.Position has :CONFIGURATION_GPS_GLONASS && Position.hasConfigurationSupport(Position.CONFIGURATION_GPS_GLONASS)) {
-            addItem(new CustomLabelSublabelMenuItem(Position.CONFIGURATION_GPS_GLONASS, "GLONASS", Strings.getString("SingleBand")));
+            addItem(new CustomLabelSublabelMenuItem(Position.CONFIGURATION_GPS_GLONASS, "", null));
         }
         if(Toybox.Position has :CONFIGURATION_GPS_GALILEO && Position.hasConfigurationSupport(Position.CONFIGURATION_GPS_GALILEO)) {
-            addItem(new CustomLabelSublabelMenuItem(Position.CONFIGURATION_GPS_GALILEO, "GALILEO", Strings.getString("SingleBand")));
+            addItem(new CustomLabelSublabelMenuItem(Position.CONFIGURATION_GPS_GALILEO, "", null));
         }
         if(Toybox.Position has :CONFIGURATION_GPS_BEIDOU && Position.hasConfigurationSupport(Position.CONFIGURATION_GPS_BEIDOU)) {
-            addItem(new CustomLabelSublabelMenuItem(Position.CONFIGURATION_GPS_BEIDOU, "BEIDOU", Strings.getString("SingleBand")));
+            addItem(new CustomLabelSublabelMenuItem(Position.CONFIGURATION_GPS_BEIDOU, "", null));
         }
         if(Toybox.Position has :CONFIGURATION_GPS_GLONASS_GALILEO_BEIDOU_L1 && Position.hasConfigurationSupport(Position.CONFIGURATION_GPS_GLONASS_GALILEO_BEIDOU_L1)) {
-            addItem(new CustomLabelSublabelMenuItem(Position.CONFIGURATION_GPS_GLONASS_GALILEO_BEIDOU_L1, "All Systems", Strings.getString("SingleBand")));
+            addItem(new CustomLabelSublabelMenuItem(Position.CONFIGURATION_GPS_GLONASS_GALILEO_BEIDOU_L1, "", null));
         }
         if(Toybox.Position has :CONFIGURATION_GPS_GLONASS_GALILEO_BEIDOU_L1_L5 && Position.hasConfigurationSupport(Position.CONFIGURATION_GPS_GLONASS_GALILEO_BEIDOU_L1_L5)) {
-            addItem(new CustomLabelSublabelMenuItem(Position.CONFIGURATION_GPS_GLONASS_GALILEO_BEIDOU_L1_L5, "All Systems", Strings.getString("MultiBand")));
+            addItem(new CustomLabelSublabelMenuItem(Position.CONFIGURATION_GPS_GLONASS_GALILEO_BEIDOU_L1_L5, "", null));
         }
         if(Toybox.Position has :CONFIGURATION_SAT_IQ && Position.hasConfigurationSupport(Position.CONFIGURATION_SAT_IQ)) {
-            addItem(new CustomLabelSublabelMenuItem(Position.CONFIGURATION_SAT_IQ, "SatIQ", null));
+            addItem(new CustomLabelSublabelMenuItem(Position.CONFIGURATION_SAT_IQ, "", null));
         }
 
         MenuUtils.setFocus(self, Properties.getValue("Satellites") as Number);
+    }
+
+    public function onShow() {
+        updateItem(
+            new CustomLabelSublabelMenuItem(0, Strings.getString("SatellitesOff"), null),
+            findItemById(0)
+        );
+        updateItem(
+            new CustomLabelSublabelMenuItem(Position.CONFIGURATION_GPS, "GPS", Strings.getString("SingleBand")),
+            findItemById(Position.CONFIGURATION_GPS)
+        );
+        updateItem(
+            new CustomLabelSublabelMenuItem(Position.CONFIGURATION_GPS_GLONASS, "GLONASS", Strings.getString("SingleBand")),
+            findItemById(Position.CONFIGURATION_GPS_GLONASS)
+        );
+        updateItem(
+            new CustomLabelSublabelMenuItem(Position.CONFIGURATION_GPS_GALILEO, "GALILEO", Strings.getString("SingleBand")),
+            findItemById(Position.CONFIGURATION_GPS_GALILEO)
+        );
+        updateItem(
+            new CustomLabelSublabelMenuItem(Position.CONFIGURATION_GPS_BEIDOU, "BEIDOU", Strings.getString("SingleBand")),
+            findItemById(Position.CONFIGURATION_GPS_BEIDOU)
+        );
+        updateItem(
+            new CustomLabelSublabelMenuItem(Position.CONFIGURATION_GPS_GLONASS_GALILEO_BEIDOU_L1, "All Systems", Strings.getString("SingleBand")),
+            findItemById(Position.CONFIGURATION_GPS_GLONASS_GALILEO_BEIDOU_L1)
+        );
+        updateItem(
+            new CustomLabelSublabelMenuItem(Position.CONFIGURATION_GPS_GLONASS_GALILEO_BEIDOU_L1_L5, "All Systems", Strings.getString("MultiBand")),
+            findItemById(Position.CONFIGURATION_GPS_GLONASS_GALILEO_BEIDOU_L1_L5)
+        );
+        updateItem(
+            new CustomLabelSublabelMenuItem(Position.CONFIGURATION_SAT_IQ, "SatIQ", null),
+            findItemById(Position.CONFIGURATION_SAT_IQ)
+        );
     }
 }
 
@@ -57,12 +92,6 @@ public class GPSMenuDelegate extends Menu2InputDelegate {
             Position.enableLocationEvents({:acquisitionType => Position.LOCATION_CONTINUOUS, :configuration => mode as Position.Configuration}, null);
         }
         onBack();
-
-        var menu = new MainMenu();
-        menu = MenuUtils.setFocus(menu, :positioning);
-
-        WatchUi.switchToView(menu, new MainMenuDelegate(), WatchUi.SLIDE_RIGHT);
-        WatchUi.requestUpdate();
     }
 
     public function onBack() as Void {

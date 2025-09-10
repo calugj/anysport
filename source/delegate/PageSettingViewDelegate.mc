@@ -25,12 +25,6 @@ public class PageSettingViewDelegate extends WatchUi.BehaviorDelegate {
 
     public function onBack() {
         WatchUi.popView(WatchUi.SLIDE_RIGHT);
-        var menu = new MainMenu();
-        menu = MenuUtils.setFocus(menu, :datafields);
-
-        WatchUi.switchToView(menu as MainMenu, new MainMenuDelegate(), WatchUi.SLIDE_RIGHT);
-        WatchUi.requestUpdate();
-
         return true;
     }
 

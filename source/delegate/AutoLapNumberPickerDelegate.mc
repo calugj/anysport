@@ -11,9 +11,5 @@ public class AutoLapNumberPickerDelegate extends CustomNumberPickerDelegate {
     public function onConfirm() {
         Properties.setValue("AutoLapValue", getValue());
         WatchUi.popView(WatchUi.SLIDE_RIGHT);
-
-        var menu = new LapMenu();
-        menu = MenuUtils.setFocus(menu, :autoLapValue);
-        WatchUi.switchToView(menu as LapMenu, new LapMenuDelegate(), WatchUi.SLIDE_RIGHT);
     }
 }

@@ -12,8 +12,21 @@ public class ThemeMenu extends MenuBaseClass {
         var itemHeight = (System.getDeviceSettings().screenHeight)*0.25;
         MenuBaseClass.initialize(title, itemHeight.toNumber(), {:theme => null, :dividerType => null});
 
-        addItem(new CustomIconMenuItem(:backgroundColor, Strings.getString("BackgroundColor"), "HEX " + (Properties.getValue("BackgroundColor") as Number).format("%06X"), WatchUi.loadResource($.Rez.Drawables.Fill) as BitmapResource));
-        addItem(new CustomIconMenuItem(:accentColor, Strings.getString("AccentColor"), "HEX " + (Properties.getValue("AccentColor") as Number).format("%06X"), WatchUi.loadResource($.Rez.Drawables.Color) as BitmapResource));
+        var bitmap = WatchUi.loadResource($.Rez.Drawables.Datafields) as BitmapResource;
+
+        addItem(new CustomIconMenuItem(:backgroundColor, "", null, bitmap));
+        addItem(new CustomIconMenuItem(:accentColor, "", null, bitmap));
+    }
+
+    public function onShow() {
+        updateItem(
+            new CustomIconMenuItem(:backgroundColor, Strings.getString("BackgroundColor"), "HEX " + (Properties.getValue("BackgroundColor") as Number).format("%06X"), WatchUi.loadResource($.Rez.Drawables.Fill) as BitmapResource),
+            findItemById(:backgroundColor)
+        );
+        updateItem(
+            new CustomIconMenuItem(:accentColor, Strings.getString("AccentColor"), "HEX " + (Properties.getValue("AccentColor") as Number).format("%06X"), WatchUi.loadResource($.Rez.Drawables.Color) as BitmapResource),
+            findItemById(:accentColor)
+        );
     }
 }
 
@@ -37,9 +50,6 @@ public class ThemeMenuDelegate extends Menu2InputDelegate {
 
     public function onBack() as Void {
         WatchUi.popView(WatchUi.SLIDE_RIGHT);
-        var menu = new MainMenu();
-        menu = MenuUtils.setFocus(menu, :theme);
-        WatchUi.switchToView(menu, new MainMenuDelegate(), WatchUi.SLIDE_RIGHT);
     }
 
     public function onWrap(key as WatchUi.Key) as Boolean {

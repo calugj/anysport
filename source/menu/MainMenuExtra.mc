@@ -11,10 +11,31 @@ public class MainMenuExtra extends MenuBaseClass {
         var itemHeight = (System.getDeviceSettings().screenHeight)*0.25;
         MenuBaseClass.initialize(title, itemHeight.toNumber(), {:theme => null, :dividerType => null});
 
-        addItem(new CustomIconMenuItem(:about, Strings.getString("About"), Strings.getString("About_substring"), WatchUi.loadResource($.Rez.Drawables.About) as BitmapResource));
-        addItem(new CustomIconMenuItem(:dev, Strings.getString("Dev"), Strings.getString("Dev_substring"), WatchUi.loadResource($.Rez.Drawables.Dev) as BitmapResource));
-        addItem(new CustomIconMenuItem(:git, Strings.getString("Git"), Strings.getString("Git_substring"), WatchUi.loadResource($.Rez.Drawables.Git) as BitmapResource));
-        addItem(new CustomIconMenuItem(:licenses, Strings.getString("Licenses"), Strings.getString("Licenses_substring"), WatchUi.loadResource($.Rez.Drawables.Licenses) as BitmapResource));
+        var bitmap = WatchUi.loadResource($.Rez.Drawables.Datafields) as BitmapResource;
+
+        addItem(new CustomIconMenuItem(:about, "", null, bitmap));
+        addItem(new CustomIconMenuItem(:dev, "", null, bitmap));
+        addItem(new CustomIconMenuItem(:git, "", null, bitmap));
+        addItem(new CustomIconMenuItem(:licenses, "", null, bitmap));
+    }
+
+    public function onShow() {
+        updateItem(
+            new CustomIconMenuItem(:about, Strings.getString("About"), Strings.getString("About_substring"), WatchUi.loadResource($.Rez.Drawables.About) as BitmapResource),
+            findItemById(:about)
+        );
+        updateItem(
+            new CustomIconMenuItem(:dev, Strings.getString("Dev"), Strings.getString("Dev_substring"), WatchUi.loadResource($.Rez.Drawables.Dev) as BitmapResource),
+            findItemById(:dev)
+        );
+        updateItem(
+            new CustomIconMenuItem(:git, Strings.getString("Git"), Strings.getString("Git_substring"), WatchUi.loadResource($.Rez.Drawables.Git) as BitmapResource),
+            findItemById(:git)
+        );
+        updateItem(
+            new CustomIconMenuItem(:licenses, Strings.getString("Licenses"), Strings.getString("Licenses_substring"), WatchUi.loadResource($.Rez.Drawables.Licenses) as BitmapResource),
+            findItemById(:licenses)
+        );
     }
 
     public function drawTitle(dc as Dc) as Void {

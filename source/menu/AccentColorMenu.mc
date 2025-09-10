@@ -41,13 +41,8 @@ public class AccentColorMenuDelegate extends Menu2InputDelegate {
 
     public function onSelect(item as MenuItem) as Void {
         Properties.setValue("AccentColor", item.getId() as Number);
-
-        var menu = new ThemeMenu();
-        menu = MenuUtils.setFocus(menu, :accentColor);
-
+        
         onBack();
-        WatchUi.switchToView(menu as ThemeMenu, new ThemeMenuDelegate(), WatchUi.SLIDE_RIGHT);
-        WatchUi.requestUpdate();
     }
 
     public function onBack() as Void {

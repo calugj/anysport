@@ -28,12 +28,7 @@ public class BackgroundColorMenuDelegate extends Menu2InputDelegate {
         var color = item.getId() as Number;
         Properties.setValue("BackgroundColor", color);
 
-        var menu = new ThemeMenu();
-        MenuUtils.setFocus(menu, :backgroundColor);
-
         onBack();
-        WatchUi.switchToView(menu, new ThemeMenuDelegate(), WatchUi.SLIDE_RIGHT);
-        WatchUi.requestUpdate();
     }
 
     public function onBack() as Void {

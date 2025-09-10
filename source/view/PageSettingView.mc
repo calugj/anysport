@@ -13,6 +13,8 @@ public class PageSettingView extends WatchUi.View {
     private var position as Number;
     private var editFieldsMode as Boolean;
 
+    private var update as Boolean;
+
     private var sportData as SportData;
     
     public function initialize(param_pageNumber as Number, param_editFieldsMode as Boolean) {
@@ -27,6 +29,7 @@ public class PageSettingView extends WatchUi.View {
         counter = 0;
 
         layout = new Layout(1);
+        update = false;
     }
 
     public function setPosition(param_position as Number) as Void {
@@ -80,10 +83,20 @@ public class PageSettingView extends WatchUi.View {
                 datafields[i] = new SimpleDatafield(choice[i][0], choice[i][1], choice[i][2], choice[i][3], sportData.getMetric(index));
             }
         }
-    }   
+    } 
+
+    public function onShow() {
+        if(!update) {
+            update = true;
+        }
+    }
 
 
     public function onUpdate(dc as Dc) as Void {
+        if(update) {
+            update = false;
+            onLayout(dc);
+        }
         View.onUpdate(dc);
         dc.setAntiAlias(true);
         layout.draw(dc);

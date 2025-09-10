@@ -11,10 +11,6 @@ public class CustomSportNumberPickerDelegate extends CustomNumberPickerDelegate 
     public function onConfirm() {
         Properties.setValue("CustomSport", getValue());
         WatchUi.popView(WatchUi.SLIDE_RIGHT);
-
-        var menu = new CustomActivityMenu();
-        menu = MenuUtils.setFocus(menu, :sport);
-        WatchUi.switchToView(menu as CustomActivityMenu, new CustomActivityMenuDelegate(), WatchUi.SLIDE_RIGHT);
     }
 }
 
@@ -27,9 +23,5 @@ public class CustomSubsportNumberPickerDelegate extends CustomNumberPickerDelega
     public function onConfirm() {
         Properties.setValue("CustomSubsport", getValue());
         WatchUi.popView(WatchUi.SLIDE_RIGHT);
-
-        var menu = new CustomActivityMenu();
-        menu = MenuUtils.setFocus(menu, :subSport);
-        WatchUi.switchToView(menu as CustomActivityMenu, new CustomActivityMenuDelegate(), WatchUi.SLIDE_RIGHT);
     }
 }

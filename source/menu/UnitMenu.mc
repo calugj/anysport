@@ -11,6 +11,14 @@ public class UnitMenu extends MenuBaseClass {
         var itemHeight = (System.getDeviceSettings().screenHeight)*0.25;
         MenuBaseClass.initialize(title, itemHeight.toNumber(), {:theme => null, :dividerType => null});
 
+        addItem(new CustomLabelSublabelMenuItem("SpeedUnits", "", null));
+        addItem(new CustomLabelSublabelMenuItem("PaceUnits", "", null));
+        addItem(new CustomLabelSublabelMenuItem("DistanceUnits", "", null));
+        addItem(new CustomLabelSublabelMenuItem("NauticalSpeed", "", null));
+        addItem(new CustomLabelSublabelMenuItem("TemperatureUnits", "", null));
+    }
+
+    public function onShow() as Void {
         var speed_substring = Strings.getString("Metric");
         if(Properties.getValue("SpeedUnits") as Number == System.UNIT_STATUTE) {
             speed_substring = Strings.getString("Imperial");
@@ -38,19 +46,38 @@ public class UnitMenu extends MenuBaseClass {
             temperature_substring = Strings.getString("Imperial");
         }
 
-        addItem(new CustomLabelSublabelMenuItem("SpeedUnits", Strings.getString("SpeedUnits"), speed_substring));
-        addItem(new CustomLabelSublabelMenuItem("PaceUnits", Strings.getString("PaceUnits"), pace_substring));
-        addItem(new CustomLabelSublabelMenuItem("DistanceUnits", Strings.getString("DistanceUnits"), distance_substring));
-        addItem(new CustomLabelSublabelMenuItem("NauticalSpeed", Strings.getString("NauticalSpeed"), nautical_substring));
-        addItem(new CustomLabelSublabelMenuItem("TemperatureUnits", Strings.getString("TemperatureUnits"), temperature_substring));
+        updateItem(
+            new CustomLabelSublabelMenuItem("SpeedUnits", Strings.getString("SpeedUnits"), speed_substring),
+            findItemById("SpeedUnits")
+        );
+        updateItem(
+            new CustomLabelSublabelMenuItem("PaceUnits", Strings.getString("PaceUnits"), pace_substring),
+            findItemById("PaceUnits")
+        );
+        updateItem(
+            new CustomLabelSublabelMenuItem("DistanceUnits", Strings.getString("DistanceUnits"), distance_substring),
+            findItemById("DistanceUnits")
+        );
+        updateItem(
+            new CustomLabelSublabelMenuItem("NauticalSpeed", Strings.getString("NauticalSpeed"), nautical_substring),
+            findItemById("NauticalSpeed")
+        );
+        updateItem(
+            new CustomLabelSublabelMenuItem("TemperatureUnits", Strings.getString("TemperatureUnits"), temperature_substring),
+            findItemById("TemperatureUnits")
+        );
     }
 }
 
 
 public class UnitMenuDelegate extends Menu2InputDelegate {
     
-    public function initialize() {
+    private var menu as UnitMenu;
+    
+    public function initialize(_menu as UnitMenu) {
         Menu2InputDelegate.initialize();
+
+        menu = _menu;
     }
 
     public function onSelect(item as MenuItem) as Void {
@@ -67,17 +94,12 @@ public class UnitMenuDelegate extends Menu2InputDelegate {
         }
 
         Properties.setValue(id as String, value);
-
-        var menu = new UnitMenu();
-        menu = MenuUtils.setFocus(menu, id);
-        WatchUi.switchToView(menu, self, WatchUi.SLIDE_IMMEDIATE);
-
-        WatchUi.requestUpdate();
+        
+        menu.onShow();
     }
 
     public function onBack() as Void {
         WatchUi.popView(WatchUi.SLIDE_RIGHT);
-        WatchUi.requestUpdate();
     }
 
     public function onWrap(key as WatchUi.Key) as Boolean {

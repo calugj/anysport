@@ -53,8 +53,6 @@ public class FieldSettingMenu extends MenuBaseClass {
         if(Activity.Info has :meanSeaLevelPressure) {
             addItem(new CustomLabelMenuItem(34 , Strings.getString("SeaPressure")));
         }
-
-        
     }
 }
 
@@ -81,10 +79,6 @@ public class FieldSettingMenuDelegate extends Menu2InputDelegate {
 
     public function onBack() as Void {
         WatchUi.popView(WatchUi.SLIDE_RIGHT);
-        var view = new PageSettingView(page, true);
-        view.setPosition(field - 1);
-        WatchUi.switchToView(view, new FieldSettingViewDelegate(view, page, field - 1), WatchUi.SLIDE_RIGHT);
-        WatchUi.requestUpdate();
     }
 
     public function onWrap(key as WatchUi.Key) as Boolean {
@@ -105,10 +99,7 @@ public class LapFieldSettingMenuDelegate extends Menu2InputDelegate {
     }
 
     public function onBack() as Void {
-        var menu = new LapMenu();
-        menu = MenuUtils.setFocus(menu, :lapField);
-        WatchUi.popView(WatchUi.SLIDE_IMMEDIATE);
-        WatchUi.switchToView(menu, new LapMenuDelegate(), WatchUi.SLIDE_RIGHT);
+        WatchUi.popView(WatchUi.SLIDE_RIGHT);
     }
 
     public function onWrap(key as WatchUi.Key) as Boolean {

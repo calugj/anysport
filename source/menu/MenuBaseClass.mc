@@ -63,4 +63,10 @@ public class MenuBaseClass extends CustomMenu {
             dc.drawLine(width*0.05, height/2 - ITEM_HEIGHT*0.35, width*0.05, height/2 + ITEM_HEIGHT*0.4);
         }   
     }
+
+    public function updateItem(item as MenuItem, index as Number) as Void {
+        if(self.findItemById(item.getId() as Object) == index && index != -1) {
+            CustomMenu.updateItem(item, index);
+        }
+    }
 }

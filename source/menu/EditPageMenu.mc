@@ -5,11 +5,24 @@ import Toybox.Application;
 
 public class EditPageMenu extends MenuBaseClass {
 
-    public function initialize(pageNumber as Number) {
+    private var pageNumber as Number;
+    
+    public function initialize(_pageNumber as Number) {
+        pageNumber = _pageNumber;
         var title = Strings.getString("EditPage").toString() + " " + pageNumber.toString();
         var itemHeight = (System.getDeviceSettings().screenHeight)*0.25;
         MenuBaseClass.initialize(title, itemHeight.toNumber(), {:theme => null, :dividerType => null});
 
+        var bitmap = WatchUi.loadResource($.Rez.Drawables.Datafields) as BitmapResource;
+
+        addItem(new CustomIconMenuItem(:editNumber, "", null, bitmap));
+        addItem(new CustomIconMenuItem(:editFields, "", null, bitmap));
+        if(Properties.getValue("Pages") as Number > 1) {
+            addItem(new CustomIconMenuItem(:delete, "", null, bitmap)); 
+        }
+    }
+
+    public function onShow() as Void {
         var fieldsNumber = Properties.getValue("FieldsPage" + pageNumber.toString()) as Number;
         var editNumber_substring;
         if(fieldsNumber <= 1) {
@@ -17,12 +30,18 @@ public class EditPageMenu extends MenuBaseClass {
         } else {
             editNumber_substring = fieldsNumber.toString() + " " + Strings.getString("Fields");
         }
-
-        addItem(new CustomIconMenuItem(:editNumber, Strings.getString("EditFieldsNumber"), editNumber_substring, WatchUi.loadResource($.Rez.Drawables.Custom) as BitmapResource));
-        addItem(new CustomIconMenuItem(:editFields, Strings.getString("EditFields"), null, WatchUi.loadResource($.Rez.Drawables.Custom) as BitmapResource));
-        if(Properties.getValue("Pages") as Number > 1) {
-            addItem(new CustomIconMenuItem(:delete, Strings.getString("DeletePage"), null, WatchUi.loadResource($.Rez.Drawables.Delete) as BitmapResource)); 
-        }
+        updateItem(
+            new CustomIconMenuItem(:editNumber, Strings.getString("EditFieldsNumber"), editNumber_substring, WatchUi.loadResource($.Rez.Drawables.Custom) as BitmapResource),
+            findItemById(:editNumber)
+        );
+        updateItem(
+            new CustomIconMenuItem(:editFields, Strings.getString("EditFields"), null, WatchUi.loadResource($.Rez.Drawables.Custom) as BitmapResource),
+            findItemById(:editFields)
+        );
+        updateItem(
+            new CustomIconMenuItem(:delete, Strings.getString("DeletePage"), null, WatchUi.loadResource($.Rez.Drawables.Delete) as BitmapResource),
+            findItemById(:delete)
+        ); 
     }
 }
 
@@ -63,9 +82,6 @@ public class EditPageMenuDelegate extends Menu2InputDelegate {
 
     function onBack() as Void {
         WatchUi.popView(WatchUi.SLIDE_RIGHT);
-        var loop = new WatchUi.ViewLoop(new PageSettingLoopFactory(), {:page => pageNumber - 1,:wrap => true, :color => Properties.getValue("AccentColor") as Number});
-        WatchUi.switchToView(loop, new ViewLoopDelegate(loop), WatchUi.SLIDE_RIGHT);
-        WatchUi.requestUpdate();
     }
 
     function onWrap(key as WatchUi.Key) as Boolean {
