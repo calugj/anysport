@@ -8,7 +8,7 @@ import Toybox.System;
 public class Strings {
 
     private static var dictionary as Dictionary = {};
-    private static var VERSION as String = "1.1.3";
+    private static var VERSION as String = "1.1.4";
     private static var APPNAME as String = "Any Sport ULTRA";
 
     public function initialize() {

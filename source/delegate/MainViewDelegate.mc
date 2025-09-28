@@ -71,7 +71,7 @@ public class MainViewDelegate extends BehaviorDelegate {
         } else if(!sportData.isRecording() && sportData.isRecordingStarted()) {
             WatchUi.pushView(new SaveMenu(), new SaveMenuDelegate(view), WatchUi.SLIDE_BLINK);
         } else if(!sportData.isRecording()) {
-            WatchUi.popView(WatchUi.SLIDE_IMMEDIATE);
+            System.exit();
         }
 
         WatchUi.requestUpdate();

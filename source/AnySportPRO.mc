@@ -3,6 +3,7 @@ import Toybox.Lang;
 import Toybox.WatchUi;
 import Toybox.Sensor;
 import Toybox.Communications;
+import Toybox.Position;
 
 public class AnySportPRO extends Application.AppBase {
 
@@ -36,6 +37,7 @@ public class AnySportPRO extends Application.AppBase {
     // onStop() is called when your application is exiting
     public function onStop(state as Dictionary?) as Void {
         Sensor.setEnabledSensors([]);
+        Position.enableLocationEvents({:acquisitionType => Position.LOCATION_DISABLE}, null);
     }
 
     // Return the initial view of your application here
